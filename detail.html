@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ENVA｜くわしく知りたい方へ（比較・内訳・自己診断・業種別の構成）</title>
+<meta name="description" content="ENVA（エンヴァ）の詳しい資料。制作会社・テンプレートサービスとの比較表、55,000円の内訳、今のサイトの自己診断、業種別に載せるべき項目。滋賀・関西のホームページ作り替え。">
+<link rel="canonical" href="https://enva.enva0903.workers.dev/detail">
+<meta property="og:title" content="ENVA｜くわしく知りたい方へ">
+<meta property="og:description" content="他社との比較表／55,000円の内訳／今のサイトの自己診断／業種別・載せるべき7項目。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://enva.enva0903.workers.dev/detail">
+<meta property="og:image" content="https://enva.enva0903.workers.dev/assets/ogp.jpg">
+<meta property="og:site_name" content="ENVA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Archivo:wght@500;600;800&display=swap" rel="stylesheet">
+<style>
+/* ENVA 詳細ページ。トーン・書体・色は index.html と共通 */
+:root{
+  --ink:#0f0f0f;--ink-2:#333;--gray:#767676;--line:#e4e4e2;--bg:#fff;--bg-2:#f5f5f3;
+  --shu:#ae2019;--kin:#c79e45;
+  --sans:"Zen Kaku Gothic New",system-ui,sans-serif;--latin:"Archivo",system-ui,sans-serif;
+  --maxw:1120px;--snap:cubic-bezier(.7,0,.2,1);--settle:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.9;letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"palt" 1,"kern" 1}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(174,32,25,.16)}
+:focus-visible{outline:2px solid var(--shu);outline-offset:3px}
+.wrap{width:min(90%,var(--maxw));margin-inline:auto}
+section{padding:clamp(70px,9vw,130px) 0}
+.lab{display:flex;align-items:center;gap:12px;font-family:var(--latin);font-weight:600;font-size:11px;letter-spacing:.24em;color:var(--shu);margin-bottom:22px}
+.lab::before{content:"";width:26px;height:1px;background:var(--shu)}
+h2{font-weight:900;font-size:clamp(28px,4.6vw,54px);line-height:1.3;letter-spacing:-.01em;margin:0}
+h3{font-weight:900;font-size:clamp(18px,2.2vw,24px);line-height:1.5;margin:0}
+.lead{margin:22px 0 0;color:var(--gray);font-size:15.5px;max-width:64ch}
+.lead b{color:var(--ink)}
+.note{font-size:12.5px;color:var(--gray);line-height:1.8}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--settle),transform .7s var(--settle)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
+.mask{clip-path:inset(0 0 100% 0);transition:clip-path .72s var(--snap)}
+.mask.in{clip-path:inset(0 0 -30% 0)}
+/* ヘッダー */
+header{position:sticky;top:0;z-index:900;display:flex;align-items:center;gap:24px;padding:14px clamp(18px,4vw,44px);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:30px;width:auto}
+.brand span{font-size:11px;letter-spacing:.16em;color:var(--gray);padding-left:14px;border-left:1px solid var(--line);white-space:nowrap}
+.hnav{margin-left:auto;display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+.hnav a{font-family:var(--latin);font-weight:500;font-size:12.5px;letter-spacing:.12em;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:13.5px;font-weight:500;letter-spacing:.04em;
+  padding:13px 26px;background:var(--ink);color:#fff;position:relative;overflow:hidden;white-space:nowrap}
+.btn span{position:relative;z-index:1}
+.btn::before{content:"";position:absolute;inset:0;background:var(--shu);transform:translateY(101%);transition:transform .4s var(--snap)}
+.btn:hover::before{transform:none}
+.btn--line{background:none;color:var(--ink);border:1px solid var(--ink)}
+.btn--line::before{background:var(--ink)}.btn--line:hover span{color:#fff}
+/* ページ頭 */
+.top{padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,80px)}
+.top h1{font-weight:900;font-size:clamp(30px,5.2vw,62px);line-height:1.25;letter-spacing:-.02em;margin:0}
+.top h1 em{font-style:normal;color:var(--shu)}
+.toc{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(30px,4vw,50px)}
+.toc a{background:#fff;padding:18px 18px;display:flex;flex-direction:column;gap:4px;transition:background .3s}
+.toc a:hover{background:var(--bg-2)}
+.toc a i{font-family:var(--latin);font-weight:800;font-size:11px;letter-spacing:.2em;color:var(--shu);font-style:normal}
+.toc a b{font-size:14.5px;font-weight:700;line-height:1.5}
+/* 1. 比較表 */
+.cmp{margin-top:clamp(36px,5vw,60px);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp table{width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px}
+.cmp th,.cmp td{padding:15px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.7}
+.cmp thead th{font-family:var(--latin);font-size:11px;letter-spacing:.18em;color:var(--gray);font-weight:600;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.cmp thead th.me{color:var(--shu)}
+.cmp tbody th{font-weight:700;width:18%;color:var(--ink);font-size:13.5px}
+.cmp td{color:var(--ink-2);width:27%}
+.cmp td.me{background:#fff7f6;font-weight:700;color:var(--ink);border-left:2px solid var(--shu)}
+.cmp td small{display:block;font-weight:400;font-size:12px;color:var(--gray);margin-top:2px}
+.cmp .g{color:var(--gray)}
+/* 2. やられがち */
+.trap{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.trap div{background:#fff;padding:clamp(20px,2.6vw,30px)}
+.trap i{font-family:var(--latin);font-weight:800;font-size:28px;line-height:1;color:var(--line);font-style:normal;display:block;margin-bottom:14px}
+.trap div:hover i{color:var(--shu)}
+.trap b{display:block;font-size:15.5px;font-weight:900;line-height:1.5;margin-bottom:8px}
+.trap p{margin:0;font-size:13px;color:var(--gray);line-height:1.8}
+.trap em{display:block;margin-top:12px;font-style:normal;font-size:12.5px;color:var(--shu);font-weight:700}
+/* 3. 内訳 */
+.brk{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,64px);align-items:start}
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:11em 1fr 4.5em;gap:14px;align-items:center;font-size:14px}
+.bar span:first-child{font-weight:700}
+.bar i{display:block;height:14px;background:var(--ink);width:var(--w);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--settle)}
+.in .bar i{transform:none}
+.bar:nth-child(odd) i{background:var(--ink-2)}
+.bar em{font-style:normal;font-family:var(--latin);font-weight:600;text-align:right;color:var(--gray);font-variant-numeric:tabular-nums}
+.sum{border-top:1px solid var(--ink);margin-top:8px;padding-top:14px;display:flex;justify-content:space-between;font-weight:900;font-size:15px}
+.sum em{font-style:normal;font-family:var(--latin);font-weight:800;font-size:18px}
+.brk__side{background:var(--bg-2);padding:clamp(24px,3vw,36px)}
+.brk__side b{display:block;font-size:17px;font-weight:900;margin-bottom:12px;line-height:1.5}
+.brk__side p{margin:0 0 1em;font-size:14px;color:var(--gray)}
+.brk__side p:last-child{margin:0}
+.big{font-family:var(--latin);font-weight:800;font-size:clamp(34px,4.5vw,52px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin:6px 0 12px}
+.big small{font-family:var(--sans);font-size:.34em;font-weight:700;letter-spacing:0;margin-left:6px}
+/* 4. 自己診断 */
+.chk{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:1fr 340px;gap:clamp(24px,4vw,56px);align-items:start}
+.chk__list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.chk__list label{display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;background:#fff;padding:16px 20px;cursor:pointer;transition:background .25s}
+.chk__list label:hover{background:var(--bg-2)}
+.chk__list input{appearance:none;width:22px;height:22px;border:1.5px solid var(--ink);margin:4px 0 0;cursor:pointer;position:relative;background:#fff}
+.chk__list input:checked{background:var(--shu);border-color:var(--shu)}
+.chk__list input:checked::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.chk__list b{display:block;font-size:15px;font-weight:700;line-height:1.6}
+.chk__list small{display:block;font-size:12.5px;color:var(--gray);line-height:1.7;margin-top:2px}
+.chk__res{position:sticky;top:90px;border:1px solid var(--line);padding:clamp(22px,3vw,32px);background:#fff}
+.chk__res .lab{margin-bottom:10px}
+.score{font-family:var(--latin);font-weight:800;font-size:64px;line-height:1;letter-spacing:-.03em}
+.score small{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:0;margin-left:6px;color:var(--gray)}
+.meter{height:8px;background:var(--bg-2);margin:14px 0 18px;position:relative;overflow:hidden}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:var(--shu);width:0;transition:width .5s var(--snap)}
+.verdict{font-weight:900;font-size:17px;line-height:1.5;min-height:3.2em}
+.chk__res p{margin:8px 0 18px;font-size:13.5px;color:var(--gray)}
+/* 5. 業種別 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(30px,4vw,48px)}
+.tabs button{font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.02em;padding:11px 20px;background:#fff;border:1px solid var(--line);color:var(--ink);cursor:pointer;transition:.25s}
+.tabs button:hover{border-color:var(--ink)}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ind{display:none;margin-top:28px;grid-template-columns:1fr 380px;gap:clamp(24px,4vw,56px);align-items:start}
+.ind.on{display:grid}
+.ind ol{list-style:none;padding:0;margin:0;counter-reset:n;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.ind li{background:#fff;padding:16px 20px;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;counter-increment:n}
+.ind li::before{content:counter(n,decimal-leading-zero);font-family:var(--latin);font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--shu);padding-top:5px}
+.ind li b{display:block;font-size:15px;font-weight:700;line-height:1.6}
+.ind li small{display:block;font-size:12.5px;color:var(--gray);line-height:1.7;margin-top:2px}
+.ind__why{margin:18px 0 0;font-size:14px;color:var(--gray);padding:16px 20px;border-left:2px solid var(--shu);background:var(--bg-2)}
+.ind__why b{color:var(--ink)}
+/* 構成図（ワイヤー） */
+.wire{border:1px solid #cfcfcb;background:#fff;padding:10px;box-shadow:0 24px 50px -30px rgba(0,0,0,.35)}
+.wire .wcap{font-family:var(--latin);font-size:10px;letter-spacing:.2em;color:var(--gray);margin:2px 0 8px}
+.wire .w{display:grid;gap:6px}
+.wire .w div{background:var(--bg-2);border:1px solid var(--line);font-size:11px;color:var(--gray);padding:8px 10px;letter-spacing:.04em;line-height:1.4}
+.wire .w .h{height:74px;background:#e9e9e6;display:flex;align-items:flex-end;color:var(--ink);font-weight:700;font-size:12px}
+.wire .w .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:none;border:0;padding:0}
+.wire .w .row div{padding:10px 8px;min-height:44px}
+.wire .w .cta{background:var(--ink);color:#fff;border-color:var(--ink);text-align:center;font-weight:700}
+.wire .w .acc{border-left:2px solid var(--shu)}
+/* 締め */
+.close{background:var(--ink);color:#fff}
+.close .lab{color:#ff6a5e}.close .lab::before{background:#ff6a5e}
+.close p{color:rgba(255,255,255,.65);max-width:52ch;margin:22px 0 32px;font-size:15.5px}
+.close .btn{background:#fff;color:var(--ink)}
+.close .btn::before{background:var(--shu)}.close .btn:hover span{color:#fff}
+.close .btn--line{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
+.close .btn--line::before{background:#fff}.close .btn--line:hover span{color:var(--ink)}
+.acts{display:flex;flex-wrap:wrap;gap:12px}
+footer{background:#080808;color:rgba(255,255,255,.5);padding:34px 0;font-size:12px;text-align:center;letter-spacing:.06em}
+@media(max-width:900px){
+  .brand span,.hnav a:not(.btn){display:none}
+  .toc{grid-template-columns:1fr 1fr}
+  .trap{grid-template-columns:1fr}
+  .brk,.chk,.ind.on{grid-template-columns:1fr}
+  .chk__res{position:static}
+  .bar{grid-template-columns:8em 1fr 4em;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important}.mask{clip-path:none!important}.bar i{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html"><img src="assets/logo-h.webp" alt="ENVA" width="900" height="289"><span>ホームページ制作</span></a>
+  <nav class="hnav">
+    <a href="#cmp">COMPARE</a><a href="#trap">TRAP</a><a href="#brk">BREAKDOWN</a><a href="#chk">CHECK</a><a href="#ind">INDUSTRY</a>
+    <a class="btn" href="index.html#contact"><span>無料でお見積もり</span></a>
+  </nav>
+</header>
+
+<main>
+  <div class="top">
+    <div class="wrap">
+      <div class="lab rv">DETAIL</div>
+      <h1 class="mask">くわしく知りたい方へ。<br><em>比べて</em>、<em>当てはめて</em>、決めてください。</h1>
+      <p class="lead rv d1">トップページで「なんとなく良さそう」と思っていただけたなら、ここからは数字と条件の話です。他社と比べて、今のサイトをご自身で採点して、業種ごとに何を載せるべきかをご覧ください。読み終わる頃には、頼むかどうかをご自身で決めていただけるはずです。</p>
+      <div class="toc rv d2">
+        <a href="#cmp"><i>01</i><b>他社との比較表</b></a>
+        <a href="#trap"><i>02</i><b>制作会社選びで困りがちな5つ</b></a>
+        <a href="#brk"><i>03</i><b>55,000円の内訳</b></a>
+        <a href="#chk"><i>04</i><b>今のサイトの自己診断</b></a>
+        <a href="#ind"><i>05</i><b>業種別・載せるべき7項目</b></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 比較表 -->
+  <section id="cmp">
+    <div class="wrap">
+      <div class="lab rv">01 ｜ COMPARE</div>
+      <h2 class="mask">よそと、何が違うのか</h2>
+      <p class="lead rv d1">ホームページの頼み先は、だいたい3つに分かれます。制作会社、自分で作るテンプレートサービス、そしてENVAのような個人の制作者。それぞれ得意なことが違うので、<b>どれが良い悪いではなく、お店に合うかどうか</b>で見てください。</p>
+      <div class="cmp rv d1">
+        <table>
+          <thead><tr><th></th><th class="me">ENVA</th><th>一般的な制作会社</th><th>テンプレートサービス<br><span class="g">（自分で作る）</span></th></tr></thead>
+          <tbody>
+            <tr><th>初期費用</th><td class="me">55,000円<small>1ページ完結・税込</small></td><td>30万〜80万円<small>営業・ディレクター・デザイナー・コーダーの人件費</small></td><td>0〜数万円<small>自分の時間がかかる</small></td></tr>
+            <tr><th>毎月の費用</th><td class="me">0円<small>お手入れは任意で月5,500円</small></td><td>5,000〜3万円<small>保守費として固定</small></td><td>1,000〜3,000円<small>無料プランは広告が出る</small></td></tr>
+            <tr><th>できるまで</th><td class="me">1〜2週間</td><td>1〜3か月</td><td>自分次第<small>途中で止まる方が多い</small></td></tr>
+            <tr><th>誰がやるか</th><td class="me">代表がひとりで最初から最後まで</td><td>営業→ディレクター→デザイナー→コーダー<small>伝言ゲームが起きる</small></td><td>自分</td></tr>
+            <tr><th>文章・原稿</th><td class="me">30分聞いて、こちらで書き下ろす</td><td>会社による<small>「原稿はご用意ください」が多い</small></td><td>自分で書く</td></tr>
+            <tr><th>動きの仕掛け</th><td class="me">込み<small>このサイトと同じもの</small></td><td>1つずつ別料金が多い</td><td>ほぼ無い</td></tr>
+            <tr><th>直すとき</th><td class="me">修正マニュアル付きで渡す<small>AIに頼むだけの内容です・面倒なら月5,500円で代行</small></td><td>1回数千円〜<small>更新のたび見積もり</small></td><td>自分で直す</td></tr>
+            <tr><th>ドメイン・データ</th><td class="me">お客様のもの<small>乗り換えても持っていける</small></td><td>会社による<small>「業者名義」で消えることがある</small></td><td>サービスのもの<small>やめると消える</small></td></tr>
+            <tr><th>向いている店</th><td class="me">滋賀・関西の、看板をちゃんと出したい店</td><td>ページ数が多い、予約や販売の仕組みが要る</td><td>とにかく無料で、自分で触れる人</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note rv">※ 他社・サービスの数字は一般的な目安です。会社やプランによって前後します。</p>
+    </div>
+  </section>
+
+  <!-- 02 やられがち -->
+  <section id="trap" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="lab rv">02 ｜ TRAP</div>
+      <h2 class="mask">制作会社選びで、困りがちな5つ</h2>
+      <p class="lead rv d1">作り替えのご相談で、いちばん多いのが「前のところで嫌な思いをした」というお話です。ご契約の前に、この5つだけ確認しておいてください。<b>ENVAの答えも横に書いておきます。</b></p>
+      <div class="trap rv d1">
+        <div><i>01</i><b>ドメインが業者の名義</b><p>解約したら、お店の名前のURLごと消える。移そうとしたら「譲渡費用」を請求される。</p><em>ENVA：お客様名義で取ります</em></div>
+        <div><i>02</i><b>直すたびに請求</b><p>営業時間を変えて数千円、写真を1枚で数千円。そのうち誰も直さなくなる。</p><em>ENVA：修正マニュアル付きで渡します</em></div>
+        <div><i>03</i><b>担当が消える</b><p>作った人が辞めた、会社が無くなった。ログインの仕方も分からない。</p><em>ENVA：代表がひとり。データも渡します</em></div>
+        <div><i>04</i><b>スマホで崩れる</b><p>パソコンで見たときだけ綺麗。お客様の7割はスマホでご覧になるのに。</p><em>ENVA：スマホを先に作ります</em></div>
+        <div><i>05</i><b>「一式」の見積もり</b><p>何にいくらか分からない。追加になるかどうかも分からない。</p><em>ENVA：追加は3つだけ、先に書いてあります</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 内訳 -->
+  <section id="brk">
+    <div class="wrap">
+      <div class="lab rv">03 ｜ BREAKDOWN</div>
+      <h2 class="mask">55,000円の、中身</h2>
+      <p class="lead rv d1">安い理由は「手を抜く」ではなく「人を減らす」です。1ページのサイトに、実際どれくらいの時間をかけているかを、そのまま書きます。</p>
+      <div class="brk">
+        <div class="bars rv" id="bars">
+          <!-- ▼要確認：社長。時間の配分は仮 -->
+          <div class="bar"><span>お話を聞く</span><i style="--w:9%"></i><em>1.0h</em></div>
+          <div class="bar"><span>今のサイトを読み込む</span><i style="--w:9%"></i><em>1.0h</em></div>
+          <div class="bar"><span>構成をつくる</span><i style="--w:18%"></i><em>2.0h</em></div>
+          <div class="bar"><span>原稿を書く</span><i style="--w:27%"></i><em>3.0h</em></div>
+          <div class="bar"><span>デザイン・組み立て</span><i style="--w:73%"></i><em>8.0h</em></div>
+          <div class="bar"><span>動きの仕掛け</span><i style="--w:27%"></i><em>3.0h</em></div>
+          <div class="bar"><span>写真の補正・配置</span><i style="--w:14%"></i><em>1.5h</em></div>
+          <div class="bar"><span>確認・直し</span><i style="--w:27%"></i><em>3.0h</em></div>
+          <div class="bar"><span>公開・検索の設定</span><i style="--w:9%"></i><em>1.0h</em></div>
+          <div class="sum"><span>合計</span><em>23.5時間</em></div>
+        </div>
+        <div class="brk__side rv d1">
+          <b>時間で割ると、こうなります</b>
+          <div class="big">2,340<small>円／時間</small></div>
+          <p>55,000円 ÷ 23.5時間。営業も事務所も下請けも無いので、この時間がそのまま値段になります。</p>
+          <p>制作会社の見積もりが30万を超えるのは、腕の差ではなく、<b style="color:var(--ink)">関わる人数の差</b>です。営業1人、ディレクター1人、デザイナー1人、コーダー1人。それぞれの人件費と、あいだの伝言の時間が乗ります。</p>
+          <p>ENVAは「下ごしらえ」に最新の制作ツールを使って、構成と原稿の下書きを短くしています。浮いた時間は、料金を下げることと、お話を伺う時間に充てています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 自己診断 -->
+  <section id="chk" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="lab rv">04 ｜ CHECK</div>
+      <h2 class="mask">今のサイトを、ご自身で採点してみてください</h2>
+      <p class="lead rv d1">スマホで今のホームページを開きながら、当てはまるものにチェックを入れてください。<b>3つ以上なら、作り替えを考える時期</b>です。</p>
+      <div class="chk">
+        <div class="chk__list rv" id="chkList">
+          <label><input type="checkbox"><span><b>スマホで開くと、文字が小さい・横にはみ出す</b><small>指で拡大しないと読めない場合、お客様は読まずに閉じてしまいます</small></span></label>
+          <label><input type="checkbox"><span><b>最後に更新したのが1年以上前</b><small>「お知らせ」の日付が古いと、営業しているかどうか疑われます</small></span></label>
+          <label><input type="checkbox"><span><b>営業時間・定休日・値段のどれかが今と違う</b><small>お電話で確認されるか、ご来店後に困らせてしまうかのどちらかです</small></span></label>
+          <label><input type="checkbox"><span><b>スマホで見ても、電話ボタンが無い</b><small>番号を見て、覚えて、入力する。その間に半分は諦めます</small></span></label>
+          <label><input type="checkbox"><span><b>地図が無い、または画像だけ</b><small>タップでナビが開かないと、初めての人は来られません</small></span></label>
+          <label><input type="checkbox"><span><b>URLが「http://」で始まる（鍵マークが無い）</b><small>ブラウザに「安全ではありません」と出ています</small></span></label>
+          <label><input type="checkbox"><span><b>写真が「画像準備中」か、10年前の写真</b><small>店の今の空気が伝わっていません</small></span></label>
+          <label><input type="checkbox"><span><b>開いて3秒で「何屋か」「どこにあるか」が分からない</b><small>初めての人は、そこで戻るボタンを押します</small></span></label>
+          <label><input type="checkbox"><span><b>直したいと思っても、業者に頼まないと直せない</b><small>だから直さなくなり、止まったサイトになります</small></span></label>
+          <label><input type="checkbox"><span><b>ドメインが誰の名義か、分からない</b><small>業者の名義なら、乗り換えたときにURLごと消えるかもしれません</small></span></label>
+        </div>
+        <div class="chk__res rv d1">
+          <div class="lab">RESULT</div>
+          <div class="score"><span id="scoreN">0</span><small>／ 10</small></div>
+          <div class="meter"><i id="meter"></i></div>
+          <div class="verdict" id="verdict">まだチェックがありません。上から順に見ていってください。</div>
+          <p id="verdictSub">スマホで今のサイトを開きながらどうぞ。</p>
+          <a class="btn" href="index.html#contact"><span>この結果を持って相談する</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 業種別 -->
+  <section id="ind">
+    <div class="wrap">
+      <div class="lab rv">05 ｜ INDUSTRY</div>
+      <h2 class="mask">業種別・載せるべき7項目</h2>
+      <p class="lead rv d1">1ページ完結で作るとき、「何を、どの順に」載せるかで結果が変わります。業種ごとに、お客様が知りたい順に並べた7項目と、ページの構成図です。<b>ENVAの55,000円は、この7項目が全部入った形</b>です。</p>
+      <div class="tabs rv" id="tabs">
+        <button class="on" data-t="k">工務店・リフォーム</button>
+        <button data-t="r">居酒屋・飲食店</button>
+        <button data-t="s">美容室・サロン</button>
+        <button data-t="c">整体・接骨院</button>
+      </div>
+
+      <div class="ind on" data-t="k">
+        <div>
+          <ol>
+            <li><span><b>何が得意な工務店か、ひと言</b><small>「水回り」「外壁」「古い家の修繕」。「全部できます」は、特徴がないと受け取られがちです</small></span></li>
+            <li><span><b>施工事例（前後の写真）3件</b><small>写真は工事前・工事後の同じ角度で。金額と工期を添えると問い合わせが具体的になります</small></span></li>
+            <li><span><b>値段の目安</b><small>「キッチン 80万円〜」の一覧。無いと「高そう」で終わります</small></span></li>
+            <li><span><b>人の顔</b><small>代表と職人。工事は「誰が家に来るか」で決まります</small></span></li>
+            <li><span><b>工事の流れと、見積もりが無料であること</b><small>「現地を見に来るのは無料か」がいちばん聞かれます</small></span></li>
+            <li><span><b>対応エリアと会社概要</b><small>建設業許可の番号は信用になります</small></span></li>
+            <li><span><b>電話・LINE・地図</b><small>年配の方は電話、その子ども世代はLINE。両方置きます</small></span></li>
+          </ol>
+          <p class="ind__why"><b>工務店で効くのは「前後の写真」と「値段の目安」。</b>この2つがあるだけで、相見積もりの候補に入る確率が変わります。</p>
+        </div>
+        <div class="wire rv d1"><div class="wcap">STRUCTURE ｜ 1ページ完結</div><div class="w">
+          <div class="h">得意なこと、ひと言 ＋ 写真</div>
+          <div class="acc">選ばれる理由 3つ</div>
+          <div class="row"><div>事例 前→後</div><div>事例 前→後</div><div>事例 前→後</div></div>
+          <div>値段の目安（表）</div>
+          <div>工事の流れ 5ステップ</div>
+          <div class="row"><div>代表</div><div>職人</div><div>事務</div></div>
+          <div>会社概要・許可番号・エリア</div>
+          <div class="cta">電話 ／ LINE ／ 地図</div>
+        </div></div>
+      </div>
+
+      <div class="ind" data-t="r">
+        <div>
+          <ol>
+            <li><span><b>店の空気が分かる写真を、いちばん上に</b><small>料理より先に「席」と「灯り」。行きたい店かどうかは空気で決まります</small></span></li>
+            <li><span><b>看板メニュー3品と、値段</b><small>全品載せる前に、まず3品。写真つきで</small></span></li>
+            <li><span><b>お品書き（全部）</b><small>初めての人は「いくらで飲めるか」を見ています。コースは人数と値段を明記</small></span></li>
+            <li><span><b>席の案内</b><small>カウンター・座敷・個室・人数。子連れ可か、貸切できるか</small></span></li>
+            <li><span><b>営業時間・定休日・ランチの有無</b><small>ここが古いと、いちばん信用を落とします。自分で直せる形に</small></span></li>
+            <li><span><b>アクセス（駅から何分・駐車場）</b><small>タップでナビが開く地図</small></span></li>
+            <li><span><b>電話予約とネット予約の入口</b><small>電話は営業中に出られないことがあるので、LINEかフォームも</small></span></li>
+          </ol>
+          <p class="ind__why"><b>飲食店で効くのは「席の写真」と「営業時間が正しいこと」。</b>料理写真は3枚あれば十分です。</p>
+        </div>
+        <div class="wire rv d1"><div class="wcap">STRUCTURE ｜ 1ページ完結</div><div class="w">
+          <div class="h">店の空気の写真 ＋ ひと言</div>
+          <div class="row"><div>看板 1</div><div>看板 2</div><div>看板 3</div></div>
+          <div class="acc">お品書き（全部）／ コース</div>
+          <div class="row"><div>カウンター</div><div>座敷</div><div>個室</div></div>
+          <div>営業時間・定休日・ランチ</div>
+          <div>アクセス・駐車場・地図</div>
+          <div class="cta">電話予約 ／ LINE ／ ネット予約</div>
+        </div></div>
+      </div>
+
+      <div class="ind" data-t="s">
+        <div>
+          <ol>
+            <li><span><b>誰向けの店か、ひと言</b><small>「40代からの白髪ぼかし」「一人で静かに」。全員向けの言葉は、誰にも届きにくくなります</small></span></li>
+            <li><span><b>メニューと値段（全部）</b><small>初回の値段が分からない店は、初めての人に選ばれません</small></span></li>
+            <li><span><b>スタイリストの顔と得意</b><small>指名は顔で決まります。一言ずつでいいので本人の言葉を</small></span></li>
+            <li><span><b>店内の写真</b><small>席と席の距離、明るさ。「落ち着けるか」を見ています</small></span></li>
+            <li><span><b>スタイル写真</b><small>Instagramに繋いで、更新はそちらで</small></span></li>
+            <li><span><b>予約の入口（ネット予約）</b><small>この業種はネット予約が主役。ボタンをいちばん目立つ位置に</small></span></li>
+            <li><span><b>アクセス・駐車場・営業時間</b><small>子連れ可、キッズスペースの有無も</small></span></li>
+          </ol>
+          <p class="ind__why"><b>サロンで効くのは「誰向けか」と「予約ボタンの位置」。</b>写真はInstagramに任せて、サイトは入口に徹します。</p>
+        </div>
+        <div class="wire rv d1"><div class="wcap">STRUCTURE ｜ 1ページ完結</div><div class="w">
+          <div class="h">誰向けか、ひと言 ＋ 店内写真</div>
+          <div class="cta">ネット予約</div>
+          <div class="acc">メニューと値段（全部）</div>
+          <div class="row"><div>スタイリスト</div><div>スタイリスト</div><div>スタイリスト</div></div>
+          <div>スタイル写真（Instagram）</div>
+          <div>アクセス・営業時間・駐車場</div>
+          <div class="cta">電話 ／ LINE ／ ネット予約</div>
+        </div></div>
+      </div>
+
+      <div class="ind" data-t="c">
+        <div>
+          <ol>
+            <li><span><b>どんな症状の人が来る店か</b><small>「腰」「肩」「産後」「スポーツ」。症状で探されるので、症状で書きます</small></span></li>
+            <li><span><b>初回の流れと、かかる時間・値段</b><small>「何をされるか分からない」が一番の不安。写真つきで順番に</small></span></li>
+            <li><span><b>先生の顔・資格・経歴</b><small>体を預ける相手です。資格名は正式名称で</small></span></li>
+            <li><span><b>保険が使えるかどうか</b><small>使える・使えない・条件つき。曖昧に書くとトラブルになります</small></span></li>
+            <li><span><b>院内の写真</b><small>清潔感と、個室かどうか</small></span></li>
+            <li><span><b>お客様の声</b><small>症状と年代を添えて。「同じ症状の人が良くなった」が効きます</small></span></li>
+            <li><span><b>予約の入口・営業時間・駐車場</b><small>痛いときに電話するので、電話ボタンをいちばん上にも</small></span></li>
+          </ol>
+          <p class="ind__why"><b>整体で効くのは「症状で書く」と「初回の流れ」。</b>技術の説明より、安心の説明が先です。</p>
+        </div>
+        <div class="wire rv d1"><div class="wcap">STRUCTURE ｜ 1ページ完結</div><div class="w">
+          <div class="h">症状で書く ＋ 先生の写真</div>
+          <div class="cta">電話 ／ LINE 予約</div>
+          <div class="acc">初回の流れ（写真つき）・時間・値段</div>
+          <div class="row"><div>先生</div><div>資格</div><div>経歴</div></div>
+          <div>保険について</div>
+          <div class="row"><div>声</div><div>声</div><div>声</div></div>
+          <div>院内写真・アクセス・営業時間</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 締め -->
+  <section class="close">
+    <div class="wrap">
+      <div class="lab rv">NEXT</div>
+      <h2 class="mask">ここまでお読みいただいたので、あとは今のサイトをお見せください</h2>
+      <p class="rv d1">今のサイトのURLをお送りいただければ、上の10項目の採点と、業種の7項目のどれが足りないかを、こちらで拝見してお返しします。お見積もりは無料です。こちらから追いかけてご連絡することはありません。</p>
+      <div class="acts rv d2">
+        <a class="btn" href="index.html#contact"><span>今のサイトを送って相談する</span></a>
+        <a class="btn btn--line" href="index.html"><span>トップページへ戻る</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>ENVA（エンヴァ）｜滋賀県｜ホームページ制作　© <span id="yy"></span> ENVA</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* 出現 */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');
+    var w=e.target.querySelectorAll('.mask');for(var i=0;i<w.length;i++)w[i].classList.add('in');io.unobserve(e.target);});},{threshold:.12});
+  document.querySelectorAll('.rv,.mask').forEach(function(el){ if(el.classList.contains('mask'))io.observe(el.parentElement); io.observe(el); });
+  /* 自己診断 */
+  var list=document.getElementById('chkList'), n=document.getElementById('scoreN'), m=document.getElementById('meter'), v=document.getElementById('verdict'), vs=document.getElementById('verdictSub');
+  function judge(){
+    var c=list.querySelectorAll('input:checked').length;
+    n.textContent=c; m.style.width=(c*10)+'%';
+    if(c===0){ v.textContent='まだチェックがありません。上から順にご覧ください。'; vs.textContent='スマホで今のサイトを開きながらどうぞ。'; }
+    else if(c<=2){ v.textContent='今のサイトは、まだお使いいただけます。'; vs.textContent='チェックした項目だけ直せば十分です。単発の手直しでもお受けします。'; }
+    else if(c<=5){ v.textContent='作り替えを考える時期です。'; vs.textContent='文章や写真は今のものが活かせます。見た目と仕組みだけ替えると、'+c+'項目とも一度に消えます。'; }
+    else{ v.textContent='お客様は、来店の前に閉じてしまっている可能性が高いです。'; vs.textContent='まずは電話番号だけでも載せるところから。作り替えなら1〜2週間ですべて直ります。'; }
+  }
+  list.addEventListener('change',judge);
+  /* 業種タブ */
+  var tabs=document.getElementById('tabs');
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    tabs.querySelectorAll('button').forEach(function(x){x.classList.remove('on');}); b.classList.add('on');
+    document.querySelectorAll('.ind').forEach(function(p){ p.classList.toggle('on',p.dataset.t===b.dataset.t); });
+    document.querySelectorAll('.ind.on .rv').forEach(function(el){ el.classList.add('in'); });
+  });
+  document.getElementById('yy').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

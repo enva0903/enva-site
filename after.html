@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>みのり工務店｜近江八幡のリフォーム・新築</title>
+<meta name="description" content="家を直す前に、暮らしを聞く。近江八幡で42年、1,300軒。みのり工務店（ENVA制作サンプル）">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+<style>
+/* ENVA 制作サンプル「みのり工務店」（架空）。55,000円で渡す形の見本 */
+:root{
+  --ink:#1f1b17;--gray:#6f6862;--line:#e6e0d6;--bg:#faf8f4;--bg2:#f1ece3;
+  --acc:#b8622b;--green:#2f4a3a;
+  --sans:"Zen Kaku Gothic New",system-ui,sans-serif;--min:"Shippori Mincho",serif;--latin:"Archivo",sans-serif;
+  --settle:cubic-bezier(.16,1,.3,1);--snap:cubic-bezier(.7,0,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.9;letter-spacing:.02em;
+  font-feature-settings:"palt" 1,"kern" 1;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(90%,1120px);margin-inline:auto}
+section{padding:clamp(70px,9vw,130px) 0}
+.lab{font-family:var(--latin);font-weight:600;font-size:11px;letter-spacing:.24em;color:var(--acc);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.lab::before{content:"";width:24px;height:1px;background:var(--acc)}
+h2{font-family:var(--min);font-weight:800;font-size:clamp(26px,4.2vw,44px);line-height:1.4;margin:0;letter-spacing:.02em}
+.lead{color:var(--gray);margin:20px 0 0;max-width:60ch}
+/* 写真の仮枠：木目っぽい地にラベル。写真が入るまでの見た目 */
+/* 仮枠は単色＋うっすら斜めの明るさだけ（細かい縞は描画が重いのでやめた） */
+.ph{position:relative;overflow:hidden;background:#c4aa86;background-image:linear-gradient(135deg,rgba(255,255,255,.22),rgba(0,0,0,.06))}
+.ph::after{content:attr(data-l);position:absolute;left:12px;bottom:10px;font-size:11px;letter-spacing:.1em;color:#fff;
+  background:rgba(31,27,23,.55);padding:4px 9px}
+.ph--dark{background-color:#6a553f}
+.ph--green{background-color:#849e89}
+.ph--gray{background-color:#b2aea7}
+/* 出現 */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s var(--settle),transform .6s var(--settle)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.mask{clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--snap)}
+.mask.in{clip-path:inset(0 0 -20% 0)}
+/* ヘッダー */
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.97);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{font-family:var(--min);font-weight:800;font-size:21px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;background:var(--green);clip-path:polygon(50% 0,100% 40%,82% 100%,18% 100%,0 40%)}
+.logo small{font-family:var(--sans);font-weight:500;font-size:11px;color:var(--gray);letter-spacing:.14em;margin-left:4px}
+nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+nav a{font-size:13px;letter-spacing:.08em;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--acc);transform:scaleX(0);transform-origin:right;transition:.3s var(--settle)}
+nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:12px 24px;font-size:13.5px;letter-spacing:.06em;position:relative;overflow:hidden}
+.btn span{position:relative;z-index:1}
+.btn::before{content:"";position:absolute;inset:0;background:var(--acc);transform:translateX(-101%);transition:transform .4s var(--snap)}
+.btn:hover::before{transform:none}
+.btn--line{background:none;color:var(--ink);border:1px solid var(--ink)}
+.btn--line::before{background:var(--ink)}
+.btn--line:hover span{color:#fff}
+.burger{display:none}
+/* KV */
+.kv{padding:clamp(40px,6vw,80px) 0 0}
+.kv__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,70px);align-items:center}
+.kv h1{font-family:var(--min);font-weight:800;font-size:clamp(34px,5.4vw,66px);line-height:1.3;margin:0;letter-spacing:.02em}
+.kv h1 em{font-style:normal;color:var(--acc)}
+.kv p{margin:26px 0 0;color:var(--gray);max-width:44ch}
+.kv__act{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.kv__pic{aspect-ratio:4/3;box-shadow:24px 24px 0 var(--bg2)}
+.kv__pic{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s .3s var(--settle)}
+.in .kv__pic,.kv__pic.in{clip-path:inset(0)}
+.kv__stats{display:flex;gap:clamp(24px,5vw,64px);margin-top:clamp(44px,6vw,80px);padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kv__stats div{font-size:12.5px;color:var(--gray);letter-spacing:.08em}
+.kv__stats b{display:block;font-family:var(--latin);font-weight:800;font-size:clamp(30px,4vw,48px);color:var(--ink);line-height:1.1;letter-spacing:-.02em}
+.kv__stats b small{font-family:var(--sans);font-size:.4em;font-weight:700;margin-left:4px;letter-spacing:0}
+/* 強み */
+.why{background:var(--bg2)}
+.why__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(36px,5vw,60px)}
+.why__c{background:var(--bg);padding:clamp(26px,3.4vw,44px)}
+.why__c .no{font-family:var(--latin);font-weight:800;font-size:12px;letter-spacing:.2em;color:var(--acc)}
+.why__c h3{font-family:var(--min);font-weight:800;font-size:clamp(19px,2.2vw,24px);margin:14px 0 12px;line-height:1.5}
+.why__c p{margin:0;color:var(--gray);font-size:14.5px}
+/* 事例 */
+.case__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,30px);margin-top:clamp(36px,5vw,60px)}
+.case{background:#fff;border:1px solid var(--line)}
+.case__pic{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer}
+.case__pic .ph{position:absolute;inset:0}
+.case__pic .after{clip-path:inset(0 0 0 100%);transition:clip-path .7s var(--snap)}
+.case__pic.on .after,.case__pic:hover .after{clip-path:inset(0)}
+.case__pic .sw{position:absolute;right:10px;top:10px;z-index:2;font-family:var(--latin);font-weight:800;font-size:10px;letter-spacing:.16em;
+  background:var(--ink);color:#fff;padding:5px 9px}
+.case__pic.on .sw,.case__pic:hover .sw{background:var(--acc)}
+.case__body{padding:20px 22px 24px}
+.case__body span{font-size:11px;letter-spacing:.14em;color:var(--acc)}
+.case__body h3{margin:8px 0 8px;font-size:17px;line-height:1.5}
+.case__body p{margin:0;font-size:13.5px;color:var(--gray)}
+.case__body dl{display:flex;gap:16px;margin:14px 0 0;font-size:12px;color:var(--gray)}
+.case__body dt{display:inline;margin-right:4px}.case__body dd{display:inline;margin:0;color:var(--ink);font-weight:700}
+.case__hint{margin:18px 0 0;font-size:12.5px;color:var(--gray)}
+/* 流れ */
+.flow{background:var(--green);color:#fff}
+.flow .lab{color:#e9c9a8}.flow .lab::before{background:#e9c9a8}
+.flow .lead{color:rgba(255,255,255,.65)}
+.flow ol{list-style:none;padding:0;margin:clamp(36px,5vw,60px) 0 0;position:relative}
+.flow ol::before{content:"";position:absolute;left:24px;top:0;width:1px;height:100%;background:#e9c9a8;transform:scaleY(var(--fp,0));transform-origin:top}
+.flow li{display:grid;grid-template-columns:50px 1fr;gap:26px;padding:22px 0;border-top:1px solid rgba(255,255,255,.14);align-items:baseline}
+.flow li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.flow li i{font-family:var(--latin);font-weight:800;font-size:22px;color:#e9c9a8;font-style:normal;position:relative;z-index:1;background:var(--green);width:50px;text-align:center}
+.flow h3{margin:0 0 6px;font-size:18px}
+.flow p{margin:0;color:rgba(255,255,255,.7);font-size:14px}
+/* 料金 */
+.price table{width:100%;border-collapse:collapse;margin-top:clamp(36px,5vw,60px);font-size:14.5px}
+.price th,.price td{padding:16px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.price th{font-weight:700;width:34%}
+.price td.n{font-family:var(--latin);font-weight:800;font-size:18px;white-space:nowrap;letter-spacing:-.01em;width:24%}
+.price td.n small{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--gray);margin-left:4px}
+.price td.d{color:var(--gray);font-size:13.5px}
+.price .fine{margin:18px 0 0;font-size:12.5px;color:var(--gray)}
+/* 声 */
+.voice{background:var(--bg2)}
+.voice__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(36px,5vw,60px)}
+.voice__c{background:var(--bg);padding:clamp(24px,3vw,36px);position:relative;border:1px solid var(--line)}
+.voice__c::before{content:"“";position:absolute;left:18px;top:6px;font-family:var(--min);font-size:64px;color:var(--acc);opacity:.35;line-height:1}
+.voice__c p{margin:22px 0 0;font-size:14.5px}
+.voice__c small{display:block;margin-top:16px;font-size:12px;color:var(--gray);letter-spacing:.06em}
+/* スタッフ */
+.staff__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,30px);margin-top:clamp(36px,5vw,60px)}
+.staff .ph{aspect-ratio:3/4}
+.staff h3{margin:16px 0 4px;font-size:17px}
+.staff h3 small{font-size:11.5px;color:var(--gray);font-weight:500;margin-left:8px;letter-spacing:.08em}
+.staff p{margin:0;font-size:13.5px;color:var(--gray)}
+/* 会社概要 */
+.co{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:start}
+.co dl{margin:clamp(30px,4vw,48px) 0 0;display:grid;grid-template-columns:120px 1fr;font-size:14.5px}
+.co dt,.co dd{padding:12px 0;border-bottom:1px solid var(--line);margin:0}
+.co dt{color:var(--gray);font-size:13px;letter-spacing:.08em}
+.co .ph{aspect-ratio:4/3;margin-top:clamp(30px,4vw,48px)}
+/* お問い合わせ */
+.contact{background:var(--ink);color:#fff}
+.contact .lab{color:#e9c9a8}.contact .lab::before{background:#e9c9a8}
+.contact .lead{color:rgba(255,255,255,.65)}
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);margin-top:clamp(36px,5vw,56px)}
+.cb{background:var(--ink);padding:clamp(24px,3.4vw,40px)}
+.cb span{font-family:var(--latin);font-size:10.5px;letter-spacing:.2em;color:rgba(255,255,255,.5);display:block;margin-bottom:10px}
+.cb a.big{font-family:var(--latin);font-weight:800;font-size:clamp(26px,3.6vw,40px);letter-spacing:-.01em;line-height:1.1}
+.cb a.big:hover{color:#e9c9a8}
+.cb small{display:block;margin-top:12px;color:rgba(255,255,255,.55);font-size:12.5px;line-height:1.8}
+.cb .btn{margin-top:14px;background:#fff;color:var(--ink)}
+.cb .btn::before{background:var(--acc)}.cb .btn:hover span{color:#fff}
+footer{background:#14110e;color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;line-height:1.9}
+footer b{color:#fff;font-family:var(--min);letter-spacing:.06em}
+.sample{font-size:11px;opacity:.7}
+/* スマホ固定CTA */
+.fix{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;grid-template-columns:1fr 1fr;gap:1px;background:#fff}
+.fix a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 0;font-size:14px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--green)}
+.fix a:last-child{background:var(--acc)}
+@media(max-width:820px){
+  nav{display:none}
+  .kv__grid,.why__grid,.case__grid,.voice__grid,.staff__grid,.co,.contact__grid{grid-template-columns:1fr}
+  .kv__pic{order:-1;box-shadow:12px 12px 0 var(--bg2)}
+  .kv__stats{flex-wrap:wrap;gap:20px 30px}
+  .price th{width:40%}.price td.n{width:auto}
+  .co dl{grid-template-columns:100px 1fr}
+  .fix{display:grid}
+  body{padding-bottom:56px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition-duration:.001s!important;animation-duration:.001s!important}
+  .rv,.kv__pic{opacity:1!important;transform:none!important;clip-path:none!important}
+  .mask{clip-path:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#"><i></i>みのり工務店<small>近江八幡</small></a>
+    <nav>
+      <a href="#why">選ばれる理由</a><a href="#case">施工事例</a><a href="#flow">工事の流れ</a><a href="#price">料金の目安</a><a href="#voice">お客様の声</a><a href="#company">会社概要</a>
+      <a class="btn" href="#contact"><span>無料で相談する</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="kv">
+    <div class="wrap">
+      <div class="kv__grid">
+        <div>
+          <div class="lab rv">REFORM ｜ 滋賀県近江八幡市</div>
+          <h1 class="mask">家を直す前に、<br><em>暮らし</em>を聞く。</h1>
+          <p class="rv d1">創業から42年。近江八幡とその周りだけで、1,300軒を直してきました。小さな修理から、家まるごとまで。まず、今の困りごとを聞かせてください。</p>
+          <div class="kv__act rv d2">
+            <a class="btn" href="#contact"><span>無料で相談する</span></a>
+            <a class="btn btn--line" href="#case"><span>施工事例を見る</span></a>
+          </div>
+        </div>
+        <!-- ▼仮枠：職人の手元・現場の写真 -->
+        <div class="ph kv__pic" data-l="写真（仮）職人の手元" aria-hidden="true"></div>
+      </div>
+      <div class="kv__stats">
+        <div class="rv"><b><span class="num" data-goal="42">0</span><small>年</small></b>創業からの年数</div>
+        <div class="rv d1"><b><span class="num" data-goal="1300">0</span><small>軒</small></b>これまでの施工</div>
+        <div class="rv d2"><b>0<small>円</small></b>見積もり・現地調査</div>
+        <div class="rv d3"><b>10<small>年</small></b>工事の保証</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="lab rv">WHY US</div>
+      <h2 class="mask">よそより高くも安くもない。<br>そのかわり、あとから増えない。</h2>
+      <div class="why__grid">
+        <div class="why__c rv"><div class="no">01</div><h3>大工が、うちの社員です</h3><p>下請けに出しません。見積もりに来た人間と、現場で金づちを持つ人間が同じ。「言ったことが伝わっていない」が起きにくいのは、そのせいです。</p></div>
+        <div class="why__c rv d1"><div class="no">02</div><h3>見積もりの内訳を、全部出します</h3><p>「一式」とは書きません。材料はどこの何を何枚、手間は何人で何日。分からない項目は、分かるまで説明します。</p></div>
+        <div class="why__c rv d2"><div class="no">03</div><h3>直したあとも、来ます</h3><p>工事の翌年、翌々年に、こちらから様子を見に伺います。10年保証は紙に書いてあるだけでなく、顔を出す約束です。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case">
+    <div class="wrap">
+      <div class="lab rv">WORKS</div>
+      <h2 class="mask">施工事例</h2>
+      <p class="lead rv d1">写真の上にカーソルを乗せる（スマホは押す）と、工事の前と後が切り替わります。</p>
+      <div class="case__grid">
+        <a class="case rv" href="#contact">
+          <div class="case__pic"><span class="sw">BEFORE → AFTER</span><div class="ph ph--gray" data-l="写真（仮）改修前"></div><div class="ph after" data-l="写真（仮）改修後"></div></div>
+          <div class="case__body"><span>KITCHEN</span><h3>40年前のキッチンを、対面に</h3><p>壁付けだった台所を、居間を向く形に。配管を動かす分だけ費用は増えましたが、それ以外は増やしていません。</p>
+          <dl><dt>工期</dt><dd>12日</dd><dt>費用</dt><dd>約180万円</dd></dl></div>
+        </a>
+        <a class="case rv d1" href="#contact">
+          <div class="case__pic"><span class="sw">BEFORE → AFTER</span><div class="ph ph--gray" data-l="写真（仮）塗装前"></div><div class="ph ph--green after" data-l="写真（仮）塗装後"></div></div>
+          <div class="case__body"><span>EXTERIOR</span><h3>外壁の塗り替え。色は3回試し塗り</h3><p>見本帳の色と、壁に塗った色は違います。3色を実際に塗って、朝と夕方に見てから決めてもらいました。</p>
+          <dl><dt>工期</dt><dd>14日</dd><dt>費用</dt><dd>約120万円</dd></dl></div>
+        </a>
+        <a class="case rv d2" href="#contact">
+          <div class="case__pic"><span class="sw">BEFORE → AFTER</span><div class="ph ph--gray" data-l="写真（仮）改修前"></div><div class="ph ph--dark after" data-l="写真（仮）改修後"></div></div>
+          <div class="case__body"><span>BATHROOM</span><h3>タイルの浴室を、暖かい浴室に</h3><p>冬の寒さが一番の困りごとでした。断熱を入れて、段差をなくして、手すりを2本。</p>
+          <dl><dt>工期</dt><dd>6日</dd><dt>費用</dt><dd>約95万円</dd></dl></div>
+        </a>
+      </div>
+      <p class="case__hint rv">※ 金額は実際の事例の目安です。同じ工事でも家の状態で前後します。</p>
+    </div>
+  </section>
+
+  <section class="flow" id="flow">
+    <div class="wrap">
+      <div class="lab rv">FLOW</div>
+      <h2 class="mask">ご相談から引き渡しまで</h2>
+      <p class="lead rv d1">相談から見積もりまでは無料。見積もりを見てから断っていただいて構いません。</p>
+      <ol>
+        <li class="rv"><i>01</i><div><h3>電話かフォームで相談</h3><p>「風呂が寒い」「壁にひびが入った」。それだけで大丈夫です。</p></div></li>
+        <li class="rv"><i>02</i><div><h3>現地を見に伺う（無料）</h3><p>大工が伺います。床下や屋根裏まで見て、直すべき所と直さなくていい所を分けます。</p></div></li>
+        <li class="rv"><i>03</i><div><h3>内訳つきの見積もり</h3><p>「一式」なし。材料と手間を全部書きます。他社と比べていただいて構いません。</p></div></li>
+        <li class="rv"><i>04</i><div><h3>工事</h3><p>毎日、終わりに今日やったことと明日やることを伝えます。住みながらの工事にも慣れています。</p></div></li>
+        <li class="rv"><i>05</i><div><h3>引き渡し・その後</h3><p>一緒に確認してからお支払い。翌年、様子を見に伺います。</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="price" id="price">
+    <div class="wrap">
+      <div class="lab rv">PRICE</div>
+      <h2 class="mask">料金の目安</h2>
+      <p class="lead rv d1">先に相場感を知りたい方のために。正式な金額は、現地を見てから内訳つきでお出しします。</p>
+      <table class="rv">
+        <tr><th>キッチンの交換</th><td class="n">80<small>万円〜</small></td><td class="d">位置を変えない場合。対面にする場合は120万円〜</td></tr>
+        <tr><th>浴室（ユニットバス）</th><td class="n">90<small>万円〜</small></td><td class="d">断熱・手すり込み。タイル浴室からの場合</td></tr>
+        <tr><th>外壁塗装</th><td class="n">100<small>万円〜</small></td><td class="d">足場込み。屋根も同時なら＋30万円〜</td></tr>
+        <tr><th>内装（6畳）</th><td class="n">15<small>万円〜</small></td><td class="d">壁紙・床の張り替え。畳からフローリングは25万円〜</td></tr>
+        <tr><th>家まるごと</th><td class="n">要相談</td><td class="d">間取り変更を含む全面改修。設計から一緒に</td></tr>
+      </table>
+      <p class="fine rv">※ 税込の目安です。家の状態（下地の傷み、シロアリなど）で前後します。追加が出そうなときは、工事の前に必ず相談します。</p>
+    </div>
+  </section>
+
+  <section class="voice" id="voice">
+    <div class="wrap">
+      <div class="lab rv">VOICE</div>
+      <h2 class="mask">お客様の声</h2>
+      <div class="voice__grid">
+        <div class="voice__c rv"><p>見積もりが細かくて、最初は面倒くさいなと思いました。でも他社の「一式」と並べたら、何にお金を払うのか分かるのはこっちでした。</p><small>近江八幡市　K様（キッチン）</small></div>
+        <div class="voice__c rv d1"><p>工事中、毎日「今日はここまで」と言ってくれたのが安心でした。終わった次の年に本当に見に来てくれたのには驚きました。</p><small>東近江市　M様（外壁）</small></div>
+        <div class="voice__c rv d2"><p>母が一人で住む家なので、手すりの高さを本人に合わせて何度も調整してくれました。寒くない風呂になって、冬が楽になったそうです。</p><small>近江八幡市　T様（浴室）</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="staff" id="staff">
+    <div class="wrap">
+      <div class="lab rv">STAFF</div>
+      <h2 class="mask">つくる人</h2>
+      <div class="staff__grid">
+        <!-- ▼仮枠：スタッフ写真 縦3:4 × 3 -->
+        <div class="rv"><div class="ph ph--dark" data-l="写真（仮）代表"></div><h3>代表・大工<small>職歴 38年</small></h3><p>先代から引き継いで2代目。今も現場に出ます。得意なのは、古い家の床下を見て「まだ大丈夫」と「ここは直す」を分けること。</p></div>
+        <div class="rv d1"><div class="ph" data-l="写真（仮）大工"></div><h3>大工<small>職歴 15年</small></h3><p>キッチンと浴室の担当。水回りは配管を見れば家の年齢が分かります。</p></div>
+        <div class="rv d2"><div class="ph ph--green" data-l="写真（仮）事務"></div><h3>事務・現場調整<small>職歴 9年</small></h3><p>お電話に最初に出るのはたぶん私です。工事中の日程の連絡も担当しています。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="wrap co">
+      <div>
+        <div class="lab rv">COMPANY</div>
+        <h2 class="mask">会社概要</h2>
+        <dl class="rv d1">
+          <dt>社名</dt><dd>みのり工務店</dd>
+          <dt>所在地</dt><dd>滋賀県近江八幡市〇〇町0-0</dd>
+          <dt>創業</dt><dd>1984年</dd>
+          <dt>業務</dt><dd>リフォーム・修繕・新築・増改築</dd>
+          <dt>許可</dt><dd>滋賀県知事許可（般-00）第00000号</dd>
+          <dt>営業時間</dt><dd>8:00〜18:00（日曜・祝日休み）</dd>
+          <dt>対応エリア</dt><dd>近江八幡市・東近江市・野洲市・竜王町・日野町</dd>
+        </dl>
+      </div>
+      <!-- ▼仮枠：事務所か地図 -->
+      <div class="ph ph--gray rv d1" data-l="写真（仮）事務所または地図"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="lab rv">CONTACT</div>
+      <h2 class="mask">まずは、困りごとを<br>そのまま話してください</h2>
+      <p class="lead rv d1">「風呂が寒い」「見積もりだけ欲しい」で大丈夫です。しつこい営業はしません。</p>
+      <div class="contact__grid">
+        <div class="cb rv"><span>TEL</span><a class="big" href="tel:0748-00-0000">0748-00-0000</a><small>8:00〜18:00（日曜・祝日休み）<br>現場に出ていて出られないときは、折り返します。</small></div>
+        <div class="cb rv d1"><span>MAIL / LINE</span><a class="big" href="#" style="font-size:clamp(18px,2.4vw,26px)">info@example.com</a><small>写真を送っていただけると、電話で大まかな金額をお伝えできます。</small><a class="btn" href="#"><span>LINEで写真を送る</span></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><b>みのり工務店</b>　滋賀県近江八幡市<br>© 2026 Minori Koumuten<br><span class="sample">※ このサイトはENVA（ホームページ制作）の制作サンプルです。会社・人物・事例はすべて架空のものです。</span></div>
+</footer>
+
+<div class="fix" aria-hidden="true"><a href="tel:0748-00-0000">電話する</a><a href="#contact">無料で相談</a></div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');
+    var w=e.target.querySelectorAll('.mask,.kv__pic');for(var i=0;i<w.length;i++)w[i].classList.add('in');io.unobserve(e.target);});},{threshold:.15});
+  document.querySelectorAll('.rv,.mask,.kv__pic').forEach(function(el){ if(el.classList.contains('mask')||el.classList.contains('kv__pic'))io.observe(el.parentElement); io.observe(el); });
+  document.querySelectorAll('.num').forEach(function(el){var goal=+el.dataset.goal,done=false;
+    new IntersectionObserver(function(es,ob){es.forEach(function(e){if(!e.isIntersecting||done)return;done=true;ob.disconnect();
+      if(reduce){el.textContent=goal.toLocaleString('ja-JP');return;}
+      var t0=null;(function s(t){if(!t0)t0=t;var k=Math.min((t-t0)/900,1),e2=1-Math.pow(1-k,3);el.textContent=Math.round(goal*e2).toLocaleString('ja-JP');if(k<1)requestAnimationFrame(s);})(performance.now());});},{threshold:.5}).observe(el);});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}});});
+  document.querySelectorAll('.case__pic').forEach(function(p){p.addEventListener('click',function(e){e.preventDefault();p.classList.toggle('on');});});
+  var ol=document.querySelector('.flow ol'),tk=false;
+  function sc(){var r=ol.getBoundingClientRect();ol.style.setProperty('--fp',Math.max(0,Math.min(1,(innerHeight*.72-r.top)/(r.height*.8))));tk=false;}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(sc);}},{passive:true});sc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enva.enva0903.workers.dev/sitemap.xml
