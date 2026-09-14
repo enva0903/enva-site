@@ -28,20 +28,20 @@ body{margin:0;background:#fff}
 .v-a .shot__bar span{font-size:10.5px;color:#9a9a96;margin-left:8px;letter-spacing:.02em}
 .v-a .shot img{display:block;width:100%;height:auto}
 .v-a .shot__cap{font-size:11.5px;color:#767676;margin-top:10px;letter-spacing:.02em}
-.v-a .fv__enso{right:auto;left:-4%;top:4%;width:190px;opacity:.2!important;z-index:0;transform:none!important}
-.v-a .fv h1{max-width:11em}
+.fv.v-a .fv__enso{right:auto;left:-4%;top:4%;width:190px;opacity:.2!important;z-index:0;transform:none!important}
+.fv.v-a h1{max-width:11em}
 .v-a .cut{font-size:clamp(42px,6vw,88px)}
 @media(max-width:900px){
   .v-a .fv__grid{grid-template-columns:1fr;gap:26px}
   .v-a .shot{grid-column:1}
-  .v-a .fv__enso{display:none}
+  .fv.v-a .fv__enso{display:none}
 }
 
 /* ===== 案B：トップだけ墨ベタ ===== */
 .v-b{background:#0f0f0f}
-.v-b .lab{color:#9e9e9a}
-.v-b .fv h1{color:#fff}
-.v-b .fv h1 em{color:#ff5a45}
+.fv.v-b .lab{color:#9e9e9a}
+.fv.v-b h1{color:#fff}
+.fv.v-b h1 em{color:#ff5a45}
 .v-b .fv__sub{color:#b5b5b0}
 .v-b .fv__sub b{color:#fff}
 .v-b .cut{color:#fff}
@@ -54,11 +54,11 @@ body{margin:0;background:#fff}
 .v-b .btn--line::before{background:#fff}
 
 /* ===== 案C：文字を画面いっぱいに ===== */
-.v-c .fv h1{font-size:clamp(38px,8.4vw,116px)!important;line-height:1.1;max-width:10em;letter-spacing:-.035em}
+.fv.v-c h1{font-size:clamp(38px,8.4vw,116px)!important;line-height:1.1;max-width:10em;letter-spacing:-.035em}
 .v-c .cut{font-size:clamp(54px,11vw,164px)!important;margin-top:26px}
 .v-c .fv__sub{margin-top:38px;font-size:16.5px}
 .v-c .fv__bg span{font-size:clamp(90px,19vw,300px)!important;-webkit-text-stroke:1px #ececeb}
-.v-c .fv__enso{width:clamp(150px,20vw,300px)!important;opacity:.5!important;right:-4%}
+.fv.v-c .fv__enso{width:clamp(150px,20vw,300px)!important;opacity:.5!important;right:-4%}
 </style>
 </head><body>
 <div id="out"><p style="padding:28px;font:400 14px/1.7 system-ui">読み込んでいます…</p></div>
