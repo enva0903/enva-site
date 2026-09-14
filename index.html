@@ -684,6 +684,10 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
    15e. 課題の再現：ブラウザ風の小さな画面
    ============================================================ */
 .issue__fig{position:relative}
+/* 画像の白地は multiply で下地に溶かしている。fig 自身にも同じ下地色を敷いておくと、
+   親が出現アニメ中（opacity/transform でスタッキングコンテキストができる）でも溶け方が変わらない。
+   これが無いと、出てきた直後だけ白い四角に見えてしまう */
+.issue__fig{background:var(--bg-2)}
 .issue__img{display:none;width:100%;mix-blend-mode:multiply}
 .issue__fig.has-img .issue__img{display:block}
 .issue__fig.has-img .mock{display:none}
