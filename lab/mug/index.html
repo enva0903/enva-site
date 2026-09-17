@@ -126,7 +126,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isNarrow=()=>innerWidth<820;
 
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.95;
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.VSMShadowMap;
@@ -141,7 +141,7 @@ const CAM=new THREE.Vector3(0,16,42);const LOOK=new THREE.Vector3(2.4,3.2,0);
 /* light */
 const key=new THREE.DirectionalLight(0xffffff,2.4);
 key.position.set(-10,16,9);key.castShadow=true;
-key.shadow.mapSize.set(2048,2048);key.shadow.radius=10;key.shadow.blurSamples=18;key.shadow.bias=-0.0005;key.shadow.normalBias=0.03;
+key.shadow.mapSize.set(1024,1024);key.shadow.radius=7;key.shadow.blurSamples=8;key.shadow.bias=-0.0005;key.shadow.normalBias=0.03;
 Object.assign(key.shadow.camera,{left:-18,right:18,top:18,bottom:-18,near:1,far:60});
 scene.add(key);
 const rim=new THREE.DirectionalLight(0xfff2e0,0.6);rim.position.set(9,6,-8);scene.add(rim);
@@ -209,8 +209,9 @@ addEventListener('resize',resize);resize();
 
 const clock=new THREE.Clock();let running=true;
 document.addEventListener('visibilitychange',()=>{running=!document.hidden;if(running)tick()});
+let inView=true;new IntersectionObserver(e=>{inView=e[0].isIntersecting},{threshold:0}).observe(document.getElementById('hero'));
 function tick(){
-  if(!running)return;requestAnimationFrame(tick);
+  if(!running)return;requestAnimationFrame(tick);if(!inView)return;
   const t=clock.getElapsedTime();
   progress=lerp(progress,target,0.08);const p=ease(progress);ui(progress);
   mx=lerp(mx,tmx,0.05);my=lerp(my,tmy,0.05);
