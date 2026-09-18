@@ -151,7 +151,7 @@ const SHOPS=[
  {id:'empty',  side:-1,z:-33, name:'空き店舗',          cat:'YOUR SHOP',  desc:'ここに、あなたのお店の看板を。今のサイトを見せてもらえれば、無料でお見積もりします。', url:MAIN+'#contact', model:'models/empty.glb', h:6.4, shu:true},
  {id:'love',   side: 1,z:-44, name:'ラヴ上等',          cat:'DEMO',       desc:'架空の番組の特設サイト。出演者10人、日ごとのストーリー、学園マップまで。', url:MAIN+'demo-badlyinlove.html', model:'models/love.glb',   h:6.8},
  {id:'quest',  side:-1,z:-52, name:'ENVA QUEST',        cat:'DEMO',       desc:'RPGの町の画面で作ったENVA。同じ内容でも見せ方でこう変わる。',              url:MAIN+'works-enva-quest.html', model:'models/quest.glb',  h:5.2},
- {id:'lumen',  side: 0,z:-76, name:'LUMEN クラゲ博物館', cat:'DEMO',       desc:'通りの突き当たり。光と透明感の博物館。スクロールで深く潜る構成。',        url:MAIN+'works-lumen.html',      model:'models/lumen.glb',  h:8.5},
+ {id:'lumen',  side: 0,z:-76, name:'LUMEN クラゲ博物館', cat:'DEMO',       desc:'通りの突き当たり。光と透明感の博物館。スクロールで深く潜る構成。',        url:MAIN+'works-lumen.html',      model:'models/lumen.glb',  h:8.5, sign:{text:'LUMEN',sub:'くらげ館',w:5.4,h:1.9,y:4.72,bg:'#e4ebee',fg:'#22384a'}},
 ];
 /* 小物：電柱・街灯・ポスト・自販機・民家・街路樹・路地セット（同じく画像→3D） */
 const PROPS=[
@@ -292,8 +292,24 @@ function placeModel(item,g,shop){
     b=new THREE.Box3().setFromObject(m);const c=b.getCenter(new THREE.Vector3());m.position.set(-c.x,-b.min.y,-c.z+(item.zoff||0));
     m.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;if(shop)o.userData.shop=shop;if(o.material){o.material.envMapIntensity=0.35}}});
     g.add(m);
+    if(item.sign){ /* 生成モデルの看板文字が崩れているとき、正面に本物の文字を貼る */
+      const sg=item.sign;g.updateMatrixWorld(true);
+      const tx=signTexture(sg.text,sg.sub,sg.bg,sg.fg);
+      const pl=new THREE.Mesh(new THREE.PlaneGeometry(sg.w,sg.h),new THREE.MeshStandardMaterial({map:tx,roughness:0.6}));
+      /* 群ローカルで「正面の手前」から奥へレイを飛ばし、当たった面の少し手前に貼る */
+      const o=g.localToWorld(new THREE.Vector3(sg.x||0,sg.y,b.max.z-c.z+3)),d=g.localToWorld(new THREE.Vector3(sg.x||0,sg.y,b.max.z-c.z-10)).sub(o).normalize();
+      const hit=new THREE.Raycaster(o,d).intersectObject(m,true)[0];
+      const lp=hit?g.worldToLocal(hit.point.clone()):new THREE.Vector3(sg.x||0,sg.y,b.max.z-c.z);
+      const bk=new THREE.Mesh(new THREE.BoxGeometry(sg.w+0.12,sg.h+0.12,0.34),new THREE.MeshStandardMaterial({color:sg.bg,roughness:0.7}));bk.position.set(sg.x||0,sg.y,lp.z+0.1);bk.castShadow=true;if(shop)bk.userData.shop=shop;g.add(bk);
+      pl.position.set(sg.x||0,sg.y,lp.z+0.28);if(shop)pl.userData.shop=shop;g.add(pl);
+      document.fonts.ready.then(()=>{drawSign(tx.image,sg.text,sg.sub,sg.bg,sg.fg);tx.needsUpdate=true});
+    }
   });
 }
+function drawSign(c,text,sub,bg,fg){const x=c.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';
+  x.font='500 150px "Archivo",sans-serif';x.letterSpacing='22px';x.fillText(text,c.width/2+11,sub?c.height/2-38:c.height/2);
+  if(sub){x.font='500 48px "Zen Kaku Gothic New","Noto Sans CJK JP",sans-serif';x.letterSpacing='10px';x.fillText(sub,c.width/2+5,c.height/2+96)}}
+function signTexture(text,sub,bg,fg){const c=document.createElement('canvas');c.width=1024;c.height=284;drawSign(c,text,sub,bg,fg);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t}
 function building(shop){
   const g=new THREE.Group();g.userData.shop=shop;
   const s=shop.side;
@@ -319,7 +335,16 @@ const cNo=document.getElementById('cNo'),cCat=document.getElementById('cCat'),cN
 SHOPS.forEach((s,i)=>{const b=document.createElement('button');b.className='stop';b.innerHTML=`<span>${String(i+1).padStart(2,'0')}</span><i></i>`;b.title=s.name;b.addEventListener('click',()=>goTo(i));stopsEl.appendChild(b)});
 const OFF=s=>s.side===0?34:17;
 function pFor(i){const z=SHOPS[i].z+OFF(SHOPS[i]);return clamp((Z0-z)/(Z0-Z1),0,1)}
-function goTo(i){const r=scrollEl.getBoundingClientRect();const total=r.height-innerHeight;scrollTo({top:scrollY+r.top+total*pFor(i),behavior:reduce?'auto':'smooth'})}
+let scrollAnim=null;
+function goTo(i){const r=scrollEl.getBoundingClientRect();const total=r.height-innerHeight;const from=scrollY,to=scrollY+r.top+total*pFor(i);
+  if(reduce){scrollTo(0,to);return}
+  if(scrollAnim)cancelAnimationFrame(scrollAnim);
+  const dist=Math.abs(to-from),dur=Math.min(2600,Math.max(900,dist*0.9)),t0=performance.now();
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const step=now=>{const k=Math.min(1,(now-t0)/dur);scrollTo(0,from+(to-from)*ease(k));if(k<1)scrollAnim=requestAnimationFrame(step);else scrollAnim=null};
+  scrollAnim=requestAnimationFrame(step)}
+addEventListener('wheel',()=>{if(scrollAnim){cancelAnimationFrame(scrollAnim);scrollAnim=null}},{passive:true});
+addEventListener('touchstart',()=>{if(scrollAnim){cancelAnimationFrame(scrollAnim);scrollAnim=null}},{passive:true});
 addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(clamp(active+1,0,SHOPS.length-1))}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(clamp(active-1,0,SHOPS.length-1))}});
 let active=-1;
 function setActive(i){
@@ -346,13 +371,13 @@ addEventListener('resize',resize);resize();
 const clock=new THREE.Clock();let running=true,inView=true;
 new IntersectionObserver(e=>{inView=e[0].isIntersecting},{threshold:0}).observe(document.getElementById('stage'));
 document.addEventListener('visibilitychange',()=>{running=!document.hidden;if(running)tick()});
-const look=new THREE.Vector3();
+const look=new THREE.Vector3();let lookX=0,lookY=2.4;
 function tick(){
   if(!running)return;requestAnimationFrame(tick);if(!inView)return;frame()}
 window.__still=()=>{running=false};window.__frame=()=>frame();
 function frame(){
   const t=clock.getElapsedTime();
-  progress=lerp(progress,target,0.07);const p=progress;
+  progress=lerp(progress,target,0.05);const p=progress;
   mx=lerp(mx,tmx,0.05);my=lerp(my,tmy,0.05);
   const camZ=lerp(Z0,Z1,p);
   /* いちばん近い店 */
@@ -362,9 +387,13 @@ function frame(){
   const nar=isNarrow();
   const sway=Math.sin(p*Math.PI*7)*0.35;
   camera.position.set(sway+mx*0.9,(nar?4.0:3.4)+Math.sin(t*0.9)*0.03,camZ);
-  const lx=(s.side===0?0:s.side*(nar?8:6.5))*Math.min(1,Math.max(0,1-bd/9));
-  const ly=s.side===0?lerp(2.4,4.8,Math.min(1,Math.max(0,1-bd/12))):2.4;
-  look.set(lx+mx*2.5,ly-my*0.8,camZ-(nar?10:14));camera.lookAt(look);
+  /* 目線：近い店へゆっくり向く（店が切り替わっても急に振らない） */
+  const sm=v=>{v=Math.min(1,Math.max(0,v));return v*v*(3-2*v)};
+  const wgt=sm(1-bd/13);
+  const lxT=(s.side===0?0:s.side*(nar?8:6.5))*wgt;
+  const lyT=s.side===0?lerp(2.4,4.8,wgt):2.4;
+  lookX=lerp(lookX,lxT,0.035);lookY=lerp(lookY,lyT,0.035);
+  look.set(lookX+mx*2.5,lookY-my*0.8,camZ-(nar?10:14));camera.lookAt(look);
   sun.position.set(camera.position.x-46,16,camZ+52);sun.target.position.set(camera.position.x,0,camZ-18);
   renderer.render(scene,camera);
 }
