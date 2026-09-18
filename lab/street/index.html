@@ -132,6 +132,8 @@ h1{margin:0 0 20px;font-family:var(--mincho);font-weight:500;font-size:clamp(34p
 <script type="module">
 import * as THREE from 'three';
 import {RoomEnvironment} from './vendor/RoomEnvironment.js';
+import {GLTFLoader} from './vendor/GLTFLoader.js';
+import {MeshoptDecoder} from './vendor/meshopt_decoder.module.js';
 
 const MAIN='https://enva.enva0903.workers.dev/';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -140,7 +142,7 @@ const isNarrow=()=>innerWidth<820;
 /* ================= 店のデータ ================= */
 const SHOPS=[
  {id:'enva',   side: 1,z:0,   name:'ENVA 本店',        cat:'HOMEPAGE',   desc:'この通りを作った店。ホームページの作り替えを55,000円から。',            url:MAIN,                          kind:'office'},
- {id:'tatsu',  side:-1,z:-11, name:'居酒屋たつの家',    cat:'RESTAURANT', desc:'草津の和食居酒屋。和モダンの1ページ完結。実績01。',                     url:MAIN+'works-tatsunoya.html',  kind:'izakaya'},
+ {id:'tatsu',  side:-1,z:-11, name:'居酒屋たつの家',    cat:'RESTAURANT', desc:'草津の和食居酒屋。和モダンの1ページ完結。実績01。',                     url:MAIN+'works-tatsunoya.html',  kind:'izakaya', model:'models/tatsu_opt.glb', h:6.4, rot:Math.PI, zoff:-1.2},
  {id:'minori', side: 1,z:-22, name:'みのり工務店',      cat:'DEMO',       desc:'架空の工務店。作り替え「後」の見本。施工事例の前後切り替えつき。',        url:MAIN+'after.html',            kind:'workshop'},
  {id:'empty',  side:-1,z:-33, name:'空き店舗',          cat:'YOUR SHOP',  desc:'ここに、あなたのお店の看板を。今のサイトを見せてもらえれば、無料でお見積もりします。', url:MAIN+'#contact', kind:'empty', shu:true},
  {id:'love',   side: 1,z:-44, name:'ラヴ上等',          cat:'DEMO',       desc:'架空の番組の特設サイト。出演者10人、日ごとのストーリー、学園マップまで。', url:MAIN+'demo-badlyinlove.html', kind:'theater'},
@@ -193,7 +195,7 @@ for(let z=8;z>-90;z-=6){box(0.12,0.02,2.2,M.white,0,0.015,z)}            // 中�
 [[-5.2],[5.2]].forEach(([x])=>{box(0.9,0.12,200,M.white,x,0,-50)});       // 縁石
 const shadowLayer=new THREE.Mesh(new THREE.PlaneGeometry(400,400),new THREE.ShadowMaterial({color:0x2a2420,opacity:0.16}));shadowLayer.rotation.x=-Math.PI/2;shadowLayer.position.set(0,0.03,-40);shadowLayer.receiveShadow=true;world.add(shadowLayer); // 影の受け皿（白がトーンマップで飛んでも影が見える）
 /* 街灯・木 */
-for(let z=-4;z>-78;z-=16){[-6.4,6.4].forEach((x,i)=>{const zz=z-(i?8:0);cyl(0.08,3.6,M.ink,x,0,zz);const g=new THREE.Mesh(new THREE.SphereGeometry(0.28,16,12),M.kin);g.position.set(x,3.85,zz);world.add(g)})}
+for(let z=0;z>-70;z-=22){[-6.4,6.4].forEach((x,i)=>{const zz=z-(i?11:0);cyl(0.08,3.6,M.ink,x,0,zz);const g=new THREE.Mesh(new THREE.SphereGeometry(0.28,16,12),M.kin);g.position.set(x,3.85,zz);world.add(g)})}
 for(let z=-16;z>-70;z-=11){[-14.5,14.5].forEach((x,i)=>{const zz=z-(i?5:0);cyl(0.14,1.2,M.wood,x,0,zz);const s=new THREE.Mesh(new THREE.SphereGeometry(1.15,18,14),M.green);s.position.set(x,2.1,zz);s.castShadow=true;world.add(s)})}
 
 /* 看板の文字（canvas テクスチャ） */
@@ -211,12 +213,22 @@ function sign(parent,text,opt,w,h,x,y,z,ry=0){
   g.position.set(x,y,z);g.rotation.y=ry;parent.add(g);return g;
 }
 
+/* 3Dモデル（画像→3D生成したGLB）を建物として置く */
+const MODELS={};const gltfLoader=new GLTFLoader();gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+function placeModel(shop,g){
+  const put=(src)=>{const m=src.clone(true);m.rotation.y=shop.rot||0;let b=new THREE.Box3().setFromObject(m);const sz=b.getSize(new THREE.Vector3());m.scale.setScalar(shop.h/sz.y);
+    b=new THREE.Box3().setFromObject(m);const c=b.getCenter(new THREE.Vector3());m.position.set(-c.x,-b.min.y,-c.z+(shop.zoff||0));
+    m.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;o.userData.shop=shop;if(o.material){o.material.envMapIntensity=0.7}}});g.add(m)};
+  if(MODELS[shop.model]){put(MODELS[shop.model]);return}
+  gltfLoader.load(shop.model,gl=>{MODELS[shop.model]=gl.scene;put(gl.scene)});
+}
 /* 建物 */
 function building(shop){
   const g=new THREE.Group();g.userData.shop=shop;
   const s=shop.side, x=s*10.5, z=shop.z, face=-s;            // face：通りに向く方向
   g.position.set(x,0,z);g.rotation.y=s>0?-Math.PI/2:Math.PI/2; // ローカル +z が通り側
-  const K=shop.kind;
+  const K=shop.model?'model':shop.kind;
+  if(K==='model'){placeModel(shop,g)}
   if(K==='office'){box(7,5.2,6,M.white,0,0,0,g);box(7.4,0.4,6.4,M.ink,0,5.2,0,g);
     box(2.6,2.2,0.1,M.glass,-1.4,1.2,3.05,g);box(1.2,2.4,0.1,M.ink,1.6,0,3.05,g);
     sign(g,'ENVA',{bg:'#ae2019',fg:'#f6f2ea',font:'900 120px "Archivo"',sub:'HOMEPAGE'},4.6,1.7,0,4.1,3.15);
@@ -275,7 +287,7 @@ if(!reduce&&matchMedia('(hover:hover)').matches){addEventListener('pointermove',
 const intro=document.getElementById('intro'),card=document.getElementById('card'),cue=document.getElementById('cue'),stopsEl=document.getElementById('stops');
 const cNo=document.getElementById('cNo'),cCat=document.getElementById('cCat'),cName=document.getElementById('cName'),cDesc=document.getElementById('cDesc'),cBtn=document.getElementById('cBtn');
 SHOPS.forEach((s,i)=>{const b=document.createElement('button');b.className='stop';b.innerHTML=`<span>${String(i+1).padStart(2,'0')}</span><i></i>`;b.title=s.name;b.addEventListener('click',()=>goTo(i));stopsEl.appendChild(b)});
-function pFor(i){const z=SHOPS[i].z+ (SHOPS[i].kind==='museum'?32:13);return clamp((Z0-z)/(Z0-Z1),0,1)}
+function pFor(i){const z=SHOPS[i].z+ (SHOPS[i].kind==='museum'?32:17);return clamp((Z0-z)/(Z0-Z1),0,1)}
 function goTo(i){const r=scrollEl.getBoundingClientRect();const total=r.height-innerHeight;scrollTo({top:scrollY+r.top+total*pFor(i),behavior:reduce?'auto':'smooth'})}
 addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(clamp(active+1,0,SHOPS.length-1))}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(clamp(active-1,0,SHOPS.length-1))}});
 let active=-1;
@@ -319,14 +331,14 @@ function tick(){
   mx=lerp(mx,tmx,0.05);my=lerp(my,tmy,0.05);
   const camZ=lerp(Z0,Z1,p);
   /* いちばん近い店 */
-  let best=-1,bd=1e9;SHOPS.forEach((s,i)=>{const d=Math.abs((s.z+(s.kind==='museum'?32:13))-camZ);if(d<bd){bd=d;best=i}});
+  let best=-1,bd=1e9;SHOPS.forEach((s,i)=>{const d=Math.abs((s.z+(s.kind==='museum'?32:17))-camZ);if(d<bd){bd=d;best=i}});
   setActive(p<0.03?-1:best);
   const s=SHOPS[Math.max(best,0)];
   /* カメラ：通りの真ん中を歩き、近い店の方をやや向く */
   const sway=Math.sin(p*Math.PI*7)*0.35;
   const nar=isNarrow();
   camera.position.set(sway+mx*0.9,(nar?4.0:3.4)+Math.sin(t*0.9)*0.03,camZ);
-  const lx=(s.kind==='museum'?0:s.side*(nar?7.5:5.5))*Math.min(1,Math.max(0,1-bd/8));
+  const lx=(s.kind==='museum'?0:s.side*(nar?8:6.5))*Math.min(1,Math.max(0,1-bd/9));
   const ly=s.kind==='museum'?lerp(2.4,4.8,Math.min(1,Math.max(0,1-bd/12))):2.4;
   look.set(lx+mx*2.5,ly-my*0.8,camZ-(nar?10:14));camera.lookAt(look);
   key.position.set(camera.position.x-18,30,camZ+10);key.target.position.set(camera.position.x,0,camZ-20);
