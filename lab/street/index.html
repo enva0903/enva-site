@@ -331,7 +331,7 @@ function tick(){
   look.set(lx+mx*2.5,ly-my*0.8,camZ-(nar?10:14));camera.lookAt(look);
   key.position.set(camera.position.x-18,30,camZ+10);key.target.position.set(camera.position.x,0,camZ-20);
   /* 提灯・マーキーの揺れ */
-  renderer.render(scene,camera);
+  const _a=performance.now();renderer.render(scene,camera);const _d=performance.now()-_a;window.__ft=_d;window.__fmax=Math.max(window.__fmax||0,_d);window.__fn=(window.__fn||0)+1;
 }
 tick();
 </script>
