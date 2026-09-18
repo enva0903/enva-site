@@ -150,10 +150,10 @@ const SHOPS=[
 
 /* ================= 描画 ================= */
 const canvas=document.getElementById('gl');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio,isNarrow()?1.25:1.5));
+const renderer=new THREE.WebGLRenderer({canvas,antialias:!isNarrow(),alpha:false,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));
 renderer.outputColorSpace=THREE.SRGBColorSpace;
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.95;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.9;
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.VSMShadowMap;
 
 const BG=new THREE.Color('#f2eee7');
@@ -161,10 +161,10 @@ const scene=new THREE.Scene();scene.background=BG;scene.fog=new THREE.Fog(BG,46,
 scene.environment=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),0.04).texture;
 const camera=new THREE.PerspectiveCamera(34,1,0.1,300);
 
-const key=new THREE.DirectionalLight(0xfff6ea,2.3);
+const key=new THREE.DirectionalLight(0xfff6ea,2.0);
 key.position.set(-18,30,10);key.castShadow=true;
-key.shadow.mapSize.set(isNarrow()?1024:2048,isNarrow()?1024:2048);key.shadow.radius=6;key.shadow.blurSamples=10;key.shadow.bias=-0.0006;key.shadow.normalBias=0.04;
-Object.assign(key.shadow.camera,{left:-40,right:40,top:60,bottom:-60,near:1,far:120});
+key.shadow.mapSize.set(1024,1024);key.shadow.radius=4;key.shadow.blurSamples=6;key.shadow.bias=-0.0006;key.shadow.normalBias=0.04;
+Object.assign(key.shadow.camera,{left:-28,right:28,top:36,bottom:-36,near:1,far:110});key.shadow.camera.updateProjectionMatrix();
 scene.add(key);scene.add(key.target);
 scene.add(new THREE.HemisphereLight(0xffffff,0xd8cfc0,0.45));
 
@@ -191,6 +191,7 @@ const ground=new THREE.Mesh(new THREE.PlaneGeometry(400,400),M.paper);ground.rot
 const road=new THREE.Mesh(new THREE.PlaneGeometry(9,200),M.road);road.rotation.x=-Math.PI/2;road.position.set(0,0.01,-50);road.receiveShadow=true;world.add(road);
 for(let z=8;z>-90;z-=6){box(0.12,0.02,2.2,M.white,0,0.015,z)}            // 中央線
 [[-5.2],[5.2]].forEach(([x])=>{box(0.9,0.12,200,M.white,x,0,-50)});       // 縁石
+const shadowLayer=new THREE.Mesh(new THREE.PlaneGeometry(400,400),new THREE.ShadowMaterial({color:0x2a2420,opacity:0.16}));shadowLayer.rotation.x=-Math.PI/2;shadowLayer.position.set(0,0.03,-40);shadowLayer.receiveShadow=true;world.add(shadowLayer); // 影の受け皿（白がトーンマップで飛んでも影が見える）
 /* 街灯・木 */
 for(let z=-4;z>-78;z-=16){[-6.4,6.4].forEach((x,i)=>{const zz=z-(i?8:0);cyl(0.08,3.6,M.ink,x,0,zz);const g=new THREE.Mesh(new THREE.SphereGeometry(0.28,16,12),M.kin);g.position.set(x,3.85,zz);world.add(g)})}
 for(let z=-16;z>-70;z-=11){[-14.5,14.5].forEach((x,i)=>{const zz=z-(i?5:0);cyl(0.14,1.2,M.wood,x,0,zz);const s=new THREE.Mesh(new THREE.SphereGeometry(1.15,18,14),M.green);s.position.set(x,2.1,zz);s.castShadow=true;world.add(s)})}
