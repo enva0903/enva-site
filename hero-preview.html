@@ -879,37 +879,31 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 }
 
 /* ============================================================
-   0. 開幕の映像（hero film）
+   0. 開幕の映像：50秒の映像が終わると、最後の点から穴が開いてページが現れる
    ============================================================ */
-#intro{display:none!important}
-.film{position:relative;height:100svh;min-height:520px;background:#0f0f0f;overflow:hidden;isolation:isolate}
-.film__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.film__ui{position:absolute;left:clamp(18px,4vw,44px);bottom:clamp(64px,9vh,96px);z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  opacity:0;transform:translateY(12px);transition:opacity .8s var(--settle) .6s,transform .8s var(--settle) .6s}
-.intro-done .film__ui{opacity:1;transform:none}
-.film__snd{display:flex;align-items:center;gap:8px;background:rgba(8,8,8,.55);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;
-  padding:11px 16px 11px 14px;font:700 12px/1 var(--sans);letter-spacing:.06em;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s,border-color .3s}
+@keyframes filmHole{from{--hole:var(--h0,8px)}to{--hole:140vmax}}
+#intro .veil{--hx:50%;--hy:47%;
+  -webkit-mask-image:radial-gradient(circle at var(--hx) var(--hy),transparent var(--hole),#000 calc(var(--hole) + 2px));
+  mask-image:radial-gradient(circle at var(--hx) var(--hy),transparent var(--hole),#000 calc(var(--hole) + 2px))}
+#intro .film__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+#intro .stage{display:none}
+#intro.film-open .veil{animation:filmHole 1.15s var(--snap) forwards}
+#intro.film-open .film__ui,#intro.film-open .skip{opacity:0;transition:opacity .3s}
+#intro .film__ui{position:absolute;left:22px;bottom:20px;pointer-events:auto}
+#intro .skip{transition:opacity .3s}
+.film__snd{display:flex;align-items:center;gap:8px;background:rgba(8,8,8,.5);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;
+  padding:9px 15px 9px 13px;font:700 11.5px/1 var(--sans);letter-spacing:.06em;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s,border-color .3s}
 .film__snd:hover{background:var(--shu);border-color:var(--shu)}
 .film__snd i{width:14px;height:14px;display:block;background:currentColor;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 4V5L7 9H3z'/%3E%3Cpath d='M16 8.5a5 5 0 0 1 0 7' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 4V5L7 9H3z'/%3E%3Cpath d='M16 8.5a5 5 0 0 1 0 7' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
-.film__scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;color:rgba(242,238,231,.7);padding-bottom:30px}
-.film__scroll::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:24px;background:rgba(242,238,231,.6);animation:filmLine 1.8s ease-in-out infinite}
-@keyframes filmLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-/* 映像の上にいる間はヘッダーを墨色に */
-.on-film header{background:rgba(15,15,15,.35);border-bottom-color:transparent}
-.on-film .brand img{content:url(assets/logo-h-light.webp)}
-.on-film .brand span{color:rgba(242,238,231,.7);border-left-color:rgba(242,238,231,.25)}
-.on-film nav a:not(.btn){color:#f2eee7}
-.on-film .burger{border-color:rgba(242,238,231,.35)}
-.on-film .burger i{background:#f2eee7}
-@media(max-width:900px){.film__ui{left:18px;right:18px;bottom:76px}.film__scroll{display:none}}
 </style>
 </head>
 <body class="is-locked">
 
 <div id="intro" aria-hidden="true">
-  <div class="veil"></div>
+  <div class="veil"><video class="film__v" muted playsinline preload="auto" poster="assets/hero-film-poster.webp"></video></div>
+  <div class="film__ui"><button class="film__snd" type="button" aria-pressed="false"><i></i><span>音を出す</span></button></div>
   <div class="stage">
     <img class="enso" src="assets/enso-light.webp" alt="" width="294" height="253">
     <div class="name"><b>ENVA</b><span>縁から、価値を生み出す</span></div>
@@ -942,18 +936,8 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 
 <main id="top">
 
-  <!-- ============ 開幕の映像（50秒・全部コードで描いた映像） ============ -->
-  <section class="film" aria-label="ENVA 紹介映像" data-g="開幕の映像|この50秒の映像は、カメラもAI動画も使わず、全部プログラムで1コマずつ描いています。最後の点が最初の点につながるので、切れ目なくループします。">
-    <video class="film__v" muted loop playsinline preload="auto" poster="assets/hero-film-poster.webp" data-sp="assets/hero-film-sp.mp4" data-sp-poster="assets/hero-film-sp-poster.webp" data-pc="assets/hero-film.mp4" aria-label="ENVA 紹介映像（50秒）"></video>
-    <div class="film__ui">
-      <a class="btn" href="#contact"><span>無料でお見積もり</span></a>
-      <button class="film__snd" type="button" aria-pressed="false"><i></i><span>音を出す</span></button>
-    </div>
-    <a class="film__scroll" href="#fv">SCROLL</a>
-  </section>
-
   <!-- ============ ファーストビュー ============ -->
-  <section class="fv" id="fv">
+  <section class="fv" data-g="開幕の映像|最初の50秒の映像は、カメラもAI動画も使わず、全部プログラムで1コマずつ描いています。最後に残った点が広がって、このページが開きます。" data-greplay="intro">
     <div class="fv__bg" aria-hidden="true"><span>RENEWAL</span></div>
     <div class="fv__grid">
       <div class="fv__txt">
@@ -1687,49 +1671,55 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
     body.classList.remove('is-locked');
     reveal();
     document.dispatchEvent(new Event('enva:introdone'));
-    var fvS=document.querySelector('.fv');if(fvS&&'IntersectionObserver' in window){new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){ob.disconnect();runCut(500)}},{threshold:.45}).observe(fvS)}else runCut(2200);
+    runCut(2200);
     if(startParticles)startParticles();
   }
   var seen=false; try{ seen=sessionStorage.getItem('enva-intro')==='1'; sessionStorage.setItem('enva-intro','1'); }catch(e){}
   if(seen) intro.classList.add('intro-fast');
+  /* 開幕の映像 */
+  var film=intro.querySelector('.film__v'), veil=intro.querySelector('.veil'), fsnd=intro.querySelector('.film__snd');
+  var tall=matchMedia('(max-aspect-ratio: 1/1)').matches;
+  var av1=film.canPlayType('video/mp4; codecs="av01.0.08M.08"')==='probably';
+  film.poster=tall?'assets/hero-film-sp-poster.webp':'assets/hero-film-poster.webp';
+  var filmSrc='assets/hero-film'+(tall?'-sp':'')+(av1?'.av1':'')+'.mp4';
+  var opened=false, safety=null;
+  function dotAt(){ // 映像の最後の点が、画面のどこに来るか（object-fit:cover を計算）
+    var vw=film.videoWidth||(tall?1080:1920), vh=film.videoHeight||(tall?1920:1080), ew=innerWidth, eh=innerHeight;
+    var sc=Math.max(ew/vw,eh/vh), ox=(ew-vw*sc)/2, oy=(eh-vh*sc)/2, fy=tall?880/1920:510/1080;
+    veil.style.setProperty('--hx',(ox+vw*0.5*sc).toFixed(1)+'px'); veil.style.setProperty('--hy',(oy+vh*fy*sc).toFixed(1)+'px');
+    veil.style.setProperty('--h0',(14/1080*Math.min(vw,vh)*sc).toFixed(1)+'px');
+  }
+  function openHole(){
+    if(opened)return; opened=true; clearTimeout(safety); unbindSkip();
+    dotAt(); intro.classList.add('film-open');
+    veil.addEventListener('animationend',function onEnd(e){ if(e.animationName==='filmHole'){ veil.removeEventListener('animationend',onEnd); film.pause(); finish(); } });
+    setTimeout(function(){ film.pause(); finish(); },1700);
+  }
+  function skipByUser(e){ if(e.type==='keydown'&&[' ','ArrowDown','PageDown','Enter','Escape'].indexOf(e.key)<0)return; openHole(); }
+  function bindSkip(){ ['wheel','touchmove','keydown'].forEach(function(t){ addEventListener(t,skipByUser,{passive:true}); }); }
+  function unbindSkip(){ ['wheel','touchmove','keydown'].forEach(function(t){ removeEventListener(t,skipByUser); }); }
+  film.addEventListener('ended',openHole);
+  film.addEventListener('error',function(){ if(!opened)openHole(); });
   function playIntro(){
-    if(reduce){ finish(); return; }
-    requestAnimationFrame(function(){ intro.classList.add('intro-run'); });
-    var veil=intro.querySelector('.veil');
-    veil.addEventListener('animationend',function onEnd(e){ if(e.animationName==='holeOpen'){ veil.removeEventListener('animationend',onEnd); finish(); } });
-    setTimeout(finish,4500); // 念のための保険
+    if(reduce||seen){ setTimeout(finish,0); return; }
+    opened=false; intro.classList.remove('film-open');
+    if(film.getAttribute('src')!==filmSrc) film.src=filmSrc;
+    try{ film.currentTime=0; }catch(e){}
+    var p=film.play(); if(p&&p.catch)p.catch(function(){ openHole(); });
+    bindSkip();
+    safety=setTimeout(openHole,56000); // 念のための保険
   }
   function replayIntro(){
     root.classList.remove('intro-done'); body.classList.add('is-locked');
-    intro.classList.remove('intro-run'); void intro.offsetWidth;
     scrollTo({top:0,behavior:'instant'});
-    setTimeout(playIntro,60);
+    seen=false; setTimeout(playIntro,60);
   }
-  setTimeout(finish,0);
-  intro.querySelector('.skip').addEventListener('click',finish);
-
-
-  /* ============================================================
-     開幕の映像：縦長の画面では縦版を流す／見えている間だけ再生／音のオンオフ
-     ============================================================ */
-  (function(){
-    var sec=document.querySelector('.film'); if(!sec)return;
-    var v=sec.querySelector('video'), btn=sec.querySelector('.film__snd');
-    var tall=matchMedia('(max-aspect-ratio: 1/1)').matches;
-    if(tall){ v.poster=v.dataset.spPoster; }
-    v.src=tall?v.dataset.sp:v.dataset.pc;
-    function play(){ if(reduce)return; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){ var on=es[0].isIntersecting; if(on)play(); else v.pause(); },{threshold:.2}).observe(sec);
-      new IntersectionObserver(function(es){ root.classList.toggle('on-film',es[0].isIntersecting); },{rootMargin:'-72px 0px 0px 0px',threshold:0}).observe(sec);
-    }else play();
-    root.classList.add('on-film');
-    btn.addEventListener('click',function(){
-      var on=v.muted; v.muted=!on;
-      btn.setAttribute('aria-pressed',String(on)); btn.querySelector('span').textContent=on?'音を消す':'音を出す';
-      if(on){ [].forEach.call(document.querySelectorAll('.vid__box video'),function(o){o.muted=true}); v.currentTime=0; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
-    });
-  })();
+  fsnd.addEventListener('click',function(){
+    var on=film.muted; film.muted=!on;
+    fsnd.setAttribute('aria-pressed',String(on)); fsnd.querySelector('span').textContent=on?'音を消す':'音を出す';
+  });
+  playIntro();
+  intro.querySelector('.skip').addEventListener('click',openHole);
 
   /* ============================================================
      スクロールで出す
