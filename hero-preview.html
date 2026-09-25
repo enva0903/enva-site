@@ -1681,7 +1681,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   var tall=matchMedia('(max-aspect-ratio: 1/1)').matches;
   var av1=film.canPlayType('video/mp4; codecs="av01.0.08M.08"')==='probably';
   film.poster=tall?'assets/hero-film-sp-poster.webp':'assets/hero-film-poster.webp';
-  var filmSrc='assets/hero-film'+(tall?'-sp':'')+(av1?'.av1':'')+'.mp4';
+  var filmSrc='assets/hero-film'+(tall?'-sp':'')+(av1?'.av1':'')+'.mp4?v=3';
   var opened=false, safety=null;
   function dotAt(){ // 映像の最後の点が、画面のどこに来るか（object-fit:cover を計算）
     var vw=film.videoWidth||(tall?1080:1920), vh=film.videoHeight||(tall?1920:1080), ew=innerWidth, eh=innerHeight;
