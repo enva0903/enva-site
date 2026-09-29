@@ -1797,18 +1797,26 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
     setTimeout(function(){ fvid.pause(); filmHandoff(); },520);
   }
   function playFilm(){
-    if(!film||!fvid||reduce)return false;
-    var c=navigator.connection; if(c&&c.saveData)return false;
+    if(!film||!fvid)return false;
+    var c=navigator.connection;
+    if(reduce||(c&&c.saveData)){ film.classList.add('gone'); try{fvid.removeAttribute('src');fvid.innerHTML='';fvid.load();}catch(e){} return false; }
     filmDone=false;
     film.className=''; film.querySelector('.film__logo').style.transform='';
     root.classList.remove('film-hand');
     intro.style.display='none';
     filmLayout(); addEventListener('resize',filmLayout);
     try{ fvid.currentTime=0; }catch(e){}
-    var p=fvid.play(); if(p&&p.catch)p.catch(filmBail);
-    // 4秒たっても映像が動き出さない（回線・省電力で自動再生不可など）ときは、今までの円相の開幕に切り替える
-    filmGuard=setTimeout(function(){ if(fvid.currentTime<0.05)filmBail(); },4000);
-    filmRaf=requestAnimationFrame(filmTick);
+    function go(){
+      if(filmDone)return;
+      var p=fvid.play(); if(p&&p.catch)p.catch(filmBail);
+      // 画面に出てから4秒たっても映像が動き出さない（回線・省電力で自動再生不可など）ときは、今までの円相の開幕に切り替える
+      filmGuard=setTimeout(function(){ if(fvid.currentTime<0.05)filmBail(); },4000);
+      filmRaf=requestAnimationFrame(filmTick);
+    }
+    // 裏のタブで開かれたときは、表に出るまで始めない
+    if(document.hidden){
+      document.addEventListener('visibilitychange',function vis(){ if(!document.hidden){ document.removeEventListener('visibilitychange',vis); go(); } });
+    }else go();
     return true;
   }
   if(film){
