@@ -930,10 +930,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 
 <div id="film" aria-hidden="true">
   <div class="film__stage">
-    <video muted playsinline preload="auto" disablepictureinpicture>
-      <source src="assets/open-film.av1.mp4?v=1" type='video/mp4; codecs="av01.0.08M.08, opus"'>
-      <source src="assets/open-film.mp4?v=1" type="video/mp4">
-    </video>
+    <video muted playsinline preload="auto" disablepictureinpicture></video>
     <i class="film__pp"></i>
     <i class="film__bar"></i>
     <div class="film__ui">
@@ -1732,6 +1729,31 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   // 映像(1920×1080)の最後のフレームで、ロゴ画像が重なる位置と、円相の穴の中心（割合）
   var FILM={w:1920,h:1080,logo:[.24110,.34476,.55852,.31884],hole:[.3406,.499],paperAt:14.2,lateAt:13.8};
   var filmDone=true, filmGuard=null, filmRaf=0, FLY=620;
+  // 映像ファイルの候補。横長の大きい画面は1080p、スマホ・小さい画面は720p。
+  // それぞれ AV1（軽い）→ H.264 の順に見て、その端末で「なめらかに再生できる」と返ってきた最初のものを使う
+  // （AV1は機種によっては絵を作る処理が重くてカクつくので、なめらかでなければ H.264 に回す）
+  var FILM_SRC={
+    big:[{src:'assets/open-film.av1.mp4?v=2',type:'video/mp4; codecs="av01.0.08M.08, opus"',w:1920,h:1080,br:2600000},
+         {src:'assets/open-film.mp4?v=2',type:'video/mp4; codecs="avc1.640028, mp4a.40.2"',w:1920,h:1080,br:2700000}],
+    small:[{src:'assets/open-film-sp.av1.mp4?v=1',type:'video/mp4; codecs="av01.0.05M.08, opus"',w:1280,h:720,br:1100000},
+           {src:'assets/open-film-sp.mp4?v=1',type:'video/mp4; codecs="avc1.64001f, mp4a.40.2"',w:1280,h:720,br:1500000}]
+  };
+  function filmPick(cb){
+    var small=innerWidth<innerHeight||innerWidth<=900;
+    var list=FILM_SRC[small?'small':'big'].filter(function(c){ return fvid.canPlayType(c.type)!==''; });
+    if(!list.length)list=[FILM_SRC[small?'small':'big'][1]];
+    var mc=navigator.mediaCapabilities;
+    if(!mc||!mc.decodingInfo){ cb(list[list.length-1]); return; }  // 判定できない古い端末は、どこでも軽く回る H.264
+    var done=false, t=setTimeout(function(){ if(!done){ done=true; cb(list[list.length-1]); } },600);
+    Promise.all(list.map(function(c){
+      return mc.decodingInfo({type:'file',video:{contentType:c.type.replace(/, (opus|mp4a[^"]*)/,''),width:c.w,height:c.h,bitrate:c.br,framerate:24}})
+        .catch(function(){ return {supported:false}; });
+    })).then(function(rs){
+      if(done)return; done=true; clearTimeout(t);
+      for(var i=0;i<rs.length;i++){ if(rs[i].supported&&rs[i].smooth){ cb(list[i]); return; } }
+      cb(list[list.length-1]);
+    });
+  }
   function filmRect(){
     var W=innerWidth,H=innerHeight,portrait=W<H;
     // 縦長は横幅の1.3倍（左右を少し切って、映像を大きく見せる）
@@ -1799,15 +1821,19 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
     if(!film||!fvid)return false;
     var c=navigator.connection;
     // 同じタブで2回目以降に開いたときは映像を流さず、今までの短い円相の開幕に（仕掛けガイドの「もう一度」は流す）
-    if(reduce||(c&&c.saveData)||(seen&&!force)){ film.classList.add('gone'); try{fvid.removeAttribute('src');fvid.innerHTML='';fvid.load();}catch(e){} return false; }
+    if(reduce||(c&&c.saveData)||(seen&&!force)){ film.classList.add('gone'); return false; }
     filmDone=false;
     film.className=''; film.querySelector('.film__logo').style.transform='';
     root.classList.remove('film-hand');
     intro.style.display='none';
     filmLayout(); addEventListener('resize',filmLayout);
-    try{ fvid.currentTime=0; }catch(e){}
     function go(){
       if(filmDone)return;
+      if(!fvid.getAttribute('src')){
+        filmPick(function(c){ fvid.src=c.src; fvid.load(); go(); });
+        return;
+      }
+      try{ fvid.currentTime=0; }catch(e){}
       var p=fvid.play(); if(p&&p.catch)p.catch(filmBail);
       // 画面に出てから4秒たっても映像が動き出さない（回線・省電力で自動再生不可など）ときは、今までの円相の開幕に切り替える
       filmGuard=setTimeout(function(){ if(fvid.currentTime<0.05)filmBail(); },4000);
