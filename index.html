@@ -99,6 +99,54 @@ a{color:inherit;text-decoration:none}
 .intro-run .enso{animation:ensoDraw .95s .1s cubic-bezier(.35,.65,.3,1) forwards,fadeOut .4s 1.62s ease forwards}
 .intro-run .name{animation:nameIn .55s 1.02s var(--settle) forwards,fadeOut .35s 1.66s ease forwards}
 .intro-run .veil{animation:holeOpen .86s 1.5s var(--snap) forwards}
+/* ============================================================
+   1'. 開幕の映像｜最後のロゴの円相の真ん中から開き、ロゴはヘッダーの定位置へ
+   ============================================================ */
+@property --fh{syntax:"<length>";inherits:false;initial-value:0px}
+#film{position:fixed;inset:0;z-index:10000;--cx:50%;--cy:50%;pointer-events:auto}
+#film.gone{display:none}
+#film .film__stage{position:absolute;inset:0;background:#0b0b0b;overflow:hidden;--fh:0px;
+  -webkit-mask-image:radial-gradient(circle at var(--cx) var(--cy),transparent var(--fh),#000 calc(var(--fh) + 1.5px));
+  mask-image:radial-gradient(circle at var(--cx) var(--cy),transparent var(--fh),#000 calc(var(--fh) + 1.5px))}
+/* 縦長の画面：映像は横幅いっぱい・上下は背景に溶かす。最後は背景も紙の色に */
+#film .film__stage::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .6s ease;
+  background:#d9d8d0}
+#film.paper .film__stage::before{opacity:1}
+#film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
+#film.is-portrait video,#film .film__pp{left:50%;top:50%;right:auto;bottom:auto;width:var(--bw);height:auto;aspect-ratio:16/9;transform:translate(-50%,-50%);object-fit:contain;
+  -webkit-mask-image:linear-gradient(transparent,#000 11%,#000 89%,transparent);
+  mask-image:linear-gradient(transparent,#000 11%,#000 89%,transparent)}
+#film .film__pp{display:none;position:absolute;pointer-events:none;opacity:0;transition:opacity 1.1s ease;-webkit-mask-image:none;mask-image:none;
+  background:radial-gradient(ellipse 58% 50% at 50% 50%,rgba(217,216,208,0) 55%,#d9d8d0 85%)}
+#film.is-portrait .film__pp{display:block}
+#film.paper .film__pp{opacity:1}
+#film .film__logo{position:fixed;left:0;top:0;opacity:0;transform-origin:0 0;pointer-events:none;will-change:transform;
+  transition:transform 1.15s cubic-bezier(.72,0,.14,1)}
+#film.hand .film__logo,#film.skipping .film__logo{opacity:1}
+#film.skipping video{opacity:0;transition:opacity .4s ease}
+#film.skipping .film__logo{transition:opacity .4s ease .1s,transform 1.15s cubic-bezier(.72,0,.14,1)}
+#film.open .film__stage{animation:filmHole 1.3s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes filmHole{0%{--fh:0px}100%{--fh:170vmax}}
+/* 下の細い朱線＝映像の進み */
+#film .film__bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--shu);
+  transform:scaleX(0);transform-origin:left;opacity:.9}
+#film .film__ui{position:absolute;left:0;right:0;bottom:20px;display:flex;justify-content:space-between;
+  padding:0 22px;transition:opacity .5s ease}
+#film.late .film__ui,#film.late .film__bar,#film.hand .film__ui,#film.hand .film__bar{opacity:0;pointer-events:none}
+#film .film__ui button{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35);color:#fff;font-family:var(--latin);
+  font-size:11px;letter-spacing:.18em;padding:9px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:9px}
+#film .film__ui button:hover{background:rgba(255,255,255,.12)}
+#film .film__snd i{display:inline-flex;align-items:flex-end;gap:2px;height:10px}
+#film .film__snd i b{width:2px;height:3px;background:#fff;opacity:.6}
+#film .film__snd[aria-pressed="true"] i b{animation:snd .9s ease-in-out infinite alternate;opacity:1}
+#film .film__snd[aria-pressed="true"] i b:nth-child(2){animation-delay:-.3s}
+#film .film__snd[aria-pressed="true"] i b:nth-child(3){animation-delay:-.6s}
+@keyframes snd{from{height:2px}to{height:10px}}
+/* 受け渡しの間：ヘッダーは最初から定位置、ロゴだけ空けておく */
+.film-hand header{transform:translateY(0);transition:none}
+.film-hand .brand img{opacity:0}
+.film-hand .brand span{opacity:0}
+.brand span{transition:opacity .6s ease}
 /* 2回目以降（同じタブ内）は短く */
 .intro-fast.intro-run .enso{animation:ensoDraw .5s 0s cubic-bezier(.35,.65,.3,1) forwards,fadeOut .25s .55s ease forwards}
 .intro-fast.intro-run .name{animation:none;opacity:0}
@@ -880,6 +928,22 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 </head>
 <body class="is-locked">
 
+<div id="film" aria-hidden="true">
+  <div class="film__stage">
+    <video muted playsinline preload="auto" disablepictureinpicture>
+      <source src="assets/open-film.av1.mp4?v=1" type='video/mp4; codecs="av01.0.08M.08, opus"'>
+      <source src="assets/open-film.mp4?v=1" type="video/mp4">
+    </video>
+    <i class="film__pp"></i>
+    <i class="film__bar"></i>
+    <div class="film__ui">
+      <button class="film__snd" type="button" aria-pressed="false"><i><b></b><b></b><b></b></i><span>SOUND</span></button>
+      <button class="film__skip" type="button">SKIP</button>
+    </div>
+  </div>
+  <img class="film__logo" src="assets/logo-h.webp" alt="" width="900" height="289">
+</div>
+
 <div id="intro" aria-hidden="true">
   <div class="veil"></div>
   <div class="stage">
@@ -915,7 +979,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 <main id="top">
 
   <!-- ============ ファーストビュー ============ -->
-  <section class="fv" data-g="開幕の円相|ひと筆で円を描いて、真ん中から開く。このページで唯一、最初から決めていた仕掛けです。" data-greplay="intro">
+  <section class="fv" data-g="開幕の映像|映像の最後に出るロゴの円相、その真ん中から穴が開いてこのページが現れます。ロゴはそのまま左上の定位置へ。" data-greplay="intro">
     <div class="fv__bg" aria-hidden="true"><span>RENEWAL</span></div>
     <div class="fv__grid">
       <div class="fv__txt">
@@ -1655,19 +1719,122 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   var seen=false; try{ seen=sessionStorage.getItem('enva-intro')==='1'; sessionStorage.setItem('enva-intro','1'); }catch(e){}
   if(seen) intro.classList.add('intro-fast');
   function playIntro(){
-    if(reduce){ finish(); return; }
+    if(reduce){ setTimeout(finish,0); return; }
     requestAnimationFrame(function(){ intro.classList.add('intro-run'); });
     var veil=intro.querySelector('.veil');
     veil.addEventListener('animationend',function onEnd(e){ if(e.animationName==='holeOpen'){ veil.removeEventListener('animationend',onEnd); finish(); } });
     setTimeout(finish,4500); // 念のための保険
   }
+  /* ============================================================
+     開幕の映像 → 円相の真ん中から開く → ロゴはヘッダーへ
+     ============================================================ */
+  var film=document.getElementById('film'), fvid=film&&film.querySelector('video');
+  // 映像(1920×1080)の最後のフレームで、ロゴ画像が重なる位置と、円相の穴の中心（割合）
+  var FILM={w:1920,h:1080,logo:[.24110,.34476,.55852,.31884],hole:[.3406,.499],paperAt:14.2,lateAt:13.8};
+  var filmDone=true, filmGuard=null, filmRaf=0, FLY=620;
+  function filmRect(){
+    var W=innerWidth,H=innerHeight,portrait=W<H;
+    // 縦長は横幅の1.3倍（左右を少し切って、映像を大きく見せる）
+    var s=portrait?W*1.3/FILM.w:Math.max(W/FILM.w,H/FILM.h);
+    var w=FILM.w*s,h=FILM.h*s;
+    return {x:(W-w)/2,y:(H-h)/2,w:w,h:h,portrait:portrait};
+  }
+  function filmLayout(){
+    if(!film)return;
+    var r=filmRect(), lg=film.querySelector('.film__logo');
+    film.classList.toggle('is-portrait',r.portrait);
+    film.style.setProperty('--bw',r.w+'px');
+    if(!film.classList.contains('hand')){
+      lg.style.left=(r.x+FILM.logo[0]*r.w)+'px'; lg.style.top=(r.y+FILM.logo[1]*r.h)+'px';
+      lg.style.width=(FILM.logo[2]*r.w)+'px'; lg.style.height=(FILM.logo[3]*r.h)+'px';
+    }
+    film.style.setProperty('--cx',(r.x+FILM.hole[0]*r.w)+'px');
+    film.style.setProperty('--cy',(r.y+FILM.hole[1]*r.h)+'px');
+  }
+  function filmTick(){
+    if(filmDone)return;
+    var d=fvid.duration||17, t=fvid.currentTime;
+    film.querySelector('.film__bar').style.transform='scaleX('+Math.min(1,t/d)+')';
+    film.classList.toggle('late',t>=FILM.lateAt);
+    film.classList.toggle('paper',t>=FILM.paperAt);
+    filmRaf=requestAnimationFrame(filmTick);
+  }
+  function filmHandoff(){
+    if(filmDone)return; filmDone=true;
+    clearTimeout(filmGuard); cancelAnimationFrame(filmRaf);
+    filmLayout();
+    var lg=film.querySelector('.film__logo'), bi=document.querySelector('.brand img');
+    film.classList.add('late','paper','hand');
+    root.classList.add('film-hand');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      film.classList.add('open');
+      var c=lg.getBoundingClientRect(), t=bi.getBoundingClientRect();
+      // 穴がロゴ全体を越えてから飛ばす（先に飛ぶと映像側のロゴと二重に見える）
+      setTimeout(function(){
+        lg.style.transform='translate('+(t.left-c.left)+'px,'+(t.top-c.top)+'px) scale('+(t.width/c.width)+')';
+      },FLY);
+      setTimeout(finish,FLY+300);
+      setTimeout(function(){
+        root.classList.remove('film-hand');
+        film.classList.add('gone'); fvid.pause();
+        removeEventListener('resize',filmLayout);
+      },FLY+1210);
+    });});
+  }
+  function filmBail(){
+    if(filmDone)return; filmDone=true;
+    clearTimeout(filmGuard); cancelAnimationFrame(filmRaf);
+    film.classList.add('gone'); try{fvid.pause();}catch(e){}
+    intro.style.display=''; playIntro();
+  }
+  function filmSkip(){
+    if(filmDone)return;
+    if(fvid.currentTime>=FILM.paperAt+0.4){ filmHandoff(); return; }
+    // 途中で飛ばしたとき：映像を紙の色に溶かしてロゴを出し、そこから同じ受け渡し
+    film.classList.add('skipping','paper','late');
+    filmLayout();
+    setTimeout(function(){ fvid.pause(); filmHandoff(); },520);
+  }
+  function playFilm(force){
+    if(!film||!fvid)return false;
+    var c=navigator.connection;
+    // 同じタブで2回目以降に開いたときは映像を流さず、今までの短い円相の開幕に（仕掛けガイドの「もう一度」は流す）
+    if(reduce||(c&&c.saveData)||(seen&&!force)){ film.classList.add('gone'); try{fvid.removeAttribute('src');fvid.innerHTML='';fvid.load();}catch(e){} return false; }
+    filmDone=false;
+    film.className=''; film.querySelector('.film__logo').style.transform='';
+    root.classList.remove('film-hand');
+    intro.style.display='none';
+    filmLayout(); addEventListener('resize',filmLayout);
+    try{ fvid.currentTime=0; }catch(e){}
+    function go(){
+      if(filmDone)return;
+      var p=fvid.play(); if(p&&p.catch)p.catch(filmBail);
+      // 画面に出てから4秒たっても映像が動き出さない（回線・省電力で自動再生不可など）ときは、今までの円相の開幕に切り替える
+      filmGuard=setTimeout(function(){ if(fvid.currentTime<0.05)filmBail(); },4000);
+      filmRaf=requestAnimationFrame(filmTick);
+    }
+    // 裏のタブで開かれたときは、表に出るまで始めない
+    if(document.hidden){
+      document.addEventListener('visibilitychange',function vis(){ if(!document.hidden){ document.removeEventListener('visibilitychange',vis); go(); } });
+    }else go();
+    return true;
+  }
+  if(film){
+    fvid.addEventListener('ended',filmHandoff);
+    fvid.addEventListener('error',filmBail);
+    film.querySelector('.film__skip').addEventListener('click',filmSkip);
+    film.querySelector('.film__snd').addEventListener('click',function(){
+      fvid.muted=!fvid.muted; this.setAttribute('aria-pressed',String(!fvid.muted));
+      if(fvid.paused&&!filmDone)fvid.play();
+    });
+  }
   function replayIntro(){
     root.classList.remove('intro-done'); body.classList.add('is-locked');
     intro.classList.remove('intro-run'); void intro.offsetWidth;
     scrollTo({top:0,behavior:'instant'});
-    setTimeout(playIntro,60);
+    setTimeout(function(){ if(!playFilm(true))playIntro(); },60);
   }
-  playIntro();
+  if(!playFilm())playIntro();
   intro.querySelector('.skip').addEventListener('click',finish);
 
   /* ============================================================
