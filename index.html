@@ -1820,8 +1820,15 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   function playFilm(force){
     if(!film||!fvid)return false;
     var c=navigator.connection;
-    // 同じタブで2回目以降に開いたときは映像を流さず、今までの短い円相の開幕に（仕掛けガイドの「もう一度」は流す）
-    if(reduce||(c&&c.saveData)||(seen&&!force)){ film.classList.add('gone'); return false; }
+    // 一度見た人には、その日のうちは映像を流さず、今までの短い円相の開幕に（タブやブラウザを閉じても覚えておく）
+    // 仕掛けガイドの「もう一度」は流す
+    var today=new Date(), dayKey=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate(), seenToday=false;
+    try{ seenToday=localStorage.getItem('enva-film-day')===dayKey; }catch(e){}
+    if(reduce||(c&&c.saveData)||((seen||seenToday)&&!force)){
+      if(seenToday)intro.classList.add('intro-fast');
+      film.classList.add('gone'); return false;
+    }
+    try{ localStorage.setItem('enva-film-day',dayKey); }catch(e){}
     filmDone=false;
     film.className=''; film.querySelector('.film__logo').style.transform='';
     root.classList.remove('film-hand');
