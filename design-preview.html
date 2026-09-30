@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Archivo:wght@500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Archivo:wght@500;600;800&family=Shippori+Mincho+B1:wght@700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    ENVA
@@ -997,6 +997,72 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 .fx-cv{position:fixed;inset:0;width:100%;height:100%;z-index:9985;pointer-events:none}
 
 /* ============================================================
+   D. デザイン「紙と墨」
+   地＝生成りの和紙（繊維入り）／字＝墨／差し色＝朱、ごく稀に金
+   見出しは明朝、本文は今のゴシックのまま（読みやすさ優先）
+   夜の場面は3か所だけ：最初の画面の奥（光の余韻）・料金の黒い札・お問い合わせ
+   ============================================================ */
+:root{
+  --ink:#171512; --ink-2:#34302a; --gray:#6a645b; --line:#dcd4c4;
+  --bg:#f3efe6; --bg-2:#ebe5d8; --card:#fbf8f2;
+  --mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+}
+/* 和紙の地は、色ごとに繊維を焼き込んだ画像（重ね合わせの計算を毎回させないため） */
+body{background:var(--bg) url(assets/fx-paper-a.webp?v=1) 0 0/384px}
+#issue,.issue__fig{background:var(--bg-2) url(assets/fx-paper-b.webp?v=1) 0 0/384px}
+#service{background:transparent}
+header{background:rgba(243,239,230,.9)}
+/* 紙の上の「一枚」：白ではなく、少し明るい紙 */
+#service .svc__item,.plan,.sim__r,.sim__opts button,.cbox,.gcard,.cfab__menu{background-color:var(--card)}
+#service .svc__item:hover{background:var(--bg-2)}
+#service .svc__tags li{background:var(--bg-2)}
+.sim{background:var(--bg-2)}
+.fv__bg span{-webkit-text-stroke:1px #dcd3c2}
+/* 見出し：明朝。大事な一文字は朱 */
+.fv h1,h2,.issue__note{font-family:var(--mincho);font-weight:800;letter-spacing:.02em}
+.fv h1{line-height:1.32}
+h2{line-height:1.38}
+h2 em{font-style:normal;color:var(--shu)}
+.issue__note{font-weight:700}
+/* ラベルの線：朱の短い筆 */
+.lab::before{width:30px;height:9px;background:var(--shu);
+  -webkit-mask:url(assets/fx-brush.webp?v=1) left center/100% 100% no-repeat;mask:url(assets/fx-brush.webp?v=1) left center/100% 100% no-repeat}
+/* 区切り：セクションの境目に、薄い墨の筆線 */
+#ba,#issue,#service,#price,#works{position:relative}
+#ba::before,#issue::before,#service::before,#price::before,#works::before{content:"";position:absolute;left:50%;top:-12px;z-index:1;
+  width:min(90%,1240px);height:24px;transform:translateX(-50%);background:var(--ink);opacity:.2;pointer-events:none;
+  -webkit-mask:url(assets/fx-brush.webp?v=1) center/100% 100% no-repeat;mask:url(assets/fx-brush.webp?v=1) center/100% 100% no-repeat}
+/* 夜の場面①：最初の画面の奥に、映像の朱の光の名残り */
+.fv .fx-trail{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.fv .fx-trail .t-rest{stroke:rgba(206,44,28,.2);stroke-width:1.4}
+.fv .fx-trail .t-rest2{stroke:rgba(199,158,69,.28);stroke-width:1}
+/* 夜の場面③：お問い合わせ（黒い和紙に朱の光。入力する札だけは紙のまま） */
+.contact{background:#15120f url(assets/fx-paper-k.webp?v=1) 0 0/384px;color:#efe9de;border-top:0}
+.contact .lab{color:#ff6f55}.contact .lab::before{background:#ff6f55}
+.contact h2{color:#f6f1e7}.contact h2 em{color:#ff6f55}
+.contact__sub{color:rgba(239,233,222,.68)}.contact__sub b{color:#fff}
+.contact__enso{filter:invert(1);opacity:.07}
+.contact__grid{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12);z-index:1}
+.cbox--line{background-color:#eef5ec}
+.contact .cbox{color:var(--ink)}
+.contact .fx-trail{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.contact > .wrap{position:relative;z-index:1}
+/* 光の線（料金の札と同じ部品） */
+.fx-trail2 path{fill:none;stroke-linecap:round}
+.fx-trail2 .t-glow{stroke:rgba(236,72,40,.28);stroke-width:18}
+.fx-trail2 .t-glow2{stroke:rgba(240,90,50,.5);stroke-width:8}
+.fx-trail2 .t-core{stroke-width:3.2}
+.fx-trail2 .t-thin{stroke:rgba(255,190,150,.75);stroke-width:1.2}
+.fx-trail2 .t-rest{stroke:rgba(214,52,30,.34);stroke-width:1.6}
+.fx-trail2 .t-rest2{stroke:rgba(199,158,69,.22);stroke-width:1}
+.fx-trail2 .t-run{stroke-dasharray:0 1;opacity:0}
+.mv .trail-on > .fx-trail2 .t-run{opacity:1;animation:trail 1.7s cubic-bezier(.6,0,.2,1) both}
+.mv .trail-on > .fx-trail2 .t-thin{animation-delay:.12s}
+.fx-trail2 .t-rest,.fx-trail2 .t-rest2{opacity:0;transition:opacity 1.4s ease .8s}
+.trail-on > .fx-trail2 .t-rest,.trail-on > .fx-trail2 .t-rest2{opacity:1}
+.fv .fx-trail2 .t-glow{stroke:rgba(236,72,40,.14)}.fv .fx-trail2 .t-glow2{stroke:rgba(240,90,50,.26)}
+
+/* ============================================================
    16. レスポンシブ
    ============================================================ */
 @media(max-width:900px){
@@ -1181,7 +1247,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   <section class="ba" id="ba">
     <div class="wrap">
       <div class="lab rv">BEFORE / AFTER</div>
-      <h2 class="mask">たとえば、こう変わります</h2>
+      <h2 class="mask">たとえば、こう<em>変</em>わります</h2>
       <p class="lead rv d1">真ん中の線をつかんで、左右に動かしてみてください。左が、よく見かける形。右が、ENVAで作り替えたあとの形です。<br><b class="ba__note">※「みのり工務店」は架空の会社で、ホームページも架空のものです。実在の会社・サイトではありません。</b></p>
 
       <div class="ba__frame rv d1" data-g="ビフォー／アフター|線をつかんで左右に。中は写真ではなく、どちらも本物のサイトです。そのままスクロールもできます。">
@@ -1199,7 +1265,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   <section id="issue">
     <div class="wrap">
       <div class="lab rv">ISSUE</div>
-      <h2 class="mask" data-g="光の筋|見出しは、朱の光が走った跡から現れます。開幕の映像の光と同じ色・同じ曲線で、ページ全体を揃えています。" data-greplay="reveal">作り替えたいのに<br>動けずにいる理由</h2>
+      <h2 class="mask" data-g="光の筋|見出しは、朱の光が走った跡から現れます。開幕の映像の光と同じ色・同じ曲線で、ページ全体を揃えています。" data-greplay="reveal">作り替えたいのに<br>動けずにいる<em>理由</em></h2>
       <p class="lead rv d1">いただくご相談の多くは、この3つのどれかに当てはまります。心当たりがあれば、お力になれるはずです。</p>
 
       <div class="issue__list" data-g="あるあるの再現|3つの困りごとを、小さな画面で再現しています。写真ではなく、全部HTMLで描いています。" data-greplay="reveal">
@@ -1321,7 +1387,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
   <section id="price">
     <div class="wrap">
       <div class="lab rv">PRICE</div>
-      <h2 class="mask">見た目は上等<br>値段は控えめ</h2>
+      <h2 class="mask"><em>見</em>た目は上等<br><em>値</em>段は控えめ</h2>
       <p class="lead rv d1">あとから「これは別料金です」とお伝えするのは避けたいので、先に書いておきます。仕掛けも、原稿も、公開作業も、料金に含んでいます。</p>
 
       <div class="price__grid">
@@ -1668,7 +1734,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
     <img class="contact__enso" src="assets/enso-dark.webp" alt="" aria-hidden="true">
     <div class="wrap">
       <div class="lab rv">CONTACT</div>
-      <h2 class="mask">まずは今のサイトを<br>お見せください</h2>
+      <h2 class="mask">まずは<em>今のサイト</em>を<br>お見せください</h2>
       <p class="contact__sub rv d1">「どこが良くないか見てほしい」というご相談だけで大丈夫です。お見積もりは無料です。金額をお伝えしたあと、こちらから追いかけてご連絡することはありません。他社のお見積もりと並べて、ゆっくり比べてください。</p>
       <div class="contact__grid">
         <div class="cbox cform rv d1" id="cform">
@@ -2675,6 +2741,55 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
       kick();
     }
     // （昇る火の粉は重さの割に目立たないので、今は使っていない）
+  }
+})();
+</script>
+<script>
+/* ============================================================
+   D. 夜の場面の光（最初の画面の奥・お問い合わせ）
+   料金の札と同じ「朱の光が曲線を描いて走り、うっすら跡が残る」部品
+   ============================================================ */
+(function(){
+  var root=document.documentElement, ns='http://www.w3.org/2000/svg', mv=root.classList.contains('mv');
+  function trail(host,T,T2){
+    var svg=document.createElementNS(ns,'svg'); svg.setAttribute('class','fx-trail fx-trail2'); svg.setAttribute('aria-hidden','true');
+    host.insertBefore(svg,host.firstChild);
+    function pathOf(P,w,h){ var q=P.map(function(p){ return (p[0]*w/100).toFixed(1)+' '+(p[1]*h/100).toFixed(1); });
+      return 'M'+q[0]+' C '+q[1]+', '+q[2]+', '+q[3]+' C '+q[4]+', '+q[5]+', '+q[6]; }
+    function draw(){
+      var w=host.offsetWidth, h=host.offsetHeight; if(!w)return;
+      var d=pathOf(T,w,h), d2=pathOf(T2,w,h), id=svg.dataset.gid||(svg.dataset.gid='g'+Math.random().toString(36).slice(2,7));
+      svg.setAttribute('viewBox','0 0 '+w+' '+h);
+      if(svg.firstChild){ // 大きさが変わったときは形だけ直す（作り直すと光がもう一度走る）
+        var g=svg.querySelector('linearGradient'); g.setAttribute('y1',h); g.setAttribute('x2',w);
+        [].forEach.call(svg.querySelectorAll('path'),function(pa){ pa.setAttribute('d',/t-rest2|t-thin/.test(pa.getAttribute('class'))?d2:d); });
+        return;
+      }
+      svg.innerHTML='<defs><linearGradient id="'+id+'" gradientUnits="userSpaceOnUse" x1="0" y1="'+h+'" x2="'+w+'" y2="0">'+
+        '<stop offset="0" stop-color="#ae2019" stop-opacity="0"/><stop offset=".72" stop-color="#d33a22"/><stop offset="1" stop-color="#ffd9b0"/></linearGradient></defs>'+
+        '<path class="t-rest" pathLength="1" d="'+d+'"/><path class="t-rest2" pathLength="1" d="'+d2+'"/>'+
+        '<path class="t-run t-thin" pathLength="1" d="'+d2+'"/><path class="t-run t-glow" pathLength="1" d="'+d+'"/>'+
+        '<path class="t-run t-glow2" pathLength="1" d="'+d+'"/><path class="t-run t-core" pathLength="1" style="stroke:url(#'+id+')" d="'+d+'"/>';
+    }
+    draw(); var rz; addEventListener('resize',function(){ clearTimeout(rz); rz=setTimeout(draw,200); });
+  }
+  function onceVisible(el,fn,th){
+    new IntersectionObserver(function(es,ob){ if(es[0].isIntersecting){ ob.disconnect(); fn(); } },{threshold:th||.3}).observe(el);
+  }
+  // ①最初の画面の奥：左下から右上へ、円相の後ろを抜ける
+  var fv=document.querySelector('.fv');
+  if(fv){
+    trail(fv,[[-4,96],[20,86],[34,98],[56,70],[74,48],[82,30],[104,6]],[[-4,99],[22,90],[36,100],[58,74],[76,52],[84,34],[104,10]]);
+    var go=function(){ setTimeout(function(){ fv.classList.add('trail-on'); },mv?1400:0); };
+    if(root.classList.contains('intro-done'))go();
+    else new MutationObserver(function(m,ob){ if(root.classList.contains('intro-done')){ ob.disconnect(); go(); } }).observe(root,{attributes:true,attributeFilter:['class']});
+  }
+  // ③お問い合わせ：画面に入ったら一度走る
+  var ct=document.querySelector('.contact');
+  if(ct){
+    trail(ct,[[-4,88],[18,70],[30,96],[52,62],[70,34],[80,18],[104,4]],[[-4,92],[20,76],[32,100],[54,66],[72,38],[82,22],[104,8]]);
+    onceVisible(ct,function(){ ct.classList.add('trail-on');
+      if(window.ENVA_FX&&mv){ setTimeout(function(){ var r=ct.getBoundingClientRect(); window.ENVA_FX.burst(r.right-20, r.top+r.height*.06,{n:14,speed:3.4,dir:-Math.PI/4,spread:1.4,life:40}); },1450); } },.25);
   }
 })();
 </script>
