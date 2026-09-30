@@ -1087,8 +1087,28 @@ nav a{color:#d8d0c3}
 .ba__tag--b{background:#070605}
 .ba__links a{color:var(--ink);border-color:var(--ink)}
 /* 区切り：境目に朱の細い光 */
-#ba::before,#issue::before,#service::before,#price::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;pointer-events:none;
+#ba::before,#issue::before,#service::before,#price::before,#works::before,#video::before,.why::before,#faq::before,#company::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;pointer-events:none;
   background:linear-gradient(90deg,rgba(224,68,42,0),rgba(224,68,42,.55) 50%,rgba(224,68,42,0))}
+/* 実績：夜の中に浮かぶ画面。触れると朱の縁の光 */
+#works{background:transparent}
+.work__shot{background:var(--card-n);box-shadow:0 0 0 1px rgba(255,255,255,.1),0 22px 40px -22px rgba(0,0,0,.95);transition:box-shadow .45s ease}
+.work:hover .work__shot{box-shadow:0 0 0 1px rgba(224,68,42,.55),0 0 34px -10px rgba(224,68,42,.45),0 22px 40px -22px rgba(0,0,0,.95)}
+.work h3{color:#f6f0e6}
+/* 動画とポスター：一段深い夜。事実の札は夜の札 */
+.vid{background:var(--bg-2) radial-gradient(80% 60% at 85% 10%,rgba(224,68,42,.08),rgba(224,68,42,0) 60%)}
+.vid__box{border-color:rgba(255,255,255,.12);box-shadow:0 22px 40px -22px rgba(0,0,0,.95)}
+.vid__facts{background:var(--line);border-color:var(--line)}
+.vid__fact{background:var(--card-n)}
+.vid__fact b{color:#f6f0e6}
+/* なぜこの値段か：写真は夜の中の一枚 */
+.why{background:transparent}
+.why .why__pull{font-family:var(--mincho);font-weight:800;font-size:clamp(20px,2.3vw,26px);line-height:1.6;color:#f6f0e6;letter-spacing:.02em}
+.why__fig{border-color:rgba(255,255,255,.12);box-shadow:0 24px 44px -24px rgba(0,0,0,.95)}
+/* 質問・会社概要：夜のまま、線は細く */
+#faq{background:var(--bg-2)}
+.qa__item.open .qa__q{color:#fff}
+#company{background:var(--night)}
+.co a{border-bottom:1px solid currentColor}
 /* 仕掛けの案内ボタン・流れの黒い帯 */
 .gbtn{background:#1c1814;box-shadow:0 12px 30px -10px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.1)}
 .flow{background:#070605}
@@ -1538,10 +1558,11 @@ nav a{color:#d8d0c3}
   </section>
 
   <!-- ============ 実績 ============ -->
-  <section id="works" class="sheet">
+  <section id="works">
+    <span class="bigk" aria-hidden="true">作</span>
     <div class="wrap">
       <div class="lab rv">WORKS</div>
-      <h2 class="mask">制作実績</h2>
+      <h2 class="mask">制作<em>実績</em></h2>
       <p class="lead rv d1">数は多くありません。そのかわり、隠さずすべてお見せします。お客様の実績は、掲載のご許可をいただいたものから順に載せています。</p>
 
       <div class="works__grid">
@@ -1575,10 +1596,11 @@ nav a{color:#d8d0c3}
   </section>
 
   <!-- ============ AI動画・ポスター ============ -->
-  <section class="vid sheet" id="video">
+  <section class="vid" id="video">
+    <span class="bigk" aria-hidden="true">映</span>
     <div class="wrap">
       <div class="lab rv">AI VIDEO</div>
-      <h2 class="mask">動画とポスターも、<br>AIでつくれます</h2>
+      <h2 class="mask">動画とポスターも、<br><em>AI</em>でつくれます</h2>
       <p class="lead rv d1">撮影も、スタジオも、モデルも必要ありません。写真1枚と、伝えたい言葉があれば、まずポスターが作れます。そして、そのポスターはそのまま動画になります。下は、ENVA自身の紹介用に制作したものです。</p>
 
       <div class="vid__stage" data-g="1枚の絵が、動き出す|左のポスターを渡すだけで、右の動画になります。歩く動き、文字の出方、光の流れまで、すべてAIが作っています。">
@@ -1651,7 +1673,7 @@ nav a{color:#d8d0c3}
   <section class="flow" id="flow">
     <div class="wrap">
       <div class="lab rv">FLOW</div>
-      <h2 class="mask">ご相談から公開まで</h2>
+      <h2 class="mask">ご相談から<em>公開</em>まで</h2>
       <p class="lead rv d1">おおよそ1〜2週間です。お急ぎの事情があれば、遠慮なくお申し付けください。</p>
 
       <ol class="flow__list" data-g="読んだ分だけ伸びる線|左の朱い線は、秒数ではなくスクロールに合わせて伸びます。読み進めた分だけ進む線です。">
@@ -1685,10 +1707,11 @@ nav a{color:#d8d0c3}
   </section>
 
   <!-- ============ なぜこの値段か ============ -->
-  <section class="sheet">
+  <section class="why">
+    <span class="bigk" aria-hidden="true">誠</span>
     <div class="wrap">
       <div class="lab rv">REASON</div>
-      <h2 class="mask">なぜこの値段で<br>できるのか</h2>
+      <h2 class="mask">なぜこの<em>値段</em>で<br>できるのか</h2>
       <div class="why__body">
         <div class="rv">
           <div class="why__fig wipe"><img src="assets/rep.webp" alt="ENVA 代表 棚橋瑠海" width="900" height="1200" loading="lazy"></div>
@@ -1709,10 +1732,10 @@ nav a{color:#d8d0c3}
   </section>
 
   <!-- ============ Q&A ============ -->
-  <section class="svc sheet" id="faq">
+  <section class="svc" id="faq">
     <div class="wrap">
       <div class="lab rv">FAQ</div>
-      <h2 class="mask">よくいただく質問</h2>
+      <h2 class="mask">よくいただく<em>質問</em></h2>
       <div class="qa__list">
         <div class="qa__item rv">
           <button class="qa__q" type="button">安いですが、品質のほうは大丈夫ですか？<i></i><i></i></button>
@@ -1755,7 +1778,7 @@ nav a{color:#d8d0c3}
   </section>
 
   <!-- ============ 会社概要 ============ -->
-  <section id="company" class="sheet">
+  <section id="company">
     <div class="wrap">
       <div class="lab rv">COMPANY</div>
       <h2 class="mask">会社概要</h2>
