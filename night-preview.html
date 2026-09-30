@@ -1043,6 +1043,8 @@ section{position:relative}
   -webkit-mask-image:linear-gradient(#000 45%,transparent 100%);mask-image:linear-gradient(#000 45%,transparent 100%)}
 .bigk.on{opacity:.2;transform:scale(1)}
 .contact .bigk{right:auto;left:-3vw;top:auto;bottom:-6vw}
+/* 流れる帯は漢字より手前（比較セクションを削ったので、下の「悩」が帯の裏まで上がってくる） */
+.marq{z-index:2;background:var(--night)}
 /* ヘッダー */
 header{background:rgba(13,11,10,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .compact header{border-bottom-color:rgba(255,255,255,.08)}
@@ -1301,24 +1303,6 @@ nav a{color:#d8d0c3}
     </div>
   </div>
 
-  <!-- ============ ビフォー／アフター ============ -->
-  <section class="ba" id="ba">
-    <span class="bigk" aria-hidden="true">変</span>
-    <div class="wrap">
-      <div class="lab rv">BEFORE / AFTER</div>
-      <h2 class="mask">たとえば、こう<em>変</em>わります</h2>
-      <p class="lead rv d1">真ん中の線をつかんで、左右に動かしてみてください。左が、よく見かける形。右が、ENVAで作り替えたあとの形です。<br><b class="ba__note">※「みのり工務店」は架空の会社で、ホームページも架空のものです。実在の会社・サイトではありません。</b></p>
-
-      <div class="ba__frame rv d1" data-g="ビフォー／アフター|線をつかんで左右に。中は写真ではなく、どちらも本物のサイトです。そのままスクロールもできます。">
-        <div class="ba__scr"><iframe class="ba__if" data-src="before.html" title="作り替え前のサンプルサイト"></iframe></div>
-        <div class="ba__scr ba__new"><iframe class="ba__if" data-src="after.html" title="作り替え後のサンプルサイト"></iframe></div>
-        <div class="ba__bar" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="ビフォーとアフターの境目を動かす"><i></i><em>つかんで動かす</em></div>
-        <span class="ba__tag ba__tag--b">BEFORE</span><span class="ba__tag ba__tag--a">AFTER</span>
-      </div>
-      <p class="ba__links rv">枠の中は、そのままスクロールしてご覧いただけます。どちらも架空の会社・架空のホームページで、見本としてENVAが制作したものです。<br>
-        <a href="before.html" target="_blank" rel="noopener">作り替え前を別のタブで開く</a>　／　<a href="after.html" target="_blank" rel="noopener">作り替え後を別のタブで開く</a></p>
-    </div>
-  </section>
 
   <!-- ============ 課題 ============ -->
   <section id="issue">
