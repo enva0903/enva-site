@@ -891,7 +891,8 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 .mv.intro-done .fv h1{clip-path:inset(-30% -4% -40% 0);transition:clip-path 1s var(--snap) .12s}
 .mv.intro-done .fv h1::after{animation:sweep 1.3s .12s forwards}
 /* ゼロ斬りの一閃：白い画面ではなく、斬った所から朱と金の光が広がる */
-.mv .flash{background:radial-gradient(circle at var(--fx,50%) var(--fy,50%),rgba(255,250,240,.98) 0,rgba(255,226,196,.6) 6%,rgba(245,150,100,.16) 16%,rgba(255,255,255,0) 30%)}
+.mv .flash{inset:auto;left:var(--fx,50vw);top:var(--fy,50vh);width:80vmin;height:80vmin;margin:-40vmin 0 0 -40vmin;border-radius:50%;
+  background:radial-gradient(circle closest-side,rgba(255,250,240,.98) 0,rgba(255,226,196,.6) 18%,rgba(245,150,100,.16) 48%,rgba(255,255,255,0) 100%)}
 .mv .flash.on{animation:flash .34s ease-out}
 /* ラベルの朱線：光が伸びるように引かれ、文字は少し遅れて */
 .mv .lab::before{transform:scaleX(0);transform-origin:left;transition:transform .7s var(--snap);
@@ -946,6 +947,61 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 .mv .plan--main.trail-on .fx-trail .t-thin{animation-delay:.12s}
 .fx-trail .t-rest2{opacity:0;transition:opacity 1.2s ease 1.1s}
 .mv .plan--main.trail-on .fx-trail .t-rest2{opacity:1}
+/* ============================================================
+   M2. ゼロ斬り：居合（約2秒）
+   構え（刀が抜かれて刃に光が走る）→ 一閃（刀が斬り口の線に沿って駆け抜ける・光の弧）
+   → 弾け飛ぶ（0が割れて飛び、火の粉）→ 桁が詰まる → 納刀（刃の光が戻り、キラッ）
+   ============================================================ */
+.cut__drop .katana,.cut__drop .slash{display:none}
+.mv .cut__drop .katana{display:block;position:absolute;left:50%;top:50%;width:4.6em;height:.46em;
+  margin:-.23em 0 0 -1.012em;transform-origin:1.012em .23em;z-index:6;pointer-events:none;opacity:0;
+  transform:translate(1.1em,-2.07em) rotate(28deg);will-change:transform,opacity}
+.mv .cut.draw .katana{animation:kDraw .4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes kDraw{0%{opacity:0;transform:translate(1.1em,-2.07em) rotate(28deg) translateX(1.1em)}
+  35%{opacity:1}100%{opacity:1;transform:translate(1.1em,-2.07em) rotate(28deg) translateX(0)}}
+.mv .cut.draw .k-glint{animation:kGlint .34s .08s ease-in-out forwards}
+@keyframes kGlint{from{transform:translateX(0)}to{transform:translateX(1100px)}}
+.mv .cut.cutting .katana{animation:kSwing .16s cubic-bezier(.55,0,.9,.45) forwards}
+@keyframes kSwing{0%{opacity:1;transform:translate(1.1em,-2.07em) rotate(28deg)}
+  65%{opacity:.9}100%{opacity:0;transform:translate(-1.1em,2.07em) rotate(40deg)}}
+.mv .cut__drop .slash{display:block;position:absolute;left:50%;top:50%;width:5em;height:5em;margin:-2.5em 0 0 -2.5em;
+  z-index:5;pointer-events:none;opacity:0;will-change:transform,opacity}
+.mv .cut.cutting .slash{animation:kSlash .55s .07s ease-out both}
+@keyframes kSlash{0%{opacity:0;transform:scale(.92)}8%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translate(-.08em,-.04em) scale(1.06)}}
+.mv .cut.cutting .cut__row{animation:kHit .5s .08s ease-out forwards}
+.mv .cut.cutting .cut__blade{animation:bladeOp .26s .06s linear forwards}
+.mv .cut.cutting .cut__blade::before{animation:bladeSweep .26s .06s cubic-bezier(.2,.8,.2,1) forwards}
+.mv .cut.cutting .cut__drop > b{opacity:1;animation:kHide 0s .08s forwards}
+.mv .cut.cutting .pc{opacity:0;animation:kShow 0s .08s forwards}
+@keyframes kHide{to{opacity:0}}@keyframes kShow{to{opacity:1}}
+@keyframes kHit{0%{color:#d23a22}100%{color:var(--ink)}}
+.mv .cut.cutting .cut__cutline{animation:kCutline .5s .08s ease-out both}
+@keyframes kCutline{0%{opacity:0}10%{opacity:1}100%{opacity:0}}
+/* 弾け飛ぶ：斬った瞬間に左右へ弾け、落ちる */
+.mv .cut.cutting .pc--top{animation:kShow 0s .08s forwards,kFlyL .95s .1s forwards}
+.mv .cut.cutting .pc--bot{animation:kShow 0s .08s forwards,kFlyR .95s .1s forwards}
+@keyframes kFlyL{0%{transform:none;animation-timing-function:cubic-bezier(.1,.8,.3,1)}
+  20%{transform:translate(-.34em,-.3em) rotate(-16deg);animation-timing-function:cubic-bezier(.5,0,1,.6)}
+  100%{transform:translate(-1.2em,2.9em) rotate(-95deg);opacity:0}}
+@keyframes kFlyR{0%{transform:none;animation-timing-function:cubic-bezier(.1,.8,.3,1)}
+  20%{transform:translate(.4em,.1em) rotate(18deg);animation-timing-function:cubic-bezier(.5,0,1,.6)}
+  100%{transform:translate(1.4em,3.1em) rotate(120deg);opacity:0}}
+.mv .cut.cutting .fl{animation:kFleck .7s .09s cubic-bezier(.1,.7,.3,1) forwards}
+@keyframes kFleck{0%{opacity:1;transform:translate(0,0) scale(1.4)}100%{opacity:0;transform:translate(calc(var(--dx)*2.4),calc(var(--dy)*2.4)) scale(0)}}
+.mv .fv.shake{animation:kShake .36s var(--settle)}
+@keyframes kShake{0%{transform:none}12%{transform:translate(-9px,7px)}30%{transform:translate(7px,-5px)}52%{transform:translate(-4px,3px)}74%{transform:translate(2px,-1px)}100%{transform:none}}
+/* 納刀：刃の光が数字の下を戻っていき、右端でキラッ */
+.mv .cut__row::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:.028em;min-height:2px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,0),#ffe7d0 40%,#fff 50%,rgba(206,44,28,.9) 70%,rgba(206,44,28,0));
+  box-shadow:0 0 10px rgba(226,64,36,.6);opacity:0;transform:scaleX(0);transform-origin:right}
+.mv .cut.sheathe .cut__row::after{animation:kSheath .5s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes kSheath{0%{opacity:1;transform:scaleX(0);transform-origin:right}55%{opacity:1;transform:scaleX(1);transform-origin:right}
+  56%{transform-origin:left}100%{opacity:1;transform:scaleX(0);transform-origin:left}}
+.cut .kirari{display:none}
+.mv .cut .kirari{display:block;position:absolute;right:-.12em;top:-.02em;width:.42em;height:.42em;pointer-events:none;z-index:6;
+  opacity:0;filter:drop-shadow(0 0 .05em #ffb68c) drop-shadow(0 0 .14em rgba(226,64,36,.7))}
+.mv .cut.sheathe .kirari{animation:kKira .6s .38s ease-out forwards}
+@keyframes kKira{0%{opacity:0;transform:scale(0) rotate(0)}30%{opacity:1;transform:scale(1.15) rotate(45deg)}100%{opacity:0;transform:scale(.2) rotate(90deg)}}
 /* 火の粉を描く1枚のキャンバス（画面全体・触れない） */
 .fx-cv{position:fixed;inset:0;width:100%;height:100%;z-index:9985;pointer-events:none}
 
@@ -1070,8 +1126,8 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
         <div class="cut" role="img" aria-label="55,000円から" data-g="ゼロ斬り|よくある見積もり 550,000円の桁をひとつ斬り落として、55,000円に。「ひと桁」を目で見せる仕掛けです。" data-greplay="cut">
           <span class="cut__tag"><i>よくある見積もり</i><i>ENVA なら</i></span>
           <span class="cut__row">
-            <span class="cut__yen">¥</span><span class="cut__d">5</span><span class="cut__d">5</span><span class="cut__d cut__drop"><b>0</b><span class="pc pc--top" aria-hidden="true">0</span><span class="pc pc--bot" aria-hidden="true">0</span><i class="cut__cutline"></i><i class="cut__blade"></i><i class="fl" style="--dx:.5em;--dy:-.4em"></i><i class="fl" style="--dx:-.45em;--dy:-.3em"></i><i class="fl" style="--dx:.6em;--dy:.2em"></i><i class="fl" style="--dx:-.55em;--dy:.35em"></i><i class="fl" style="--dx:.25em;--dy:-.65em"></i><i class="fl" style="--dx:-.2em;--dy:.6em"></i><i class="fl" style="--dx:.7em;--dy:-.1em"></i></span><span class="cut__d">,</span><span class="cut__d">0</span><span class="cut__d">0</span><span class="cut__d">0</span>
-            <span class="cut__after">から</span>
+            <span class="cut__yen">¥</span><span class="cut__d">5</span><span class="cut__d">5</span><span class="cut__d cut__drop"><b>0</b><span class="pc pc--top" aria-hidden="true">0</span><span class="pc pc--bot" aria-hidden="true">0</span><i class="cut__cutline"></i><i class="cut__blade"></i><svg class="katana" viewBox="0 0 1000 100" aria-hidden="true" focusable="false"><defs><linearGradient id="kBlade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f666d"/><stop offset=".32" stop-color="#d7dce0"/><stop offset=".5" stop-color="#f5f7f9"/><stop offset=".72" stop-color="#bcc3c9"/><stop offset=".86" stop-color="#e9edf0"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="kGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".45" stop-color="#e5c47a"/><stop offset="1" stop-color="#7a5a22"/></linearGradient><linearGradient id="kGlint" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><pattern id="kWrap" width="26" height="28" patternUnits="userSpaceOnUse" x="761" y="36"><rect width="26" height="28" fill="#141414"/><path d="M13 5 L22 14 L13 23 L4 14 Z" fill="#ae2019"/></pattern><clipPath id="kClip"><path d="M720 37 Q 380 29 64 43 Q 30 46 16 60 Q 36 64 70 63 Q 400 63 720 63 Z"/></clipPath></defs><path d="M720 37 Q 380 29 64 43 Q 30 46 16 60 Q 36 64 70 63 Q 400 63 720 63 Z" fill="url(#kBlade)" stroke="#3b4046" stroke-width="1.6"/><path d="M720 47 Q 380 41 84 51" fill="none" stroke="#ffffff" stroke-opacity=".7" stroke-width="1.2"/><path d="M700 57 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0 q -14 -4.5 -28 0" fill="none" stroke="#ffffff" stroke-opacity=".85" stroke-width="1.6" clip-path="url(#kClip)"/><g clip-path="url(#kClip)"><rect class="k-glint" x="-160" y="0" width="150" height="100" fill="url(#kGlint)"/></g><rect x="718" y="33" width="28" height="34" rx="2" fill="url(#kGold)"/><ellipse cx="754" cy="50" rx="9" ry="36" fill="#1b1b1b" stroke="url(#kGold)" stroke-width="2"/><rect x="762" y="36" width="222" height="28" rx="9" fill="url(#kWrap)"/><rect x="978" y="34" width="16" height="32" rx="5" fill="url(#kGold)"/></svg><svg class="slash" viewBox="-250 -250 500 500" aria-hidden="true" focusable="false"><defs><linearGradient id="kSlash" gradientUnits="userSpaceOnUse" x1="107.9" y1="-203.1" x2="-107.9" y2="203.1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff"/><stop offset=".62" stop-color="#ffe0c4"/><stop offset="1" stop-color="#ff8a5c" stop-opacity="0"/></linearGradient></defs><path d="M117 -210 Q -80 -40 -117 210 Q -10 -5 117 -210 Z" fill="#e2482a" fill-opacity=".22"/><path d="M107.9 -203.1 Q -61.8 -32.8 -107.9 203.1 Q -24.7 -13.1 107.9 -203.1 Z" fill="url(#kSlash)"/></svg><i class="fl" style="--dx:.5em;--dy:-.4em"></i><i class="fl" style="--dx:-.45em;--dy:-.3em"></i><i class="fl" style="--dx:.6em;--dy:.2em"></i><i class="fl" style="--dx:-.55em;--dy:.35em"></i><i class="fl" style="--dx:.25em;--dy:-.65em"></i><i class="fl" style="--dx:-.2em;--dy:.6em"></i><i class="fl" style="--dx:.7em;--dy:-.1em"></i></span><span class="cut__d">,</span><span class="cut__d">0</span><span class="cut__d">0</span><span class="cut__d">0</span>
+            <svg class="kirari" viewBox="-50 -50 100 100" aria-hidden="true" focusable="false"><path d="M0 -48 Q 4 -4 48 0 Q 4 4 0 48 Q -4 4 -48 0 Q -4 -4 0 -48 Z" fill="#fff"/><circle r="7" fill="#fff"/></svg><span class="cut__after">から</span>
           </span>
         </div>
         <p class="fv__sub">
@@ -1771,23 +1827,24 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
      イントロ → ゼロ斬り
      ============================================================ */
   var cutTimer=null;
+  // 居合：構え(0) → 一閃(.40s) → 斬った瞬間に弾ける(.44s) → 桁が詰まる(1.0s) → 納刀(1.45s)。全体で約2秒
+  var cutTimers=[];
   function runCut(delay){
     var cut=document.querySelector('.cut'); if(!cut||reduce)return;
     var d=cut.querySelector('.cut__drop');
-    clearTimeout(cutTimer);
-    cut.classList.remove('cutting','done'); d.style.width='';
+    clearTimeout(cutTimer); cutTimers.forEach(clearTimeout); cutTimers=[];
+    cut.classList.remove('draw','cutting','done','sheathe'); d.style.width='';
     void cut.offsetWidth;
-    cutTimer=setTimeout(function(){
-      d.style.width=d.getBoundingClientRect().width+'px';
-      void d.offsetWidth;
-      cut.classList.add('cutting');
+    function at(ms,fn){ cutTimers.push(setTimeout(fn,delay+ms)); }
+    at(0,function(){ d.style.width=d.getBoundingClientRect().width+'px'; void d.offsetWidth; cut.classList.add('draw'); });
+    at(400,function(){ cut.classList.add('cutting'); });
+    at(480,function(){
       var fvEl=document.querySelector('.fv'), fl=document.querySelector('.flash');
-      setTimeout(function(){
-        fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on');
-        fvEl.classList.remove('shake'); void fvEl.offsetWidth; fvEl.classList.add('shake');
-      },70);
-      cutTimer=setTimeout(function(){ d.style.width='0px'; cut.classList.add('done'); },900);
-    },delay);
+      fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on');
+      fvEl.classList.remove('shake'); void fvEl.offsetWidth; fvEl.classList.add('shake');
+    });
+    at(1000,function(){ d.style.width='0px'; cut.classList.add('done'); });
+    at(1450,function(){ cut.classList.add('sheathe'); });
   }
   function finish(){
     if(root.classList.contains('intro-done'))return;
@@ -2502,6 +2559,7 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
       if(p.amb){ p.sway+=.03; p.vx+=Math.sin(p.sway)*.012; }
       else { p.vx*=.955; p.vy=p.vy*.955+p.g; }
       p.x+=p.vx; p.y+=p.vy;
+      if(p.ghost)continue;
       var k=1-p.life/p.max, al=p.amb?Math.min(1,p.life/30)*k*.85:k;
       ctx.globalAlpha=al; ctx.strokeStyle=p.c; ctx.lineWidth=p.w; ctx.lineCap='round';
       ctx.beginPath(); ctx.moveTo(p.px-(p.amb?0:p.vx*2.4),p.py-(p.amb?0:p.vy*2.4)); ctx.lineTo(p.x+.01,p.y+.01); ctx.stroke();
@@ -2509,7 +2567,9 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
     ctx.globalAlpha=1;
     if(parts.length||ambOn()){ requestAnimationFrame(tick); } else { running=false; ctx.clearRect(0,0,W,H); cv.style.display='none'; }
   }
-  window.ENVA_FX={burst:burst};
+  // 大きく散る直前に、キャンバスを先に起こしておく（散る瞬間に画面の層を作ると一瞬止まるため）
+  function warm(ms){ parts.push({x:-99,y:-99,px:-99,py:-99,vx:0,vy:0,g:0,life:0,max:ms/16,c:'#000',w:0,ghost:1}); kick(); }
+  window.ENVA_FX={burst:burst,warm:warm};
 
   /* 要素のクラスが付いた瞬間を拾う */
   function onClass(el,cls,fn){
@@ -2529,13 +2589,16 @@ footer{background:#080808;color:rgba(255,255,255,.55);padding:clamp(52px,7vw,84p
 
   /* --- ゼロ斬り：斬った瞬間に、刃の向きに火の粉 --- */
   var cut=document.querySelector('.cut');
+  if(cut)onClass(cut,'draw',function(){ warm(1600); });
   if(cut)onClass(cut,'cutting',function(){
     setTimeout(function(){
       var d=cut.querySelector('.cut__drop'), p=at(d,.5,.5), fl=document.querySelector('.flash');
       if(fl){ fl.style.setProperty('--fx',p[0]+'px'); fl.style.setProperty('--fy',p[1]+'px'); }
-      burst(p[0],p[1],{n:30,speed:7,dir:-Math.PI/2+.49,spread:.9,life:44,g:.18});
-      burst(p[0],p[1],{n:16,speed:6,dir:Math.PI/2+.49,spread:.9,life:40,g:.18});
-    },90);
+      burst(p[0],p[1],{n:22,speed:8,dir:-Math.PI/2+.49,spread:.8,life:46,g:.18});
+      burst(p[0],p[1],{n:12,speed:7,dir:Math.PI/2+.49,spread:.8,life:42,g:.18});
+      burst(p[0],p[1],{n:8,speed:9,dir:Math.PI+.49,spread:.5,life:30,g:.1});
+      burst(p[0],p[1],{n:8,speed:9,dir:.49,spread:.5,life:30,g:.1});
+    },85);
   });
 
   /* --- 判子：押された瞬間に、小さく散る --- */
