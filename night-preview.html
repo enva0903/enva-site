@@ -1043,6 +1043,10 @@ section{position:relative}
   -webkit-mask-image:linear-gradient(#000 45%,transparent 100%);mask-image:linear-gradient(#000 45%,transparent 100%)}
 .bigk.on{opacity:.2;transform:scale(1)}
 .contact .bigk{right:auto;left:-3vw;top:auto;bottom:-6vw}
+/* 課題の3つ：夜の上に線画。絵は透明の地なので、そのまま夜に乗せる */
+.issue__fig{background:none}
+.issue__img{mix-blend-mode:normal}
+.issue__no{color:rgba(255,255,255,.2)}
 /* 流れる帯は漢字より手前（比較セクションを削ったので、下の「悩」が帯の裏まで上がってくる） */
 .marq{z-index:2;background:var(--night)}
 /* ヘッダー */
@@ -1332,7 +1336,7 @@ nav a{color:#d8d0c3}
       <h2 class="mask" data-g="光の筋|見出しは、朱の光が走った跡から現れます。開幕の映像の光と同じ色・同じ曲線で、ページ全体を揃えています。" data-greplay="reveal">作り替えたいのに<br>動けずにいる<em>理由</em></h2>
       <p class="lead rv d1">いただくご相談の多くは、この3つのどれかに当てはまります。心当たりがあれば、お力になれるはずです。</p>
 
-      <div class="issue__list sheet" data-g="あるあるの再現|3つの困りごとを、小さな画面で再現しています。写真ではなく、全部HTMLで描いています。" data-greplay="reveal">
+      <div class="issue__list" data-g="あるあるの再現|3つの困りごとを、小さな画面で再現しています。写真ではなく、全部HTMLで描いています。" data-greplay="reveal">
         <div class="issue rv">
           <div class="issue__no slam">01</div>
           <div class="issue__txt">
@@ -1341,7 +1345,7 @@ nav a{color:#d8d0c3}
           </div>
           <div class="issue__fig">
             <!-- ▼仮枠：課題01のイラスト（assets/issue-01.webp を置くと自動で切り替わり、下のブラウザ風の図は消えます） -->
-            <img class="issue__img" src="assets/issue-01.webp" alt="">
+            <img class="issue__img" src="assets/issue-n1.webp?v=2" alt="" width="1200" height="900" decoding="async">
             <div class="mock" aria-hidden="true">
             <div class="mock__bar"><i></i><i></i><i></i><span>template-gallery.example/no.0427</span></div>
             <div class="mock__in">
@@ -1365,7 +1369,7 @@ nav a{color:#d8d0c3}
           </div>
           <div class="issue__fig">
             <!-- ▼仮枠：課題02のイラスト（assets/issue-02.webp を置くと自動で切り替わり、下のブラウザ風の図は消えます） -->
-            <img class="issue__img" src="assets/issue-02.webp" alt="">
+            <img class="issue__img" src="assets/issue-n2.webp?v=2" alt="" width="1200" height="900" decoding="async">
             <div class="mock" aria-hidden="true">
             <div class="mock__bar"><i></i><i></i><i></i><span>御見積書_更新作業_2024-11.pdf</span></div>
             <div class="mock__in">
@@ -1389,7 +1393,7 @@ nav a{color:#d8d0c3}
           </div>
           <div class="issue__fig">
             <!-- ▼仮枠：課題03のイラスト（assets/issue-03.webp を置くと自動で切り替わり、下のブラウザ風の図は消えます） -->
-            <img class="issue__img" src="assets/issue-03.webp" alt="">
+            <img class="issue__img" src="assets/issue-n3.webp?v=2" alt="" width="1200" height="900" decoding="async">
             <div class="mock" aria-hidden="true">
             <div class="mock__bar"><i></i><i></i><i></i><span>お見積り_ホームページリニューアル.pdf</span></div>
             <div class="mock__in">
