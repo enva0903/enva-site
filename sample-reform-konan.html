@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湖南リフォーム工房｜水回り・外壁塗装・内装リフォーム（サンプル作品）</title>
+<meta name="description" content="【サンプル作品】架空の地域工務店「湖南リフォーム工房」を想定して制作したホームページの見本です。実在の会社・店舗とは関係ありません。">
+<meta name="robots" content="noindex,nofollow">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c2f4d;
+  --navy-deep:#132238;
+  --navy-soft:#e8edf4;
+  --wood:#a87a4a;
+  --wood-dark:#8a6139;
+  --wood-light:#efe4d4;
+  --cream:#f8f5f0;
+  --ink:#27313f;
+  --muted:#5d6878;
+  --line:#dfe3e9;
+  --white:#fff;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(19,34,56,.08);
+  --head:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--ink);background:var(--white);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.container{width:min(1120px,100% - 48px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.45;letter-spacing:.04em;color:var(--navy-deep);word-break:auto-phrase;text-wrap:pretty}
+.faq summary,.worry-answer p,.footer-sample,.sample-bar,.contact-tel li,.note,.sec-head p,.price-notes li,.form-note{word-break:auto-phrase}
+
+/* sample notice */
+.sample-bar{background:var(--wood-light);color:var(--wood-dark);font-size:12.5px;text-align:center;padding:6px 12px;letter-spacing:.06em;font-weight:500;border-bottom:1px solid #e2d3bd}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:40px;height:40px}
+.logo-text{font-family:var(--head);font-weight:700;font-size:20px;color:var(--navy-deep);letter-spacing:.06em;line-height:1.2}
+.logo-text small{display:block;font-size:10.5px;color:var(--wood-dark);letter-spacing:.14em;font-weight:500}
+.gnav{display:flex;align-items:center;gap:26px;font-size:14px}
+.gnav a{text-decoration:none;color:var(--ink);font-weight:500}
+.gnav a:hover{color:var(--wood-dark)}
+.header-tel{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;line-height:1.25}
+.header-tel b{font-family:var(--head);font-size:21px;color:var(--navy);letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+.header-tel span{font-size:11px;color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:700;text-decoration:none;font-size:16px;letter-spacing:.04em;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--wood);color:#fff;box-shadow:0 8px 20px rgba(168,122,74,.3)}
+.btn-primary:hover{background:var(--wood-dark)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 8px 20px rgba(28,47,77,.25)}
+.btn-outline{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(160deg,#f4f7fb 0%,#fbf8f3 55%,#f3ebdf 100%);overflow:hidden}
+.hero::before{content:"";position:absolute;right:-120px;top:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(168,122,74,.12),transparent 70%)}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:84px 0 92px}
+.hero-label{display:inline-block;font-size:13px;font-weight:700;color:var(--wood-dark);background:#fff;border:1px solid #e5d6c1;padding:5px 14px;border-radius:999px;letter-spacing:.08em;margin-bottom:20px}
+.hero h1{font-size:clamp(28px,3.4vw,42px);font-weight:700;margin-bottom:22px;letter-spacing:.03em;line-height:1.55}
+.hero h1 em{font-style:normal;color:var(--wood-dark);background:linear-gradient(transparent 68%,rgba(168,122,74,.22) 68%)}
+.hero-lead{color:var(--muted);font-size:16.5px;margin-bottom:32px;max-width:32em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:14px;color:var(--navy);font-weight:500}
+.hero-points li{list-style:none;display:flex;align-items:center;gap:6px}
+.hero-points li::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2l2.6 2.5L12 5.4' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.hero-visual{position:relative}
+.hero-visual .card{background:#fff;border-radius:24px;box-shadow:0 24px 60px rgba(19,34,56,.14);overflow:hidden}
+.hero-visual .badge{position:absolute;left:-18px;bottom:28px;background:var(--navy);color:#fff;border-radius:14px;padding:14px 18px;font-size:13px;line-height:1.5;box-shadow:var(--shadow)}
+.hero-visual .badge b{display:block;font-family:var(--head);font-size:17px}
+
+/* sections */
+section{padding:96px 0}
+.sec-head{text-align:center;margin-bottom:52px}
+.sec-en{display:block;font-size:12.5px;letter-spacing:.3em;color:var(--wood);font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(24px,3vw,34px)}
+.sec-head p{color:var(--muted);margin-top:14px}
+.bg-cream{background:var(--cream)}
+.bg-navy{background:var(--navy-deep);color:#e9eef5}
+.bg-navy h2,.bg-navy h3{color:#fff}
+.bg-navy .sec-head p{color:#b9c4d4}
+
+/* worries */
+.worries{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.worry{background:#fff;border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);position:relative}
+.worry .ico{width:64px;height:64px;border-radius:50%;background:var(--navy-soft);display:grid;place-items:center;margin-bottom:16px}
+.worry .ico svg{width:36px;height:36px}
+.worry h3{font-size:18.5px;margin-bottom:8px}
+.worry p{color:var(--muted);font-size:14.5px}
+.worry-answer{margin-top:44px;text-align:center}
+.worry-answer p{display:inline-block;font-family:var(--head);font-weight:700;font-size:clamp(18px,2.2vw,23px);color:var(--navy-deep);position:relative;padding:0 8px}
+.worry-answer p span{color:var(--wood-dark)}
+.worry-answer .arrow{width:38px;height:22px;margin:0 auto 14px}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.service{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.service-visual{height:170px;display:grid;place-items:center;position:relative}
+.service-visual svg{width:120px;height:120px}
+.sv1{background:linear-gradient(135deg,#e5eef7,#cfdcea)}
+.sv2{background:linear-gradient(135deg,#efe6d9,#e0cfb7)}
+.sv3{background:linear-gradient(135deg,#eef0ec,#d9ded3)}
+.service-body{padding:26px 26px 30px;flex:1;display:flex;flex-direction:column}
+.service-num{font-size:12px;color:var(--wood);font-weight:700;letter-spacing:.2em}
+.service h3{font-size:21px;margin:4px 0 10px}
+.service p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tags li{list-style:none;font-size:12.5px;background:var(--cream);border:1px solid #eadfcf;color:var(--wood-dark);padding:3px 10px;border-radius:999px}
+
+/* reasons */
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.reason{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:34px 28px}
+.reason-num{font-family:var(--head);font-size:44px;font-weight:700;color:var(--wood);line-height:1;margin-bottom:14px;opacity:.9}
+.reason h3{font-size:19px;margin-bottom:12px}
+.reason p{font-size:14.5px;color:#c6d0dd}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:step}
+.step{background:#fff;border-radius:var(--radius);padding:26px 18px 24px;text-align:center;box-shadow:var(--shadow);position:relative}
+.step:not(:last-child)::after{content:"";position:absolute;right:-14px;top:50%;width:10px;height:10px;border-top:2px solid var(--wood);border-right:2px solid var(--wood);transform:translateY(-50%) rotate(45deg)}
+.step-no{display:inline-block;font-size:11.5px;letter-spacing:.18em;font-weight:700;color:#fff;background:var(--navy);border-radius:999px;padding:2px 12px;margin-bottom:12px}
+.step .ico{width:54px;height:54px;margin:0 auto 10px}
+.step h3{font-size:16.5px;margin-bottom:6px}
+.step p{font-size:13.5px;color:var(--muted);text-align:left}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.work{background:#fff;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ba{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.ba figure{position:relative}
+.ba figcaption{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.12em;padding:2px 9px;border-radius:4px;background:rgba(19,34,56,.75);color:#fff}
+.ba figure.after figcaption{background:var(--wood)}
+.ba svg{width:100%;height:auto;aspect-ratio:4/3.4}
+.ba::after{content:"";position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' fill='none' stroke='%23a87a4a' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.work-body{padding:22px 24px 26px;flex:1}
+.work-cat{font-size:12px;color:var(--wood-dark);font-weight:700;letter-spacing:.1em}
+.work h3{font-size:18px;margin:4px 0 10px}
+.work p{font-size:14px;color:var(--muted);margin-bottom:14px}
+.work dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13.5px;border-top:1px dashed var(--line);padding-top:12px}
+.work dt{color:var(--muted)}
+.work dd{font-weight:500;color:var(--navy)}
+.note{font-size:12.5px;color:var(--muted);margin-top:26px;text-align:center}
+
+/* price */
+.price-wrap{max-width:880px;margin-inline:auto}
+.price-table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.price-table th,.price-table td{padding:18px 24px;text-align:left;border-bottom:1px solid var(--line);font-size:15px;vertical-align:middle}
+.price-table thead th{background:var(--navy);color:#fff;font-weight:500;font-size:14px;letter-spacing:.06em}
+.price-table tbody th{font-weight:700;color:var(--navy-deep);width:34%}
+.price-table td.yen{font-family:var(--head);font-weight:700;color:var(--wood-dark);font-size:18px;white-space:nowrap}
+.price-table td.yen small{font-size:12px;font-weight:500;color:var(--muted);margin-left:4px}
+.price-table td.memo{color:var(--muted);font-size:13.5px}
+.price-table tr:last-child th,.price-table tr:last-child td{border-bottom:0}
+.price-flag{display:inline-block;font-size:12px;font-weight:700;background:var(--wood-light);color:var(--wood-dark);padding:2px 10px;border-radius:4px;margin-bottom:12px}
+.price-notes{margin-top:18px;font-size:13px;color:var(--muted);padding-left:1.2em}
+.price-notes li{margin-bottom:2px}
+
+/* faq */
+.faq{max-width:860px;margin-inline:auto;display:grid;gap:14px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:20px 56px 20px 22px;font-weight:700;display:flex;gap:14px;align-items:flex-start;position:relative;color:var(--navy-deep)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:24px;top:28px;width:10px;height:10px;border-right:2px solid var(--wood);border-bottom:2px solid var(--wood);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:32px}
+.qa-mark{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-family:var(--head);color:#fff;background:var(--navy);line-height:1}
+.qa-mark.a{background:var(--wood)}
+.faq .answer{display:flex;gap:14px;padding:0 24px 22px 22px;color:var(--muted);font-size:15px}
+
+/* company */
+.company{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.company-table{width:100%;border-collapse:collapse;border-top:2px solid var(--navy)}
+.company-table th,.company-table td{padding:16px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:15px;vertical-align:top}
+.company-table th{width:30%;color:var(--navy);font-weight:700;background:#fafbfc}
+.company-map{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.company-map p{font-size:12.5px;color:var(--muted);padding:12px 16px;text-align:center}
+.fict{font-size:12px;color:var(--wood-dark);font-weight:500}
+
+/* contact */
+.contact{background:linear-gradient(160deg,var(--navy-deep),#223a5e)}
+.contact .sec-head h2{color:#fff}
+.contact .sec-head p{color:#c3cddb}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+.contact-tel{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:32px 28px;color:#dde4ee}
+.contact-tel h3{color:#fff;font-size:18px;margin-bottom:8px}
+.contact-tel .num{font-family:var(--head);font-size:32px;font-weight:700;color:#fff;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px;margin:8px 0}
+.contact-tel .num svg{width:28px;height:28px}
+.contact-tel p{font-size:14px}
+.contact-tel ul{margin-top:18px;padding-left:1.1em;font-size:14px;color:#c3cddb}
+.form{background:#fff;border-radius:18px;padding:36px 34px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px;color:var(--navy-deep)}
+.req{display:inline-block;font-size:11px;background:var(--wood);color:#fff;border-radius:3px;padding:0 6px;margin-left:8px;font-weight:500;vertical-align:1px}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid #cdd4de;border-radius:8px;background:#fbfcfd;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(168,122,74,.45);border-color:var(--wood);background:#fff}
+.field textarea{min-height:120px;resize:vertical}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.checks{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px}
+.checks label{font-weight:400;display:flex;align-items:center;gap:6px;margin:0;color:var(--ink)}
+.checks input{width:auto}
+.form .btn{width:100%;margin-top:6px}
+.form-msg{display:none;margin-top:14px;padding:12px 14px;border-radius:8px;background:var(--wood-light);color:var(--wood-dark);font-weight:700;font-size:14px;text-align:center}
+.form-msg.show{display:block}
+.form-note{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+
+/* footer */
+.site-footer{background:#0e1a2b;color:#aab6c6;padding:48px 0 36px;font-size:13.5px}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.footer-inner .logo-text{color:#fff}
+.footer-nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.footer-nav a{text-decoration:none}
+.footer-sample{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px}
+.footer-sample strong{color:#e7d6bf;font-weight:500}
+
+/* mobile fixed cta */
+.sp-cta{display:none}
+
+/* fade-in (JSがあるときだけ隠す) */
+.js .fade{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.js .fade.is-in{opacity:1;transform:none}
+.js .fade.d1{transition-delay:.1s}.js .fade.d2{transition-delay:.2s}.js .fade.d3{transition-delay:.3s}.js .fade.d4{transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){.js .fade{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:1024px){
+  .gnav{display:none}
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .step:nth-child(3)::after{display:none}
+}
+@media (max-width:860px){
+  .hero-inner{grid-template-columns:1fr;padding:48px 0 60px;gap:36px}
+  .hero-visual{max-width:520px;margin-inline:auto;width:100%}
+  .hero-visual .badge{left:10px;bottom:-16px}
+  .worries,.services,.reasons,.works{grid-template-columns:1fr}
+  .services,.works{max-width:520px;margin-inline:auto}
+  .company,.contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:15px;padding-bottom:60px}
+  .container{width:calc(100% - 32px)}
+  section{padding:64px 0}
+  .sec-head{margin-bottom:36px}
+  .header-inner{height:60px}
+  .logo-mark{width:34px;height:34px}
+  .logo-text{font-size:17px}
+  .header-tel{display:none}
+  .hero-cta .btn{width:100%}
+  .hero-lead{font-size:15px}
+  .flow{grid-template-columns:1fr;gap:26px}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:4px 16px;text-align:left;padding:20px}
+  .step .ico{grid-row:1/4;margin:0}
+  .step-no{justify-self:start;margin-bottom:4px}
+  .step::after{display:none}
+  .step:not(:last-child)::after{display:block;right:auto;left:50%;top:auto;bottom:-19px;transform:translateX(-50%) rotate(135deg)}
+  .price-table thead{display:none}
+  .price-table,.price-table tbody,.price-table tr,.price-table th,.price-table td{display:block;width:100%}
+  .price-table tr{padding:16px 18px;border-bottom:1px solid var(--line)}
+  .price-table tr:last-child{border-bottom:0}
+  .price-table th,.price-table td{padding:2px 0;border:0}
+  .price-table tbody th{width:100%;font-size:15.5px}
+  .price-table td.yen{font-size:19px}
+  .company-table th,.company-table td{display:block;width:100%}
+  .company-table th{border-bottom:0;padding:12px 12px 4px}
+  .company-table td{padding:4px 12px 14px}
+  .field-row{grid-template-columns:1fr;gap:0}
+  .form{padding:26px 20px}
+  .contact-tel{padding:26px 22px}
+  .contact-tel .num{font-size:27px}
+  .faq summary{padding:18px 48px 18px 16px;font-size:15px}
+  .faq .answer{padding:0 18px 18px 16px;font-size:14.5px}
+  .sp-cta{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+  .sp-cta a{display:flex;align-items:center;justify-content:center;gap:8px;height:60px;color:#fff;font-weight:700;text-decoration:none;font-size:15.5px;letter-spacing:.04em}
+  .sp-cta a svg{width:20px;height:20px}
+  .sp-cta .c-tel{background:var(--navy)}
+  .sp-cta .c-form{background:var(--wood)}
+  .footer-sample{flex-direction:column}
+  .sb-more{display:none}
+  .fs-sep{display:none}
+  .fs-more{display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="sample-bar">サンプル作品（架空の会社を想定して作成）<span class="sb-more">｜実在の会社・店舗とは関係ありません</span></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo" aria-label="湖南リフォーム工房 トップへ">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="9" fill="#1c2f4d"/>
+        <path d="M8 20 20 10l12 10" fill="none" stroke="#e3c9a3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 18.5V29h16V18.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M9 32.5c3.5-1.8 7-1.8 11 0s7.5 1.8 11 0" fill="none" stroke="#a87a4a" stroke-width="2" stroke-linecap="round"/>
+        <rect x="17.5" y="22" width="5" height="7" fill="#e3c9a3"/>
+      </svg>
+      <span class="logo-text"><small>KONAN REFORM KOBO</small>湖南リフォーム工房</span>
+    </a>
+    <nav class="gnav" aria-label="メインメニュー">
+      <a href="#service">サービス</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#works">施工事例</a>
+      <a href="#price">料金の目安</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="header-tel" href="tel:00000000000">
+      <b><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#a87a4a" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>000-0000-0000</b>
+      <span>受付 9:00〜18:00（水曜定休）</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="container hero-inner">
+    <div>
+      <span class="hero-label fade">滋賀県の地域工務店（架空）</span>
+      <h1 class="fade d1">住まいの<br><em>「ちょっと困った」</em>を、<br>まちの工房がていねいに。</h1>
+      <p class="hero-lead fade d2">水回りの交換から外壁・屋根の塗装、内装のリフォームまで。現地を見て、暮らし方をうかがってから、ちょうどいいご提案をします。小さな修理のご相談もお気軽にどうぞ。</p>
+      <div class="hero-cta fade d3">
+        <a class="btn btn-navy" href="tel:00000000000">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+          電話で相談 000-0000-0000
+        </a>
+        <a class="btn btn-primary" href="#contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6h18v12H3z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3 7 9 6 9-6"/></svg>
+          無料で相談・見積もり
+        </a>
+      </div>
+      <ul class="hero-points fade d4">
+        <li>現地調査・お見積もり無料</li>
+        <li>小さな修理もOK</li>
+        <li>内訳のわかる見積書</li>
+      </ul>
+    </div>
+    <div class="hero-visual fade d2">
+      <div class="card">
+        <svg viewBox="0 0 560 440" role="img" aria-label="湖のそばに建つ家のイラスト">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe9f4"/><stop offset="1" stop-color="#f7f3ec"/></linearGradient>
+            <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb8d2"/><stop offset="1" stop-color="#6f8fb3"/></linearGradient>
+            <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f3"/><stop offset="1" stop-color="#efe7da"/></linearGradient>
+          </defs>
+          <rect width="560" height="440" fill="url(#sky)"/>
+          <circle cx="455" cy="92" r="36" fill="#f3e2c4" opacity=".9"/>
+          <path d="M0 250 90 190l70 40 90-70 110 80 80-45 120 65v30H0z" fill="#c9d6e3"/>
+          <path d="M0 270 120 225l90 38 110-50 120 58 120-30v39H0z" fill="#b3c5d8"/>
+          <rect y="300" width="560" height="140" fill="url(#lake)"/>
+          <path d="M40 330h70M150 350h90M300 336h60M400 360h110M80 380h60M250 392h120" stroke="#dbe6f1" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+          <path d="M0 300c80-18 170-20 260-14s190 4 300-10v40H0z" fill="#8fb07d"/>
+          <path d="M0 312c100-10 200-10 290-4s180 2 270-8v20H0z" fill="#7a9d6a"/>
+          <!-- house -->
+          <g transform="translate(150 118)">
+            <rect x="18" y="92" width="240" height="118" fill="url(#wall)"/>
+            <path d="M0 100 138 18l138 82" fill="#1c2f4d"/>
+            <path d="M0 100 138 18l138 82" fill="none" stroke="#132238" stroke-width="6" stroke-linejoin="round"/>
+            <rect x="196" y="30" width="22" height="42" fill="#8a6139"/>
+            <rect x="40" y="120" width="62" height="50" rx="3" fill="#cfe0ef" stroke="#a87a4a" stroke-width="5"/>
+            <path d="M71 120v50M40 145h62" stroke="#a87a4a" stroke-width="3"/>
+            <rect x="172" y="120" width="62" height="50" rx="3" fill="#cfe0ef" stroke="#a87a4a" stroke-width="5"/>
+            <path d="M203 120v50M172 145h62" stroke="#a87a4a" stroke-width="3"/>
+            <rect x="118" y="130" width="40" height="80" rx="3" fill="#a87a4a"/>
+            <circle cx="150" cy="172" r="3" fill="#efe4d4"/>
+            <rect x="108" y="204" width="60" height="8" fill="#d6c7b0"/>
+            <rect x="18" y="206" width="240" height="6" fill="#d6c7b0"/>
+          </g>
+          <!-- trees -->
+          <g><rect x="92" y="268" width="8" height="34" fill="#8a6139"/><circle cx="96" cy="252" r="28" fill="#7a9d6a"/><circle cx="84" cy="262" r="18" fill="#8fb07d"/></g>
+          <g><rect x="462" y="262" width="8" height="40" fill="#8a6139"/><ellipse cx="466" cy="240" rx="24" ry="36" fill="#6f9160"/></g>
+          <!-- tools -->
+          <g transform="translate(470 330) rotate(-18)"><rect x="0" y="0" width="54" height="12" rx="3" fill="#efe4d4"/><rect x="-26" y="2" width="30" height="8" rx="2" fill="#1c2f4d"/></g>
+        </svg>
+      </div>
+      <div class="badge"><b>見積もり・現地調査</b>無料でうかがいます</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORRIES -->
+<section class="bg-cream" id="worry">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Worries</span>
+      <h2>こんなお悩み、ありませんか？</h2>
+    </div>
+    <div class="worries">
+      <div class="worry fade d1">
+        <div class="ico"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M6 12h14a4 4 0 0 1 4 4v2" fill="none" stroke="#1c2f4d" stroke-width="2.6" stroke-linecap="round"/><path d="M10 8v4" stroke="#1c2f4d" stroke-width="2.6" stroke-linecap="round"/><path d="M24 23c-2 3-3 4.5-3 6a3 3 0 0 0 6 0c0-1.5-1-3-3-6z" fill="#6f8fb3"/></svg></div>
+        <h3>蛇口の水漏れ・トイレの不調</h3>
+        <p>ポタポタが止まらない、水の流れが悪い。古くなってきた水回り、そろそろ交換どきかも？</p>
+      </div>
+      <div class="worry fade d2">
+        <div class="ico"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 17 18 7l13 10" fill="none" stroke="#1c2f4d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 15v14h18V15" fill="none" stroke="#1c2f4d" stroke-width="2.6" stroke-linejoin="round"/><path d="m16 16-2 4 3 2-2 4" fill="none" stroke="#a87a4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>外壁のひび割れ・色あせ</h3>
+        <p>触ると白い粉がつく、細いひびが目立ってきた。雨風から家を守る外壁のサインです。</p>
+      </div>
+      <div class="worry fade d3">
+        <div class="ico"><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="6" y="6" width="24" height="24" rx="2" fill="none" stroke="#1c2f4d" stroke-width="2.6"/><path d="M6 22h24" stroke="#1c2f4d" stroke-width="2.2"/><path d="M12 22v8M20 22v8" stroke="#1c2f4d" stroke-width="1.8"/><path d="M22 10c-2 2 1 4-1 6" fill="none" stroke="#a87a4a" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+        <h3>床のきしみ・壁紙のはがれ</h3>
+        <p>歩くとギシッと鳴る、壁紙の継ぎ目がめくれてきた。毎日目に入るところほど気になります。</p>
+      </div>
+    </div>
+    <div class="worry-answer fade">
+      <svg class="arrow" viewBox="0 0 38 22" aria-hidden="true"><path d="M3 3l16 16L35 3" fill="none" stroke="#a87a4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>そのお悩み、<span>湖南リフォーム工房</span>にご相談ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="service">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Service</span>
+      <h2>サービス内容</h2>
+      <p>暮らしの中心になる3つの分野を、ひとつの窓口でお受けします。</p>
+    </div>
+    <div class="services">
+      <article class="service fade d1">
+        <div class="service-visual sv1">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><rect x="16" y="58" width="88" height="40" rx="4" fill="#fff"/><rect x="16" y="54" width="88" height="8" rx="3" fill="#1c2f4d"/><rect x="36" y="62" width="48" height="20" rx="4" fill="#dfe9f4"/><path d="M60 54V30a8 8 0 0 1 8-8h8" fill="none" stroke="#1c2f4d" stroke-width="6" stroke-linecap="round"/><path d="M78 30c-3 5-4.5 7.5-4.5 10a4.5 4.5 0 0 0 9 0c0-2.5-1.5-5-4.5-10z" fill="#6f8fb3"/><rect x="28" y="86" width="24" height="8" rx="2" fill="#efe4d4"/><rect x="68" y="86" width="24" height="8" rx="2" fill="#efe4d4"/></svg>
+        </div>
+        <div class="service-body">
+          <span class="service-num">SERVICE 01</span>
+          <h3>水回りリフォーム</h3>
+          <p>キッチン・浴室・トイレ・洗面台の交換や修理。毎日使う場所だから、お掃除のしやすさや使い勝手まで一緒に考えます。</p>
+          <ul class="tags"><li>キッチン</li><li>浴室・ユニットバス</li><li>トイレ</li><li>洗面台</li><li>給湯器</li></ul>
+        </div>
+      </article>
+      <article class="service fade d2">
+        <div class="service-visual sv2">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><path d="M14 56 60 20l46 36" fill="#1c2f4d"/><rect x="24" y="54" width="72" height="46" fill="#fff"/><rect x="24" y="54" width="36" height="46" fill="#f3e9da"/><rect x="36" y="66" width="16" height="14" fill="#cfe0ef"/><rect x="68" y="66" width="16" height="14" fill="#cfe0ef"/><g transform="translate(78 70) rotate(35)"><rect x="-4" y="0" width="30" height="12" rx="3" fill="#a87a4a"/><rect x="8" y="12" width="6" height="26" rx="2" fill="#8a6139"/></g></svg>
+        </div>
+        <div class="service-body">
+          <span class="service-num">SERVICE 02</span>
+          <h3>外壁・屋根の塗装</h3>
+          <p>外壁や屋根の塗り替え、ひび割れ補修、雨どいの修理など。今の状態を写真で見ていただきながら、必要な工事だけをご提案します。</p>
+          <ul class="tags"><li>外壁塗装</li><li>屋根塗装</li><li>ひび割れ補修</li><li>雨どい</li><li>ベランダ防水</li></ul>
+        </div>
+      </article>
+      <article class="service fade d3">
+        <div class="service-visual sv3">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><rect x="16" y="20" width="88" height="62" fill="#fff"/><rect x="16" y="82" width="88" height="18" fill="#c9a57b"/><path d="M16 88h88M16 94h88M40 82v6M70 88v6M52 94v6" stroke="#a87a4a" stroke-width="1.5"/><rect x="28" y="32" width="30" height="24" fill="#dfe9f4" stroke="#1c2f4d" stroke-width="3"/><rect x="70" y="56" width="26" height="26" rx="3" fill="#1c2f4d"/><rect x="74" y="48" width="18" height="10" rx="3" fill="#6f8fb3"/><circle cx="40" cy="70" r="7" fill="#8fb07d"/><rect x="37" y="74" width="6" height="8" fill="#a87a4a"/></svg>
+        </div>
+        <div class="service-body">
+          <span class="service-num">SERVICE 03</span>
+          <h3>内装リフォーム</h3>
+          <p>壁紙・床の張り替えから、和室の洋室化、収納づくりまで。家具の配置や生活の動きに合わせて、過ごしやすい空間に整えます。</p>
+          <ul class="tags"><li>壁紙・クロス</li><li>フローリング</li><li>和室→洋室</li><li>収納</li><li>建具</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section class="bg-navy" id="reason">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Reason</span>
+      <h2>選ばれる3つの理由</h2>
+      <p>「頼んでよかった」と思っていただけるよう、大切にしていること。</p>
+    </div>
+    <div class="reasons">
+      <div class="reason fade d1">
+        <div class="reason-num">01</div>
+        <h3>最初から最後まで、同じ担当者</h3>
+        <p>ご相談・現地調査・工事中の連絡・お引き渡しまで、ひとりの担当がつきます。「言った・聞いてない」のすれ違いが起きにくい体制です。</p>
+      </div>
+      <div class="reason fade d2">
+        <div class="reason-num">02</div>
+        <h3>内訳まで見える見積書</h3>
+        <p>「一式」でまとめず、材料・工事・処分費などを項目ごとに記載。気になるところは、納得いくまでご説明します。</p>
+      </div>
+      <div class="reason fade d3">
+        <div class="reason-num">03</div>
+        <h3>工事のあとも、気軽に相談</h3>
+        <p>地域に根ざした小さな工房なので、工事が終わってからの「ちょっと見てほしい」にも動きやすいのが強みです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="bg-cream" id="flow">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Flow</span>
+      <h2>ご相談から完成までの流れ</h2>
+    </div>
+    <ol class="flow" style="list-style:none">
+      <li class="step fade">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="27" fill="#e8edf4"/><path d="M19 23.5a13 13 0 0 0 11.5 11.5l3-3c.4-.4 1-.5 1.4-.3 1.4.5 3 .8 4.6.8.7 0 1.3.6 1.3 1.3v4.7c0 .7-.6 1.3-1.3 1.3A23 23 0 0 1 13.2 16.5c0-.7.6-1.3 1.3-1.3h4.7c.7 0 1.3.6 1.3 1.3 0 1.6.3 3.2.8 4.6.2.5 0 1-.3 1.4z" fill="#1c2f4d" transform="translate(-1 -1) scale(.95)"/></svg>
+        <span class="step-no">STEP 1</span>
+        <h3>お問い合わせ</h3>
+        <p>お電話かフォームで、気になっている場所やご希望をお聞かせください。</p>
+      </li>
+      <li class="step fade d1">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="27" fill="#e8edf4"/><path d="M14 27 27 16l13 11" fill="none" stroke="#1c2f4d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 25v12h18V25" fill="none" stroke="#1c2f4d" stroke-width="3" stroke-linejoin="round"/><circle cx="33" cy="33" r="5" fill="#fff" stroke="#a87a4a" stroke-width="2.6"/><path d="m36.5 36.5 3.5 3.5" stroke="#a87a4a" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <span class="step-no">STEP 2</span>
+        <h3>現地調査</h3>
+        <p>ご都合のよい日にうかがい、状態を確認。写真を撮ってご説明します。</p>
+      </li>
+      <li class="step fade d2">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="27" fill="#e8edf4"/><rect x="17" y="13" width="20" height="27" rx="2" fill="#fff" stroke="#1c2f4d" stroke-width="2.6"/><path d="M21 20h12M21 25h12M21 30h8" stroke="#1c2f4d" stroke-width="2.2" stroke-linecap="round"/><circle cx="35" cy="37" r="6" fill="#a87a4a"/><path d="m32.5 37 1.8 1.8 3.2-3.4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="step-no">STEP 3</span>
+        <h3>お見積もり・ご提案</h3>
+        <p>内訳のわかる見積書とプランをお出しします。ご検討はゆっくりどうぞ。</p>
+      </li>
+      <li class="step fade d3">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="27" fill="#e8edf4"/><g transform="rotate(-40 27 27)"><rect x="22" y="12" width="10" height="16" rx="2" fill="#1c2f4d"/><rect x="25" y="28" width="4" height="15" rx="1.5" fill="#a87a4a"/><rect x="15" y="15" width="24" height="7" rx="2" fill="#1c2f4d"/></g></svg>
+        <span class="step-no">STEP 4</span>
+        <h3>着工</h3>
+        <p>ご近所へのごあいさつをしてから工事開始。進み具合はこまめにお伝えします。</p>
+      </li>
+      <li class="step fade d4">
+        <svg class="ico" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="27" fill="#e8edf4"/><path d="M14 27 27 16l13 11" fill="none" stroke="#1c2f4d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 25v12h18V25" fill="none" stroke="#1c2f4d" stroke-width="3" stroke-linejoin="round"/><path d="M22.5 30.5 26 34l6-6.5" fill="none" stroke="#a87a4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="step-no">STEP 5</span>
+        <h3>お引き渡し</h3>
+        <p>仕上がりを一緒に確認してお引き渡し。その後のアフターもお任せください。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Works</span>
+      <h2>施工事例</h2>
+      <p>工事の一例です（イメージ図・架空の事例）。</p>
+    </div>
+    <div class="works">
+      <!-- work 1 kitchen -->
+      <article class="work fade d1">
+        <div class="ba">
+          <figure>
+            <svg viewBox="0 0 200 170" aria-label="施工前のキッチン（イメージ）" role="img">
+              <rect width="200" height="170" fill="#d9d3c6"/>
+              <rect x="0" y="0" width="200" height="60" fill="#cfc6b3"/>
+              <rect x="20" y="10" width="160" height="38" fill="#b7a78a" stroke="#9c8c70" stroke-width="2"/>
+              <path d="M73 10v38M127 10v38" stroke="#9c8c70" stroke-width="2"/>
+              <rect x="0" y="92" width="200" height="12" fill="#a39a88"/>
+              <rect x="0" y="104" width="200" height="66" fill="#b9ae98"/>
+              <path d="M50 104v66M100 104v66M150 104v66" stroke="#9f937c" stroke-width="2"/>
+              <rect x="60" y="95" width="46" height="6" fill="#8e8778"/>
+              <path d="M84 95V78h10" fill="none" stroke="#8e8778" stroke-width="4" stroke-linecap="round"/>
+              <path d="M30 70l4 6M150 66l6 4M170 120l-6 5" stroke="#8d7f66" stroke-width="2" stroke-linecap="round"/>
+              <rect x="0" y="60" width="200" height="32" fill="#e2dccf"/>
+              <path d="M0 76h200M50 60v32M100 60v32M150 60v32" stroke="#cfc7b6" stroke-width="1.5"/>
+            </svg>
+            <figcaption>BEFORE</figcaption>
+          </figure>
+          <figure class="after">
+            <svg viewBox="0 0 200 170" aria-label="施工後のキッチン（イメージ）" role="img">
+              <rect width="200" height="170" fill="#f7f4ee"/>
+              <rect x="20" y="10" width="160" height="36" fill="#fff" stroke="#e3dccf" stroke-width="2"/>
+              <path d="M73 10v36M127 10v36" stroke="#e3dccf" stroke-width="2"/>
+              <rect x="0" y="58" width="200" height="34" fill="#eef2f6"/>
+              <rect x="30" y="66" width="16" height="16" rx="3" fill="#8fb07d"/>
+              <rect x="0" y="92" width="200" height="10" fill="#1c2f4d"/>
+              <rect x="0" y="102" width="200" height="68" fill="#c9a57b"/>
+              <path d="M66 102v68M133 102v68" stroke="#a87a4a" stroke-width="2"/>
+              <path d="M26 120h20M92 120h20M158 120h20" stroke="#8a6139" stroke-width="3" stroke-linecap="round"/>
+              <path d="M112 92V72a6 6 0 0 1 6-6h8" fill="none" stroke="#c7ced8" stroke-width="4" stroke-linecap="round"/>
+              <rect x="148" y="84" width="34" height="8" rx="2" fill="#2d4466"/>
+              <circle cx="158" cy="88" r="2.5" fill="#6f8fb3"/><circle cx="172" cy="88" r="2.5" fill="#6f8fb3"/>
+            </svg>
+            <figcaption>AFTER</figcaption>
+          </figure>
+        </div>
+        <div class="work-body">
+          <span class="work-cat">水回り｜キッチン｜事例イメージ</span>
+          <h3>キッチンの入れ替え</h3>
+          <p>収納の使いにくさと汚れが気になっていたキッチンを、引き出し収納のシステムキッチンへ。作業スペースも広くしました。</p>
+          <dl><dt>工期</dt><dd>約4日（例）</dd><dt>費用</dt><dd>約85万円（例）</dd></dl>
+        </div>
+      </article>
+      <!-- work 2 exterior -->
+      <article class="work fade d2">
+        <div class="ba">
+          <figure>
+            <svg viewBox="0 0 200 170" aria-label="施工前の外壁（イメージ）" role="img">
+              <rect width="200" height="170" fill="#e4e4de"/>
+              <rect y="140" width="200" height="30" fill="#a7a996"/>
+              <path d="M22 70 100 22l78 48" fill="#6d7280"/>
+              <rect x="34" y="68" width="132" height="74" fill="#c9c1ae"/>
+              <rect x="50" y="84" width="30" height="26" fill="#9eaab6" stroke="#8e8573" stroke-width="3"/>
+              <rect x="120" y="84" width="30" height="26" fill="#9eaab6" stroke="#8e8573" stroke-width="3"/>
+              <rect x="88" y="100" width="24" height="42" fill="#8e8573"/>
+              <path d="m60 118 6 8-4 6 5 7M140 72l-3 10 5 6M104 74l2 8" fill="none" stroke="#7c725f" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M34 128c20 4 40-2 60 3" stroke="#b1a893" stroke-width="5" opacity=".7"/>
+            </svg>
+            <figcaption>BEFORE</figcaption>
+          </figure>
+          <figure class="after">
+            <svg viewBox="0 0 200 170" aria-label="施工後の外壁（イメージ）" role="img">
+              <rect width="200" height="170" fill="#e6eef6"/>
+              <rect y="140" width="200" height="30" fill="#9dbb8b"/>
+              <path d="M22 70 100 22l78 48" fill="#1c2f4d"/>
+              <rect x="34" y="68" width="132" height="74" fill="#f6f0e6"/>
+              <rect x="34" y="126" width="132" height="16" fill="#d9c7ad"/>
+              <rect x="50" y="84" width="30" height="26" fill="#cfe0ef" stroke="#a87a4a" stroke-width="3"/>
+              <rect x="120" y="84" width="30" height="26" fill="#cfe0ef" stroke="#a87a4a" stroke-width="3"/>
+              <rect x="88" y="100" width="24" height="42" fill="#a87a4a"/>
+              <circle cx="107" cy="122" r="2" fill="#f6f0e6"/>
+            </svg>
+            <figcaption>AFTER</figcaption>
+          </figure>
+        </div>
+        <div class="work-body">
+          <span class="work-cat">外壁・屋根｜塗装｜事例イメージ</span>
+          <h3>外壁と屋根の塗り替え</h3>
+          <p>色あせとひび割れが目立ってきた外壁を補修し、落ち着いたツートンカラーに。屋根もあわせて塗り替えました。</p>
+          <dl><dt>工期</dt><dd>約2週間（例）</dd><dt>費用</dt><dd>約120万円（例）</dd></dl>
+        </div>
+      </article>
+      <!-- work 3 interior -->
+      <article class="work fade d3">
+        <div class="ba">
+          <figure>
+            <svg viewBox="0 0 200 170" aria-label="施工前の和室（イメージ）" role="img">
+              <rect width="200" height="170" fill="#e8dfc8"/>
+              <rect x="0" y="0" width="200" height="14" fill="#8a7353"/>
+              <path d="M40 0v112M160 0v112" stroke="#8a7353" stroke-width="6"/>
+              <rect x="60" y="20" width="80" height="80" fill="#f2ecdc" stroke="#a38c67" stroke-width="3"/>
+              <path d="M86.7 20v80M113.3 20v80M60 46.7h80M60 73.3h80" stroke="#c8b894" stroke-width="2"/>
+              <rect x="0" y="112" width="200" height="58" fill="#c2c28a"/>
+              <path d="M0 112h200M100 112v58M0 141h100" stroke="#8f8d5c" stroke-width="3"/>
+              <path d="M130 130l12 4M30 152l10 3" stroke="#a7a472" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <figcaption>BEFORE</figcaption>
+          </figure>
+          <figure class="after">
+            <svg viewBox="0 0 200 170" aria-label="施工後の洋室（イメージ）" role="img">
+              <rect width="200" height="170" fill="#fbfaf7"/>
+              <rect x="60" y="20" width="80" height="80" fill="#dfe9f4" stroke="#fff" stroke-width="6"/>
+              <path d="M100 20v80" stroke="#fff" stroke-width="4"/>
+              <rect x="0" y="112" width="200" height="58" fill="#c9a57b"/>
+              <path d="M0 124h200M0 136h200M0 148h200M0 160h200" stroke="#b58e62" stroke-width="1.5"/>
+              <path d="M40 112v12M120 124v12M70 136v12M160 148v12M20 160v10" stroke="#b58e62" stroke-width="1.5"/>
+              <rect x="146" y="70" width="40" height="42" rx="4" fill="#1c2f4d"/>
+              <rect x="150" y="60" width="32" height="14" rx="6" fill="#6f8fb3"/>
+              <rect x="18" y="84" width="26" height="28" rx="2" fill="#a87a4a"/>
+              <circle cx="31" cy="72" r="12" fill="#8fb07d"/>
+            </svg>
+            <figcaption>AFTER</figcaption>
+          </figure>
+        </div>
+        <div class="work-body">
+          <span class="work-cat">内装｜和室→洋室｜事例イメージ</span>
+          <h3>和室を明るい洋室に</h3>
+          <p>使わなくなった和室を、フローリングとクロスで洋室に。窓まわりも明るくして、在宅ワークにも使えるお部屋にしました。</p>
+          <dl><dt>工期</dt><dd>約1週間（例）</dd><dt>費用</dt><dd>約70万円（例）</dd></dl>
+        </div>
+      </article>
+    </div>
+    <p class="note fade">※ 掲載の事例は、サンプルとして作成した架空の内容です。工期・費用は説明用の例で、実際は建物の状態やご要望によって変わります。</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="bg-cream" id="price">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Price</span>
+      <h2>料金の目安</h2>
+      <p>よくあるご依頼の目安です。正式な金額は、現地調査のあとにお見積もりします。</p>
+    </div>
+    <div class="price-wrap fade">
+      <span class="price-flag">目安・例（税込）</span>
+      <table class="price-table">
+        <thead><tr><th>工事の内容</th><th>目安の金額（例）</th><th>内容の例</th></tr></thead>
+        <tbody>
+          <tr><th>トイレ交換</th><td class="yen">20万円〜<small>（例）</small></td><td class="memo">本体・取り付け・既存品の処分</td></tr>
+          <tr><th>システムキッチン交換</th><td class="yen">70万円〜<small>（例）</small></td><td class="memo">本体・解体撤去・取り付け</td></tr>
+          <tr><th>ユニットバス交換</th><td class="yen">90万円〜<small>（例）</small></td><td class="memo">本体・解体撤去・給排水の接続</td></tr>
+          <tr><th>外壁塗装（一般的な2階建て）</th><td class="yen">100万円〜<small>（例）</small></td><td class="memo">足場・洗浄・下地補修・塗装</td></tr>
+          <tr><th>壁紙の張り替え（6畳）</th><td class="yen">5万円〜<small>（例）</small></td><td class="memo">既存クロスはがし・張り替え</td></tr>
+        </tbody>
+      </table>
+      <ul class="price-notes">
+        <li>※ 表示はサンプル用の目安・例です。建物の大きさ、劣化の具合、選ぶ設備によって変わります。</li>
+        <li>※ 現地調査・お見積もりは無料です。お見積もり後にお断りいただいても費用はかかりません。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">FAQ</span>
+      <h2>よくあるご質問</h2>
+    </div>
+    <div class="faq fade">
+      <details open>
+        <summary><span class="qa-mark">Q</span>見積もりだけでもお願いできますか？</summary>
+        <div class="answer"><span class="qa-mark a">A</span><p>はい、もちろんです。現地調査とお見積もりは無料です。他社さんと比べていただいても大丈夫ですし、お断りいただいても費用はかかりません。</p></div>
+      </details>
+      <details>
+        <summary><span class="qa-mark">Q</span>蛇口の交換など、小さな工事でも来てもらえますか？</summary>
+        <div class="answer"><span class="qa-mark a">A</span><p>はい。パッキン交換や建具の調整など、小さなご依頼も歓迎しています。「こんなことで頼んでいいのかな」と思うことでも、まずはお気軽にご相談ください。</p></div>
+      </details>
+      <details>
+        <summary><span class="qa-mark">Q</span>工事中も家で生活できますか？</summary>
+        <div class="answer"><span class="qa-mark a">A</span><p>ほとんどの工事は住みながら進められます。水回りなど一時的に使えなくなる場合は、使えない時間と代わりの方法を事前にご説明します。</p></div>
+      </details>
+      <details>
+        <summary><span class="qa-mark">Q</span>対応しているエリアを教えてください。</summary>
+        <div class="answer"><span class="qa-mark a">A</span><p>滋賀県南部を中心に対応しています（サンプルのため架空の設定です）。エリア外の場合も、内容によってはうかがえることがありますので一度ご相談ください。</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section class="bg-cream" id="company">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Company</span>
+      <h2>会社概要</h2>
+      <p class="fict">※ サンプル作品のため、すべて架空の情報です。</p>
+    </div>
+    <div class="company">
+      <table class="company-table fade">
+        <tr><th>会社名</th><td>湖南リフォーム工房（架空）</td></tr>
+        <tr><th>所在地</th><td>滋賀県〇〇市〇〇町0-0-0（架空）</td></tr>
+        <tr><th>電話番号</th><td>000-0000-0000（架空）</td></tr>
+        <tr><th>営業時間</th><td>9:00〜18:00</td></tr>
+        <tr><th>定休日</th><td>水曜日・年末年始</td></tr>
+        <tr><th>事業内容</th><td>住宅リフォーム全般（水回り・外壁屋根塗装・内装）、住まいの小修理</td></tr>
+        <tr><th>対応エリア</th><td>滋賀県南部を中心に（架空の設定）</td></tr>
+      </table>
+      <div class="company-map fade d1">
+        <svg viewBox="0 0 420 300" role="img" aria-label="所在地のイメージ地図（架空）">
+          <rect width="420" height="300" fill="#eef2ec"/>
+          <path d="M0 120h420M140 0v240M300 0v210" stroke="#fff" stroke-width="12"/>
+          <path d="M0 60h420M60 0v300M230 0v230M370 0v200" stroke="#fff" stroke-width="5"/>
+          <path d="M0 120h420M140 0v300" stroke="#e8dcc6" stroke-width="3" stroke-dasharray="0"/>
+          <path d="M0 210c60-20 110-8 160 10s110 30 170 6 70-40 90-50v124H0z" fill="#c9d9e8"/>
+          <path d="M0 230c60-14 120-2 170 14s110 24 160 4" fill="none" stroke="#b3c8dc" stroke-width="3"/>
+          <rect x="160" y="70" width="52" height="34" rx="4" fill="#dfe6d6"/><rect x="250" y="70" width="36" height="34" rx="4" fill="#dfe6d6"/><rect x="72" y="72" width="54" height="36" rx="4" fill="#dfe6d6"/><rect x="160" y="134" width="56" height="44" rx="4" fill="#dfe6d6"/><rect x="72" y="134" width="54" height="40" rx="4" fill="#d3e0c9"/>
+          <g transform="translate(222 94)">
+            <path d="M0 26C-14 10-16 4-16-2a16 16 0 0 1 32 0c0 6-2 12-16 28z" fill="#a87a4a"/>
+            <circle cx="0" cy="-2" r="6" fill="#fff"/>
+          </g>
+          <rect x="246" y="100" width="128" height="30" rx="15" fill="#1c2f4d"/>
+          <text x="310" y="120" text-anchor="middle" font-size="13" fill="#fff" font-family="Noto Sans JP,sans-serif" font-weight="700">湖南リフォーム工房</text>
+        </svg>
+        <p>地図はイメージです（架空の所在地）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="sec-head fade">
+      <span class="sec-en">Contact</span>
+      <h2>ご相談・お見積もり</h2>
+      <p>「まだ決めていないけど話だけ聞きたい」も大歓迎です。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-tel fade">
+        <h3>お電話でのご相談</h3>
+        <a class="num" href="tel:00000000000"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#e3c9a3" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>000-0000-0000</a>
+        <p>受付時間 9:00〜18:00（水曜定休）</p>
+        <ul>
+          <li>「ホームページを見た」とお伝えください</li>
+          <li>気になる場所の写真があると話がスムーズです</li>
+          <li>※ サンプルのため、この番号はつながりません</li>
+        </ul>
+      </div>
+      <form class="form fade d1" id="sampleForm" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="f-name">お名前<span class="req">必須</span></label><input id="f-name" type="text" placeholder="例）湖南 太郎" autocomplete="off"></div>
+          <div class="field"><label for="f-tel">電話番号<span class="req">必須</span></label><input id="f-tel" type="tel" placeholder="例）000-0000-0000" autocomplete="off"></div>
+        </div>
+        <div class="field"><label for="f-mail">メールアドレス</label><input id="f-mail" type="email" placeholder="例）sample@example.com" autocomplete="off"></div>
+        <div class="field">
+          <label>ご相談の内容</label>
+          <div class="checks">
+            <label><input type="checkbox"> 水回り</label>
+            <label><input type="checkbox"> 外壁・屋根</label>
+            <label><input type="checkbox"> 内装</label>
+            <label><input type="checkbox"> その他・修理</label>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">ご相談内容の詳細</label><textarea id="f-msg" placeholder="例）築25年の戸建てです。お風呂の交換を考えています。"></textarea></div>
+        <button type="submit" class="btn btn-primary">この内容で送信する</button>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite">サンプルのため送信されません</p>
+        <p class="form-note">※ このフォームはサンプルです。入力内容はどこにも送信されません。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <span class="logo-text"><small>KONAN REFORM KOBO</small>湖南リフォーム工房</span>
+        <p style="margin-top:8px">滋賀県〇〇市（架空）｜TEL 000-0000-0000</p>
+      </div>
+      <nav class="footer-nav" aria-label="フッターメニュー">
+        <a href="#service">サービス</a><a href="#reason">選ばれる理由</a><a href="#flow">施工の流れ</a><a href="#works">施工事例</a><a href="#price">料金の目安</a><a href="#faq">よくある質問</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="footer-sample">
+      <strong>サンプル作品（架空の会社を想定して作成）<span class="fs-sep">｜</span><span class="fs-more">実在の会社・店舗・人物とは関係ありません</span></strong>
+      <span>© Sample Site</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sp-cta" aria-label="スマホ用お問い合わせボタン">
+  <a class="c-tel" href="tel:00000000000"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>電話する</a>
+  <a class="c-form" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6h18v12H3z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3 7 9 6 9-6"/></svg>相談する</a>
+</div>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.fade');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+document.getElementById('sampleForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var m=document.getElementById('formMsg');
+  m.classList.add('show');
+});
+</script>
+</body>
+</html>

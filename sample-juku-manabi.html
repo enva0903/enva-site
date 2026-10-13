@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>まなびの森 個別指導教室｜小・中学生のための個別指導（サンプル作品）</title>
+<meta name="description" content="【サンプル作品】架空の学習塾「まなびの森 個別指導教室」を想定して制作したホームページの見本です。実在の教室とは関係ありません。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1E5B46;
+  --green-dk:#143F31;
+  --green-md:#2F7A5E;
+  --leaf:#6FA77A;
+  --green-lt:#DDEBD8;
+  --green-pale:#EEF5E8;
+  --cream:#FBF5E3;
+  --cream-2:#F4EACD;
+  --yellow:#F6C544;
+  --yellow-dk:#D99E12;
+  --yellow-lt:#FCE9A9;
+  --ink:#22332B;
+  --ink-2:#55665D;
+  --line:#E3DCC3;
+  --white:#FFFEFA;
+  --head:"M PLUS 1p","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --body:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.9;
+  letter-spacing:.03em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  word-break:auto-phrase;
+  line-break:strict;
+}
+a{color:inherit;text-decoration:none}
+svg{display:block;max-width:100%}
+ul,ol{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.sp{display:none}
+.nw{white-space:nowrap}
+.fcard p,.voice__letter p,.faq__a p,.course__notes li{word-break:normal}
+
+/* ---------- サンプル表記 ---------- */
+.sample-bar{
+  background:var(--green-dk);
+  color:#DCE9DF;
+  font-size:12px;
+  text-align:center;
+  padding:6px 16px;
+  line-height:1.6;
+  letter-spacing:.05em;
+}
+.sample-bar b{color:var(--yellow);font-weight:700}
+
+/* ---------- ヘッダー ---------- */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,245,227,.94);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(30,91,70,.12);
+}
+.header__inner{
+  max-width:1240px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:12px 32px;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo__mark{width:44px;height:44px;flex:none}
+.logo__text{display:flex;flex-direction:column;line-height:1.25}
+.logo__main{font-family:var(--head);font-weight:800;font-size:21px;color:var(--green);letter-spacing:.06em}
+.logo__sub{font-size:11px;color:var(--ink-2);letter-spacing:.2em;font-weight:500}
+.nav{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500}
+.nav a:not(.nav__cta){padding:6px 0;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+.nav a:not(.nav__cta):hover{border-color:var(--yellow);color:var(--green)}
+.nav__cta{
+  background:var(--green);color:var(--white);
+  padding:10px 22px;border-radius:999px;font-weight:700;
+  transition:background .2s;
+}
+.nav__cta:hover{background:var(--green-dk)}
+.menu-toggle{
+  display:none;width:48px;height:48px;border:0;border-radius:12px;
+  background:var(--green);cursor:pointer;position:relative;flex:none;
+}
+.menu-toggle span{position:absolute;left:13px;width:22px;height:2px;border-radius:2px;background:var(--white);transition:.25s}
+.menu-toggle span:nth-child(1){top:16px}
+.menu-toggle span:nth-child(2){top:23px}
+.menu-toggle span:nth-child(3){top:30px}
+.menu-open .menu-toggle span:nth-child(1){top:23px;transform:rotate(45deg)}
+.menu-open .menu-toggle span:nth-child(2){opacity:0}
+.menu-open .menu-toggle span:nth-child(3){top:23px;transform:rotate(-45deg)}
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:56px;padding:14px 30px;border-radius:999px;
+  font-family:var(--head);font-weight:800;font-size:17px;letter-spacing:.06em;
+  border:0;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn svg{width:20px;height:20px;flex:none}
+.btn--yellow{background:var(--yellow);color:var(--green-dk);box-shadow:0 5px 0 var(--yellow-dk)}
+.btn--yellow:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--yellow-dk)}
+.btn--ghost{background:var(--white);color:var(--green);border:2px solid var(--green)}
+.btn--ghost:hover{background:var(--green-pale)}
+
+/* ---------- ファーストビュー ---------- */
+.hero{
+  position:relative;
+  background-color:var(--cream);
+  background-image:
+    linear-gradient(rgba(30,91,70,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,91,70,.055) 1px,transparent 1px);
+  background-size:28px 28px;
+  padding:64px 0 0;
+}
+.hero__inner{
+  display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;
+}
+.hero__tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--white);border:2px solid var(--green);color:var(--green);
+  font-weight:700;font-size:14px;padding:4px 16px;border-radius:999px;
+  margin-bottom:22px;
+}
+.hero__tag i{width:8px;height:8px;border-radius:50%;background:var(--yellow);display:block}
+.hero__title{
+  font-family:var(--head);font-weight:800;
+  font-size:clamp(36px,4.3vw,54px);line-height:1.45;letter-spacing:.04em;color:var(--green-dk);
+}
+.hero__title .mk{background:linear-gradient(transparent 64%,var(--yellow) 64%,var(--yellow) 92%,transparent 92%)}
+.hero__sub{margin-top:22px;font-size:17px;line-height:2;color:var(--ink);max-width:30em}
+.hero__cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero__note{margin-top:14px;font-size:13px;color:var(--ink-2)}
+.hero__art{position:relative}
+.hero__art svg{width:100%;height:auto;border-radius:36px;box-shadow:0 18px 40px -24px rgba(20,63,49,.55)}
+.hero__bubble{
+  position:absolute;left:-22px;top:26px;
+  background:var(--white);border:2px solid var(--green);border-radius:20px;
+  padding:8px 18px;font-family:var(--head);font-weight:800;font-size:19px;color:var(--green);
+  transform:rotate(-5deg);
+}
+.hero__bubble::after{
+  content:"";position:absolute;left:30px;bottom:-11px;width:16px;height:16px;
+  background:var(--white);border-right:2px solid var(--green);border-bottom:2px solid var(--green);
+  transform:rotate(45deg);
+}
+.hero__chips{
+  position:relative;z-index:2;
+  margin-top:56px;margin-bottom:-52px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--white);border-radius:24px;
+  box-shadow:0 14px 34px -22px rgba(20,63,49,.6);
+  border:1px solid var(--line);
+}
+.chip{display:flex;align-items:center;gap:14px;padding:22px 28px}
+.chip + .chip{border-left:1px dashed #CFC7A8}
+.chip__ic{width:48px;height:48px;flex:none}
+.chip dt{font-size:12px;font-weight:700;color:var(--green-md);letter-spacing:.14em;line-height:1.5}
+.chip dd{font-family:var(--head);font-weight:800;font-size:18px;line-height:1.5;color:var(--ink)}
+
+/* ---------- セクション共通 ---------- */
+.sec{padding:104px 0}
+.sec-head{text-align:center;margin-bottom:52px}
+.sec-head__label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--green-md);
+}
+.sec-head__label::before,.sec-head__label::after{
+  content:"";width:22px;height:10px;display:block;
+  background:var(--yellow);border-radius:0 10px 0 10px;
+}
+.sec-head__label::after{border-radius:10px 0 10px 0}
+.sec-head h2{
+  font-family:var(--head);font-weight:800;font-size:36px;line-height:1.5;
+  color:var(--green-dk);margin-top:8px;letter-spacing:.05em;
+}
+.sec-head p{margin-top:14px;color:var(--ink-2);font-size:15px}
+
+/* ---------- お悩み ---------- */
+.worry{padding-top:150px;background:var(--cream)}
+.worry__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.worry__item{
+  background:var(--white);border:1px solid var(--line);border-radius:18px;
+  padding:22px 22px 22px 60px;position:relative;
+  font-weight:500;line-height:1.75;font-size:16px;
+}
+.worry__item svg{position:absolute;left:20px;top:23px;width:28px;height:28px}
+.worry__close{
+  margin:44px auto 0;max-width:760px;text-align:center;
+  background:var(--green);color:var(--white);
+  border-radius:22px;padding:26px 32px;position:relative;
+  font-family:var(--head);font-weight:700;font-size:20px;line-height:1.8;
+}
+.worry__close::before{
+  content:"";position:absolute;top:-14px;left:50%;margin-left:-14px;
+  border:14px solid transparent;border-top:0;border-bottom-color:var(--green);
+}
+.worry__close em{font-style:normal;color:var(--yellow)}
+
+/* ---------- 特長 ---------- */
+.feature{background:var(--green);color:var(--white);border-radius:56px 56px 0 0;position:relative}
+.feature .sec-head h2{color:var(--white)}
+.feature .sec-head__label{color:var(--yellow-lt)}
+.feature .sec-head p{color:#CFE1D5}
+.feature__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.fcard{
+  background:var(--cream);color:var(--ink);border-radius:26px;
+  padding:0 30px 34px;position:relative;margin-top:34px;
+}
+.fcard__num{
+  position:absolute;top:-34px;left:26px;
+  width:68px;height:68px;border-radius:50%;
+  background:var(--yellow);color:var(--green-dk);
+  font-family:var(--head);font-weight:800;font-size:26px;
+  display:flex;align-items:center;justify-content:center;
+  border:5px solid var(--green);
+}
+.fcard__art{width:140px;height:120px;margin:22px 0 4px auto}
+.fcard h3{font-family:var(--head);font-weight:800;font-size:22px;line-height:1.55;color:var(--green-dk);margin-bottom:12px}
+.fcard p{font-size:15px;line-height:1.95;color:var(--ink)}
+
+/* ---------- コースと料金 ---------- */
+.course{background:var(--green);padding-top:0;padding-bottom:0}
+.course__panel{background:var(--white);border-radius:36px;padding:72px 56px 60px;color:var(--ink)}
+.price{width:100%;border-collapse:separate;border-spacing:0;font-size:16px}
+.price{table-layout:fixed}
+.price th:nth-child(1){width:23%}.price th:nth-child(2){width:15%}.price th:nth-child(3){width:20%}.price th:nth-child(4){width:20%}.price th:nth-child(5){width:22%}
+.price th,.price td{padding:22px 16px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--line)}
+.price thead th{
+  background:var(--green-pale);color:var(--green-dk);font-weight:700;font-size:14px;letter-spacing:.1em;
+  border-bottom:2px solid var(--green);padding:14px 16px;
+}
+.price thead th:first-child{border-radius:14px 0 0 0}
+.price thead th:last-child{border-radius:0 14px 0 0}
+.price tbody th{font-family:var(--head);font-weight:800;font-size:20px;color:var(--green-dk)}
+.price tbody th small{display:block;font-family:var(--body);font-weight:500;font-size:13px;color:var(--ink-2);letter-spacing:.04em}
+.price td{line-height:1.7}
+.price td small{display:block;font-size:13px;color:var(--ink-2)}
+.price .yen{white-space:nowrap}
+.price .yen b{font-family:var(--head);font-weight:800;font-size:28px;color:var(--green);letter-spacing:.02em}
+.eg{
+  display:inline-block;background:var(--yellow);color:var(--green-dk);
+  font-size:12px;font-weight:700;padding:1px 9px;border-radius:6px;margin-right:8px;
+  vertical-align:4px;letter-spacing:.1em;
+}
+.course__notes{
+  margin-top:28px;background:var(--cream);border-radius:16px;padding:20px 26px;
+  font-size:14px;line-height:1.9;color:var(--ink);
+}
+.course__notes li{padding-left:1.2em;position:relative}
+.course__notes li::before{content:"";position:absolute;left:0;top:.8em;width:7px;height:7px;border-radius:50%;background:var(--leaf)}
+.course__notes strong{color:var(--green-dk)}
+.course__after{background:var(--green);height:72px;border-radius:0 0 56px 56px}
+
+/* ---------- 授業の流れ ---------- */
+.flow{background:var(--cream)}
+.flow__list{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative;counter-reset:step}
+.flow__list::before{
+  content:"";position:absolute;left:8%;right:8%;top:45px;
+  border-top:3px dotted var(--leaf);
+}
+.step{position:relative;text-align:center}
+.step__ic{
+  width:92px;height:92px;border-radius:50%;margin:0 auto 14px;
+  background:var(--white);border:3px solid var(--green);
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+}
+.step__ic svg{width:48px;height:48px}
+.step__time{
+  display:inline-block;background:var(--green);color:var(--white);
+  font-size:13px;font-weight:700;border-radius:999px;padding:1px 14px;letter-spacing:.06em;
+}
+.step h3{font-family:var(--head);font-weight:800;font-size:18px;line-height:1.5;color:var(--green-dk);margin:10px 0 6px}
+.step p{font-size:14px;line-height:1.8;color:var(--ink);text-align:left;word-break:normal}
+.flow__note{text-align:center;margin-top:36px;font-size:13px;color:var(--ink-2)}
+
+/* ---------- 講師からのひとこと ---------- */
+.voice{background:var(--green-lt);border-radius:56px}
+.voice__inner{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:center;max-width:980px}
+.voice__who{text-align:center}
+.voice__who svg{width:200px;height:200px;margin:0 auto}
+.voice__role{
+  display:inline-block;margin-top:16px;background:var(--green);color:var(--white);
+  font-family:var(--head);font-weight:800;font-size:18px;padding:4px 28px;border-radius:999px;letter-spacing:.2em;
+}
+.voice__who small{display:block;margin-top:8px;font-size:13px;color:var(--ink-2)}
+.voice__letter{
+  background:var(--white);border-radius:24px;padding:40px 44px 36px;position:relative;
+  box-shadow:0 14px 30px -24px rgba(20,63,49,.6);
+}
+.voice__letter::before{
+  content:"";position:absolute;left:-13px;top:50%;margin-top:-13px;width:26px;height:26px;
+  background:var(--white);transform:rotate(45deg);border-radius:4px;
+}
+.voice__letter h2{font-family:var(--head);font-weight:800;font-size:28px;line-height:1.6;color:var(--green-dk);margin-bottom:16px}
+.voice__letter h2 span{background:linear-gradient(transparent 66%,var(--yellow-lt) 66%)}
+.voice__letter p{font-size:16px;line-height:2.1}
+.voice__letter p + p{margin-top:12px}
+.voice__label{font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--green-md);margin-bottom:6px;display:block}
+
+/* ---------- よくある質問 ---------- */
+.faq__list{max-width:860px;margin:0 auto;display:grid;gap:14px}
+.faq__item{background:var(--white);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.faq__item summary{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:40px 1fr 32px;gap:14px;align-items:center;
+  padding:18px 22px;font-weight:700;font-size:17px;line-height:1.6;min-height:64px;
+}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__q,.faq__a-mark{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--head);font-weight:800;font-size:19px;line-height:1;
+}
+.faq__q{background:var(--green);color:var(--white)}
+.faq__a-mark{background:var(--yellow);color:var(--green-dk)}
+.faq__pm{width:32px;height:32px;border-radius:50%;background:var(--green-pale);position:relative}
+.faq__pm::before,.faq__pm::after{
+  content:"";position:absolute;left:9px;top:15px;width:14px;height:2px;border-radius:2px;background:var(--green);transition:transform .25s;
+}
+.faq__pm::after{transform:rotate(90deg)}
+.faq__item[open] .faq__pm::after{transform:rotate(0)}
+.faq__a{
+  display:grid;grid-template-columns:40px 1fr;gap:14px;
+  padding:4px 68px 24px 22px;font-size:15.5px;line-height:1.95;
+}
+.faq__a p{padding-top:5px}
+
+/* ---------- 場所と時間 ---------- */
+.access{background:var(--cream-2);border-radius:56px 56px 0 0}
+.access__grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:start}
+.map{background:var(--white);border-radius:24px;padding:14px;border:1px solid var(--line)}
+.map svg{width:100%;height:auto;border-radius:14px}
+.map figcaption{font-size:13px;color:var(--ink-2);text-align:center;padding-top:10px;line-height:1.6}
+.info{background:var(--white);border-radius:24px;padding:14px 30px 26px;border:1px solid var(--line)}
+.info dl{display:grid;grid-template-columns:92px 1fr}
+.info dt,.info dd{padding:16px 0;border-bottom:1px dashed #D5CDAE;line-height:1.75}
+.info dt{font-weight:700;color:var(--green);font-size:14px;padding-top:18px}
+.info dd{font-size:16px}
+.info dd small{display:block;font-size:13px;color:var(--ink-2)}
+.info .tel{font-family:var(--head);font-weight:800;font-size:24px;color:var(--green-dk);letter-spacing:.04em;line-height:1.4}
+.week{margin-top:22px}
+.week__ttl{font-weight:700;color:var(--green);font-size:14px;margin-bottom:10px}
+.week table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;font-size:14px}
+.week th,.week td{border:1px solid var(--line);padding:8px 0;line-height:1.4}
+.week thead th{background:var(--green);color:var(--white);font-weight:700;border-color:var(--green)}
+.week thead th:first-child{width:30%}
+.week tbody th{background:var(--green-pale);font-weight:500;font-size:12.5px;padding:8px 2px;letter-spacing:0}
+.week tbody th span{display:inline-block}
+.week .on{color:var(--green-md);font-weight:700;font-size:16px}
+.week .off{color:#A9A590}
+.week__note{font-size:13px;color:var(--ink-2);margin-top:8px}
+
+/* ---------- 申し込みフォーム ---------- */
+.contact{background:var(--green);color:var(--white);position:relative}
+.contact .sec-head h2{color:var(--white)}
+.contact .sec-head__label{color:var(--yellow-lt)}
+.contact .sec-head p{color:#D5E5DA}
+.form{
+  max-width:760px;margin:0 auto;background:var(--white);color:var(--ink);
+  border-radius:28px;padding:44px 48px 48px;
+}
+.form__sample{
+  background:var(--yellow-lt);border-radius:12px;padding:10px 16px;font-size:13.5px;font-weight:500;
+  text-align:center;margin-bottom:28px;line-height:1.7;
+}
+.field{margin-bottom:22px}
+.field > label,.field > .lbl{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;margin-bottom:8px}
+.req,.opt{font-size:11px;font-weight:700;border-radius:5px;padding:0 8px;line-height:1.9;letter-spacing:.1em}
+.req{background:var(--green);color:var(--white)}
+.opt{background:#E9E5D3;color:var(--ink-2)}
+.field input[type=text],.field input[type=email],.field select,.field textarea{
+  width:100%;min-height:52px;padding:12px 16px;font-size:16px;
+  background:#FCFAF1;border:2px solid #D9D2B6;border-radius:12px;outline:0;
+  transition:border-color .2s,background .2s;
+}
+.field textarea{min-height:120px;resize:vertical;line-height:1.7}
+.field select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' fill='none' stroke='%231E5B46' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:16px;padding-right:44px;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);background:var(--white)}
+::placeholder{color:#A39E88}
+.radios{display:flex;flex-wrap:wrap;gap:10px}
+.radios label{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  min-height:48px;padding:8px 18px 8px 14px;border:2px solid #D9D2B6;border-radius:999px;background:#FCFAF1;font-size:15px;font-weight:500;
+}
+.radios input{accent-color:var(--green);width:18px;height:18px}
+.form__btn{text-align:center;margin-top:32px}
+.form__btn .btn{width:100%;max-width:400px}
+.form__msg{
+  display:none;margin-top:22px;border:2px solid var(--green);background:var(--green-pale);
+  border-radius:14px;padding:16px 20px;font-weight:700;color:var(--green-dk);text-align:center;line-height:1.7;
+}
+.form__msg.is-show{display:block}
+.form__msg small{display:block;font-weight:400;font-size:13px;color:var(--ink)}
+.contact__tel{text-align:center;margin-top:30px;font-size:14px;color:#D5E5DA;line-height:1.9}
+.contact__tel b{font-family:var(--head);font-weight:800;font-size:26px;color:var(--white);letter-spacing:.05em;margin:0 6px}
+
+/* ---------- フッター ---------- */
+.footer{background:var(--green-dk);color:#CFE0D5;padding:52px 0 0}
+.footer__inner{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;padding-bottom:36px}
+.footer .logo__main{color:var(--white)}
+.footer .logo__sub{color:#A9C6B5}
+.footer__addr{margin-top:16px;font-size:13.5px;line-height:1.95}
+.footer__nav{display:grid;grid-template-columns:repeat(2,auto);gap:4px 44px;font-size:14px;align-content:start}
+.footer__nav a{padding:5px 0}
+.footer__nav a:hover{color:var(--yellow)}
+.footer__sample{
+  border-top:1px solid rgba(255,255,255,.16);
+  padding:16px 32px 20px;text-align:center;font-size:12.5px;line-height:1.8;
+}
+.footer__sample b{color:var(--yellow)}
+.footer__copy{display:block;opacity:.7;font-size:12px}
+
+/* ---------- フェードイン（JSが動いたときだけ） ---------- */
+.js .fade{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.js .fade.is-in{opacity:1;transform:none}
+.js .fade.d1{transition-delay:.1s}
+.js .fade.d2{transition-delay:.2s}
+.js .fade.d3{transition-delay:.3s}
+.js .fade.d4{transition-delay:.4s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .fade{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- タブレット ---------- */
+@media (max-width:1060px){
+  .nav{gap:18px;font-size:13px}
+  .worry__grid{grid-template-columns:repeat(2,1fr)}
+  .course__panel{padding:60px 32px 48px}
+  .flow__list{grid-template-columns:repeat(3,1fr);gap:32px 18px}
+  .flow__list::before{display:none}
+}
+@media (max-width:900px){
+  .header__inner{padding:10px 20px}
+  .menu-toggle{display:block}
+  .nav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--cream);border-bottom:1px solid rgba(30,91,70,.15);
+    padding:6px 20px 22px;font-size:16px;
+    box-shadow:0 18px 24px -18px rgba(20,63,49,.45);
+  }
+  .menu-open .nav{display:flex}
+  .nav a:not(.nav__cta){padding:14px 4px;border-bottom:1px dashed #D5CDAE}
+  .nav__cta{margin-top:18px;text-align:center;padding:14px 22px;font-size:16px}
+  .hero__inner{grid-template-columns:1fr;gap:36px}
+  .hero__title{font-size:min(54px,9.2vw)}
+  .hero__art{max-width:520px;margin:0 auto;width:100%}
+  .feature__grid{grid-template-columns:1fr;gap:54px;max-width:560px;margin:0 auto}
+  .voice__inner{grid-template-columns:1fr;gap:32px}
+  .voice__letter::before{left:50%;top:-13px;margin:0 0 0 -13px}
+  .access__grid{grid-template-columns:1fr}
+}
+
+/* ---------- スマホ ---------- */
+@media (max-width:720px){
+  html{scroll-padding-top:76px}
+  body{font-size:15.5px}
+  .wrap{padding:0 20px}
+  .sp{display:inline}
+  .pc{display:none}
+  .sample-bar{padding:5px 12px}
+  .logo__mark{width:40px;height:40px}
+  .logo__main{font-size:19px}
+  .logo__sub{letter-spacing:.14em}
+  .sec{padding:72px 0}
+  .sec-head{margin-bottom:36px}
+  .sec-head h2{font-size:27px}
+  .sec-head p{font-size:14.5px}
+
+  .hero{padding-top:36px}
+  .hero__tag{font-size:13px;margin-bottom:16px}
+  .hero__sub{font-size:15.5px;margin-top:18px}
+  .hero__cta{margin-top:26px;flex-direction:column;align-items:stretch;gap:14px}
+  .hero__bubble{left:-6px;top:-16px;font-size:16px;padding:6px 14px}
+  .hero__art svg{border-radius:26px}
+  .hero__chips{grid-template-columns:1fr;margin-top:40px;margin-bottom:-44px;border-radius:20px}
+  .chip{padding:14px 20px}
+  .chip + .chip{border-left:0;border-top:1px dashed #CFC7A8}
+  .chip__ic{width:42px;height:42px}
+  .chip dd{font-size:17px}
+
+  .worry{padding-top:112px}
+  .worry__grid{grid-template-columns:1fr;gap:12px}
+  .worry__item{padding:16px 18px 16px 54px;font-size:15.5px}
+  .worry__item svg{left:16px;top:17px}
+  .worry__close{font-size:17px;padding:22px 20px;margin-top:34px;border-radius:18px}
+
+  .feature,.access{border-radius:36px 36px 0 0}
+  .fcard{padding:0 24px 28px}
+  .fcard h3{font-size:20px}
+  .fcard__art{width:120px;height:103px}
+
+  .course{padding:0}
+  .course .wrap{padding:0 12px}
+  .course__panel{padding:48px 16px 28px;border-radius:26px}
+  .course__after{height:48px;border-radius:0 0 36px 36px}
+  .price thead{display:none}
+  .price,.price tbody,.price tr,.price th,.price td{display:block}
+  .price tbody th,.price tbody td{width:auto!important}
+  .price tr{border:2px solid var(--green-lt);border-radius:18px;margin-bottom:16px;overflow:hidden}
+  .price tbody th{background:var(--green-pale);padding:14px 18px;border-bottom:0;font-size:19px;white-space:normal}
+  .price td{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:13px 18px;font-size:15px;border-bottom:1px dashed #D5CDAE;align-items:center}
+  .price td:last-child{border-bottom:0}
+  .price td::before{content:attr(data-label);font-size:12.5px;font-weight:700;color:var(--green-md)}
+  .price .yen b{font-size:25px}
+  .course__notes{padding:16px 18px;font-size:13.5px}
+
+  .flow__list{grid-template-columns:1fr;gap:0}
+  .flow__list::before{display:block;left:35px;right:auto;top:20px;bottom:40px;border-top:0;border-left:3px dotted var(--leaf)}
+  .step{display:grid;grid-template-columns:72px 1fr;column-gap:16px;text-align:left;padding-bottom:26px}
+  .step__ic{width:72px;height:72px;margin:0;grid-row:1 / span 3}
+  .step__ic svg{width:38px;height:38px}
+  .step__time{justify-self:start;align-self:start}
+  .step h3{margin:6px 0 2px;font-size:18px}
+  .step p{font-size:14.5px;word-break:auto-phrase}
+  .flow__note{margin-top:8px;text-align:left}
+
+  .voice{border-radius:36px}
+  .voice__who svg{width:150px;height:150px}
+  .voice__letter{padding:28px 22px 26px;border-radius:20px}
+  .voice__letter h2{font-size:22px}
+  .voice__letter p{font-size:15.5px;line-height:2}
+
+  .faq__item summary{grid-template-columns:36px 1fr 28px;gap:10px;padding:14px 14px;font-size:15.5px}
+  .faq__q,.faq__a-mark{width:36px;height:36px;font-size:17px}
+  .faq__pm{width:28px;height:28px}
+  .faq__pm::before,.faq__pm::after{left:8px;top:13px;width:12px}
+  .faq__a{grid-template-columns:36px 1fr;gap:10px;padding:2px 16px 20px 14px;font-size:15px}
+
+  .map{padding:10px;border-radius:20px}
+  .info{padding:8px 20px 22px;border-radius:20px}
+  .info dl{grid-template-columns:72px 1fr}
+  .info dd{font-size:15.5px}
+  .info .tel{font-size:22px}
+  .week table{font-size:13px}
+  .week tbody th{font-size:12px}
+
+  .form{padding:28px 20px 32px;border-radius:22px}
+  .radios label{flex:1 1 100%}
+  .contact__tel b{display:block;margin:0}
+
+  .footer__inner{flex-direction:column;gap:26px}
+  .footer__nav{gap:2px 36px;justify-content:start}
+  .footer__nav a{padding:9px 0}
+  .footer__sample{padding:14px 20px 18px}
+}
+</style>
+</head>
+<body id="top">
+
+<div class="sample-bar"><b>サンプル作品</b>（架空の依頼を想定して作成）<span class="pc">｜実在の教室とは関係ありません</span></div>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="logo" aria-label="まなびの森 個別指導教室 トップへ">
+      <svg class="logo__mark" viewBox="0 0 44 44" aria-hidden="true">
+        <circle cx="22" cy="22" r="22" fill="#1E5B46"/>
+        <path d="M22 7l9 13h-5l7 10H11l7-10h-5z" fill="#F6C544"/>
+        <rect x="20" y="30" width="4" height="7" rx="1" fill="#FBF5E3"/>
+      </svg>
+      <span class="logo__text">
+        <span class="logo__main">まなびの森</span>
+        <span class="logo__sub">個別指導教室</span>
+      </span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <a href="#feature">教室の特長</a>
+      <a href="#course">コースと料金</a>
+      <a href="#flow">授業の流れ</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#access">場所と時間</a>
+      <a href="#contact" class="nav__cta">無料体験のお申し込み</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== ファーストビュー ========== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <p class="hero__tag fade"><i></i>小学生・中学生の個別指導<i></i></p>
+        <h1 class="hero__title fade d1"><span class="mk">「わかった！」</span>を、<br>ひとつずつ。</h1>
+        <p class="hero__sub fade d2">こもれび町の、小さな個別指導教室です。<br class="pc">お子さまのペースに合わせて、つまずいたところから<br class="pc">いっしょに進めていきます。</p>
+        <div class="hero__cta fade d3">
+          <a href="#contact" class="btn btn--yellow">無料体験を申し込む
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#course" class="btn btn--ghost">コースと料金を見る</a>
+        </div>
+        <p class="hero__note fade d3">体験は1回60分。保護者の方の見学もできます。</p>
+      </div>
+
+      <div class="hero__art fade d2" aria-hidden="true">
+        <svg viewBox="0 0 520 460">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FDF0BF"/><stop offset="1" stop-color="#EAF3DD"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="460" fill="url(#sky)"/>
+          <!-- 太陽 -->
+          <circle cx="418" cy="92" r="46" fill="#F6C544"/>
+          <circle cx="418" cy="92" r="66" fill="#F6C544" opacity=".22"/>
+          <!-- 雲 -->
+          <g fill="#FFFEFA">
+            <rect x="60" y="70" width="110" height="26" rx="13"/><rect x="88" y="54" width="56" height="30" rx="15"/>
+            <rect x="268" y="40" width="76" height="20" rx="10"/>
+          </g>
+          <!-- 奥の森 -->
+          <g fill="#A9CDA5">
+            <path d="M-10 300l52-96 52 96z"/><path d="M70 300l46-84 46 84z"/><path d="M360 300l50-92 50 92z"/><path d="M440 300l52-100 52 100z"/>
+            <circle cx="200" cy="262" r="46"/><circle cx="330" cy="268" r="40"/>
+          </g>
+          <!-- 丘 -->
+          <path d="M0 318c90-42 180-42 270-8s170 30 250-6v156H0z" fill="#6FA77A"/>
+          <path d="M0 372c110-34 220-30 320 0s150 22 200 4v84H0z" fill="#2F7A5E"/>
+          <!-- 教室の建物 -->
+          <g>
+            <rect x="182" y="216" width="170" height="118" fill="#FFFEFA"/>
+            <path d="M166 222l101-70 101 70z" fill="#1E5B46"/>
+            <rect x="286" y="170" width="18" height="30" fill="#1E5B46"/>
+            <circle cx="267" cy="196" r="13" fill="#F6C544"/>
+            <path d="M267 188v8l5 4" stroke="#143F31" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="246" y="268" width="42" height="66" rx="21 21 0 0" fill="#F6C544"/>
+            <path d="M246 289a21 21 0 0 1 42 0v45h-42z" fill="#F6C544"/>
+            <circle cx="279" cy="304" r="3" fill="#143F31"/>
+            <g fill="#DDEBD8" stroke="#1E5B46" stroke-width="3">
+              <rect x="198" y="246" width="34" height="34" rx="4"/><rect x="302" y="246" width="34" height="34" rx="4"/>
+            </g>
+            <path d="M215 246v34M198 263h34M319 246v34M302 263h34" stroke="#1E5B46" stroke-width="3"/>
+          </g>
+          <!-- 手前の木 -->
+          <g>
+            <rect x="92" y="300" width="12" height="46" rx="3" fill="#8A6A45"/>
+            <path d="M98 196l44 70h-22l34 54H42l34-54H54z" fill="#1E5B46"/>
+            <rect x="420" y="308" width="12" height="44" rx="3" fill="#8A6A45"/>
+            <circle cx="426" cy="270" r="48" fill="#1E5B46"/>
+            <circle cx="410" cy="256" r="9" fill="#F6C544"/><circle cx="444" cy="282" r="7" fill="#F6C544"/><circle cx="432" cy="244" r="5" fill="#F6C544"/>
+          </g>
+          <!-- 小道 -->
+          <path d="M250 334c-4 30-40 60-70 126h150c-24-60-44-96-46-126z" fill="#F4EACD"/>
+          <!-- ノートとえんぴつ -->
+          <g transform="translate(46 372) rotate(-6)">
+            <path d="M0 8l74-8v66L0 74z" fill="#FFFEFA" stroke="#143F31" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M74 0l74 8v66l-74-8z" fill="#FFFEFA" stroke="#143F31" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M14 24l46-5M14 38l46-5M14 52l30-3M90 20l44 5M90 34l44 5M90 48l28 3" stroke="#6FA77A" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(392 388) rotate(-28)">
+            <rect x="0" y="0" width="92" height="18" rx="3" fill="#F6C544" stroke="#143F31" stroke-width="3"/>
+            <path d="M92 0l22 9-22 9z" fill="#FBF5E3" stroke="#143F31" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M106 6l8 3-8 3z" fill="#143F31"/>
+            <rect x="0" y="0" width="14" height="18" rx="3" fill="#E98B6D" stroke="#143F31" stroke-width="3"/>
+          </g>
+        </svg>
+        <span class="hero__bubble">できた！</span>
+      </div>
+    </div>
+
+    <dl class="hero__chips fade">
+      <div class="chip">
+        <svg class="chip__ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#DDEBD8"/><path d="M12 30V18l12-6 12 6v12" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linejoin="round"/><path d="M19 34v-9h10v9" fill="#F6C544" stroke="#1E5B46" stroke-width="3" stroke-linejoin="round"/></svg>
+        <div><dt>対象</dt><dd>小学1年生〜中学3年生</dd></div>
+      </div>
+      <div class="chip">
+        <svg class="chip__ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#DDEBD8"/><circle cx="24" cy="16" r="5" fill="#1E5B46"/><circle cx="14" cy="27" r="4" fill="#F6C544" stroke="#1E5B46" stroke-width="2.4"/><circle cx="34" cy="27" r="4" fill="#F6C544" stroke="#1E5B46" stroke-width="2.4"/><path d="M16 26c2-4 14-4 16 0" fill="none" stroke="#1E5B46" stroke-width="2.6" stroke-linecap="round"/><path d="M8 38c1-5 11-5 12 0M28 38c1-5 11-5 12 0" fill="none" stroke="#1E5B46" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <div><dt>授業の形</dt><dd>先生1人に生徒2人まで</dd></div>
+      </div>
+      <div class="chip">
+        <svg class="chip__ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#DDEBD8"/><rect x="12" y="14" width="24" height="22" rx="4" fill="#FFFEFA" stroke="#1E5B46" stroke-width="3"/><path d="M12 21h24M18 10v7M30 10v7" stroke="#1E5B46" stroke-width="3" stroke-linecap="round"/><path d="M19 28l4 4 7-7" fill="none" stroke="#D99E12" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><dt>体験授業</dt><dd>無料で受付中（1回60分）</dd></div>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ========== お悩み ========== -->
+<section class="sec worry" id="worry">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">おうちの方へ</span>
+      <h2>こんなお悩み、<br class="sp">ありませんか？</h2>
+    </div>
+    <ul class="worry__grid">
+      <li class="worry__item fade"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>宿題に時間がかかって、毎晩親子でぐったりしてしまう</li>
+      <li class="worry__item fade d1"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>学校の授業についていけているのか、少し心配</li>
+      <li class="worry__item fade d2"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>テスト前、何から始めればいいのか分からない様子</li>
+      <li class="worry__item fade"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>大人数の授業だと、質問できずに帰ってきてしまう</li>
+      <li class="worry__item fade d1"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>家ではなかなか机に向かえず、つい口を出してしまう</li>
+      <li class="worry__item fade d2"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="#DDEBD8"/><path d="M8 14l4.5 4.5L20 10" fill="none" stroke="#1E5B46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>部活や習いごとと両立できるか、不安がある</li>
+    </ul>
+    <p class="worry__close fade">ひとつでも当てはまったら、<br class="sp"><em>まずはお話を聞かせてください。</em><br>いまの様子に合った進め方を、<br class="sp">いっしょに考えます。</p>
+  </div>
+</section>
+
+<!-- ========== 教室の特長 ========== -->
+<section class="sec feature" id="feature">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">教室の特長</span>
+      <h2>まなびの森が<br class="sp">大切にしている3つのこと</h2>
+    </div>
+    <div class="feature__grid">
+      <article class="fcard fade">
+        <span class="fcard__num">01</span>
+        <svg class="fcard__art" viewBox="0 0 140 120" aria-hidden="true">
+          <path d="M10 104h34V84h30V64h30V44h30" fill="none" stroke="#6FA77A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M112 30l10-18 10 18z" fill="#F6C544" stroke="#1E5B46" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="120" y="28" width="4" height="14" fill="#1E5B46"/>
+          <circle cx="27" cy="74" r="9" fill="#1E5B46"/>
+          <path d="M16 92a11 11 0 0 1 22 0v8H16z" fill="#1E5B46"/>
+        </svg>
+        <h3>つまずいたところから、<br>いっしょに</h3>
+        <p>学年にこだわらず、分からなくなったところまで戻って学び直します。土台から順に積み上げるので、次の単元にも進みやすくなります。</p>
+      </article>
+      <article class="fcard fade d1">
+        <span class="fcard__num">02</span>
+        <svg class="fcard__art" viewBox="0 0 140 120" aria-hidden="true">
+          <rect x="14" y="78" width="112" height="10" rx="5" fill="#8A6A45"/>
+          <rect x="26" y="88" width="8" height="24" fill="#8A6A45"/><rect x="106" y="88" width="8" height="24" fill="#8A6A45"/>
+          <circle cx="70" cy="30" r="12" fill="#1E5B46"/><path d="M52 66a18 18 0 0 1 36 0v12H52z" fill="#1E5B46"/>
+          <circle cx="30" cy="46" r="9" fill="#F6C544" stroke="#1E5B46" stroke-width="3"/><path d="M17 78V70a13 13 0 0 1 26 0v8z" fill="#F6C544" stroke="#1E5B46" stroke-width="3"/>
+          <circle cx="110" cy="46" r="9" fill="#F6C544" stroke="#1E5B46" stroke-width="3"/><path d="M97 78V70a13 13 0 0 1 26 0v8z" fill="#F6C544" stroke="#1E5B46" stroke-width="3"/>
+        </svg>
+        <h3>先生1人に、<br>生徒は2人まで</h3>
+        <p>すぐ隣に先生がいるので、小さな「？」もその場で聞けます。自分で解く時間と教わる時間を交互にとり、考える力も育てます。</p>
+      </article>
+      <article class="fcard fade d2">
+        <span class="fcard__num">03</span>
+        <svg class="fcard__art" viewBox="0 0 140 120" aria-hidden="true">
+          <rect x="30" y="14" width="80" height="98" rx="8" fill="#FFFEFA" stroke="#1E5B46" stroke-width="4"/>
+          <rect x="30" y="14" width="16" height="98" rx="6" fill="#1E5B46"/>
+          <path d="M58 40h38M58 56h38M58 72h24" stroke="#6FA77A" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="98" cy="90" r="16" fill="#F6C544" stroke="#1E5B46" stroke-width="3"/>
+          <path d="M91 90l5 5 9-10" fill="none" stroke="#1E5B46" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>その日の様子を、<br>毎回おうちへ</h3>
+        <p>授業のあとに、学んだ内容と次回までの宿題を連絡帳でお伝えします。学期ごとの面談では、ご家庭での様子も伺います。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== コースと料金 ========== -->
+<section class="sec course" id="course">
+  <div class="wrap">
+    <div class="course__panel">
+      <div class="sec-head fade">
+        <span class="sec-head__label">コースと料金</span>
+        <h2>学年に合わせた<br class="sp">3つのコース</h2>
+        <p>教科や曜日は、ご相談しながら決めていきます。</p>
+      </div>
+      <table class="price fade">
+        <thead>
+          <tr><th scope="col">コース</th><th scope="col">対象</th><th scope="col">授業の回数・時間</th><th scope="col">教科</th><th scope="col">月謝（例・税込）</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">小学生コース<small>学ぶ習慣づくりから</small></th>
+            <td data-label="対象">小学1〜6年生</td>
+            <td data-label="回数・時間">週1回・60分</td>
+            <td data-label="教科">算数・国語から選択</td>
+            <td data-label="月謝（例）" class="yen"><span><span class="eg">例</span><b>8,800</b>円〜</span></td>
+          </tr>
+          <tr>
+            <th scope="row">中学生コース<small>ふだんの授業の予習・復習</small></th>
+            <td data-label="対象">中学1〜3年生</td>
+            <td data-label="回数・時間">週2回・80分</td>
+            <td data-label="教科">5教科から2つ選択</td>
+            <td data-label="月謝（例）" class="yen"><span><span class="eg">例</span><b>17,600</b>円〜</span></td>
+          </tr>
+          <tr>
+            <th scope="row">テスト前コース<small>定期テストの2週間前から</small></th>
+            <td data-label="対象"><span>中学生<small>（通塾中の方）</small></span></td>
+            <td data-label="回数・時間">1回80分<br>必要な回数だけ</td>
+            <td data-label="教科">テスト範囲の教科</td>
+            <td data-label="月謝（例）" class="yen"><span><span class="eg">例</span>1回 <b>2,200</b>円</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="course__notes fade">
+        <li><strong>上の金額はすべて「例」です。</strong>このページはサンプル作品のため、実際の料金ではありません。</li>
+        <li>入会金（例：11,000円）と教材費（例：学期ごとに3,300円）が別にかかる想定です。</li>
+        <li>回数や教科を増やしたい場合は、お気軽にご相談ください。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="course__after"></div>
+</section>
+
+<!-- ========== 授業の流れ ========== -->
+<section class="sec flow" id="flow">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">1回の授業の流れ</span>
+      <h2>80分は、<br class="sp">こんなふうに進みます</h2>
+      <p>中学生コース（80分）の一例です。その日の様子に合わせて配分を変えます。</p>
+    </div>
+    <ol class="flow__list">
+      <li class="step fade">
+        <div class="step__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4" stroke="#F6C544" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="8" fill="#1E5B46"/></svg></div>
+        <span class="step__time">はじめの5分</span>
+        <h3>今日の目標を決める</h3>
+        <p>あいさつのあと、学校の進み具合を聞いて、やることを決めます。</p>
+      </li>
+      <li class="step fade d1">
+        <div class="step__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 24a12 12 0 1 0 4-9" fill="none" stroke="#1E5B46" stroke-width="4" stroke-linecap="round"/><path d="M10 8v9h9" fill="none" stroke="#1E5B46" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 17v8l5 3" fill="none" stroke="#D99E12" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="step__time">10分</span>
+        <h3>前回のふり返り</h3>
+        <p>宿題を見ながら、前に学んだことを覚えているか確かめます。</p>
+      </li>
+      <li class="step fade d2">
+        <div class="step__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="9" width="36" height="25" rx="3" fill="#1E5B46"/><path d="M13 18h14M13 25h9" stroke="#F6C544" stroke-width="3.4" stroke-linecap="round"/><path d="M16 41l4-7M32 41l-4-7" stroke="#1E5B46" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <span class="step__time">30分</span>
+        <h3>新しい内容の説明</h3>
+        <p>先生がとなりで、図や例を使ってゆっくり説明します。</p>
+      </li>
+      <li class="step fade d3">
+        <div class="step__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 39l4-12L31 9l8 8-18 18z" fill="#F6C544" stroke="#1E5B46" stroke-width="3.6" stroke-linejoin="round"/><path d="M27 13l8 8" stroke="#1E5B46" stroke-width="3.6"/><path d="M9 39l4-12 8 8z" fill="#1E5B46"/></svg></div>
+        <span class="step__time">25分</span>
+        <h3>自分で解く時間</h3>
+        <p>ひとりで問題に取り組みます。手が止まったら、すぐに声をかけます。</p>
+      </li>
+      <li class="step fade d4">
+        <div class="step__ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="7" width="28" height="34" rx="4" fill="#FFFEFA" stroke="#1E5B46" stroke-width="3.6"/><path d="M17 17h14M17 24h14" stroke="#6FA77A" stroke-width="3.4" stroke-linecap="round"/><path d="M18 32l3.5 3.5L29 28" fill="none" stroke="#D99E12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="step__time">おわりの10分</span>
+        <h3>まとめと連絡帳</h3>
+        <p>できたことを一緒に確かめ、宿題と様子を連絡帳に書きます。</p>
+      </li>
+    </ol>
+    <p class="flow__note fade">※ 小学生コース（60分）は、説明と自分で解く時間を短めにして進めます。</p>
+  </div>
+</section>
+
+<!-- ========== 講師からのひとこと ========== -->
+<div class="wrap" style="max-width:1240px">
+<section class="sec voice" id="voice">
+  <div class="wrap voice__inner">
+    <div class="voice__who fade">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="100" fill="#FFFEFA"/>
+        <clipPath id="av"><circle cx="100" cy="100" r="100"/></clipPath>
+        <g clip-path="url(#av)">
+          <path d="M36 210c0-44 28-66 64-66s64 22 64 66z" fill="#1E5B46"/>
+          <path d="M84 146l16 20 16-20z" fill="#FFFEFA"/>
+          <rect x="88" y="120" width="24" height="30" rx="10" fill="#F2CFAE"/>
+          <circle cx="100" cy="92" r="38" fill="#F6DCC0"/>
+          <path d="M62 90c-2-30 16-44 38-44s40 14 38 44c-8-14-18-22-38-22s-30 8-38 22z" fill="#3A4A42"/>
+          <circle cx="86" cy="96" r="3.4" fill="#22332B"/><circle cx="114" cy="96" r="3.4" fill="#22332B"/>
+          <path d="M88 110c7 6 17 6 24 0" fill="none" stroke="#22332B" stroke-width="3" stroke-linecap="round"/>
+          <g fill="none" stroke="#1E5B46" stroke-width="3"><circle cx="86" cy="96" r="11"/><circle cx="114" cy="96" r="11"/><path d="M97 96h6"/></g>
+        </g>
+        <path d="M150 150l8 12h-5l7 10h-20l7-10h-5z" fill="#F6C544" stroke="#1E5B46" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <span class="voice__role">教室長</span>
+      <small>（イラストはイメージです）</small>
+    </div>
+    <div class="voice__letter fade d1">
+      <span class="voice__label">講師からのひとこと</span>
+      <h2><span>「分からない」と言える場所で</span><br class="pc"><span>ありたいと思っています。</span></h2>
+      <p>勉強が苦手になるきっかけは、ほんの小さな「分からない」をそのままにしてしまうことが多いように感じます。</p>
+      <p>この教室では、まず話を聞くことから始めます。どこで手が止まるのか、どんな教え方だと分かりやすいのか。お子さまと相談しながら、ひとつずつ進めていきます。</p>
+      <p>急がなくて大丈夫です。気になることがあれば、どうぞ気軽にお声がけください。</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ========== よくある質問 ========== -->
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">よくある質問</span>
+      <h2>はじめての方から<br class="sp">よくいただくご質問</h2>
+      <p>質問をタップすると、答えが開きます。</p>
+    </div>
+    <div class="faq__list">
+      <details class="faq__item fade" open>
+        <summary><span class="faq__q">Q</span>体験授業のあと、入会を強くすすめられませんか？<span class="faq__pm" aria-hidden="true"></span></summary>
+        <div class="faq__a"><span class="faq__a-mark">A</span><p>こちらから入会をせかすことはありません。体験のあとは、おうちでゆっくりご相談ください。お返事はいつでも大丈夫です。</p></div>
+      </details>
+      <details class="faq__item fade">
+        <summary><span class="faq__q">Q</span>勉強が苦手な子でも通えますか？<span class="faq__pm" aria-hidden="true"></span></summary>
+        <div class="faq__a"><span class="faq__a-mark">A</span><p>はい。学年にこだわらず、分かるところまで戻って始めます。最初の面談で、いまの様子をくわしくお聞かせください。</p></div>
+      </details>
+      <details class="faq__item fade">
+        <summary><span class="faq__q">Q</span>お休みしたときは、<span class="nw">振り替えできますか？</span><span class="faq__pm" aria-hidden="true"></span></summary>
+        <div class="faq__a"><span class="faq__a-mark">A</span><p>前日までにご連絡いただければ、同じ月の中で別の日に振り替えます。急な体調不良のときも、まずはご相談ください。</p></div>
+      </details>
+      <details class="faq__item fade">
+        <summary><span class="faq__q">Q</span>部活で帰りが遅い日でも通えますか？<span class="faq__pm" aria-hidden="true"></span></summary>
+        <div class="faq__a"><span class="faq__a-mark">A</span><p>平日は夜9時まで開いています。部活の予定に合わせて、曜日と時間をご相談しながら決めていきます。</p></div>
+      </details>
+      <details class="faq__item fade">
+        <summary><span class="faq__q">Q</span>教材は自分で用意するのでしょうか？<span class="faq__pm" aria-hidden="true"></span></summary>
+        <div class="faq__a"><span class="faq__a-mark">A</span><p>教室で用意した教材を使います。学校の教科書やワークを持ってきていただければ、それに合わせて進めることもできます。</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 場所と時間 ========== -->
+<section class="sec access" id="access">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">教室の場所と時間</span>
+      <h2>こもれび駅から、<br class="sp">歩いて5分ほど</h2>
+    </div>
+    <div class="access__grid">
+      <figure class="map fade">
+        <svg viewBox="0 0 480 360" role="img" aria-label="教室までの案内図（架空の地図）。こもれび駅の北口を出てまっすぐ進み、大きな通りを右に曲がると、公園のとなりにあります。">
+          <rect width="480" height="360" fill="#EEF5E8"/>
+          <path d="M-10 52c80 18 150-18 240 0s170 26 260 4" fill="none" stroke="#BFDDE2" stroke-width="26" stroke-linecap="round"/>
+          <g fill="#E6DFC8">
+            <rect x="20" y="112" width="110" height="70" rx="8"/><rect x="356" y="112" width="104" height="70" rx="8"/>
+            <rect x="20" y="214" width="110" height="56" rx="8"/><rect x="230" y="214" width="100" height="56" rx="8"/><rect x="356" y="214" width="104" height="56" rx="8"/>
+          </g>
+          <rect x="158" y="112" width="50" height="70" rx="8" fill="#BFDDB7"/>
+          <g fill="#6FA77A"><circle cx="173" cy="128" r="9"/><circle cx="193" cy="138" r="9"/></g>
+          <g stroke="#FFFEFA" stroke-linecap="round">
+            <path d="M0 198h480" stroke-width="20"/>
+            <path d="M144 96v200" stroke-width="18"/>
+            <path d="M343 96v210" stroke-width="18"/>
+            <path d="M0 96h480" stroke-width="12"/>
+            <path d="M219 96v102" stroke-width="10"/>
+          </g>
+          <path d="M0 326h480" stroke="#55665D" stroke-width="6"/>
+          <path d="M0 326h480" stroke="#FFFEFA" stroke-width="3" stroke-dasharray="14 12"/>
+          <rect x="86" y="298" width="116" height="40" rx="8" fill="#55665D"/>
+          <text x="144" y="324" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFEFA">こもれび駅</text>
+          <path d="M144 288V198h126" fill="none" stroke="#D99E12" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round"/>
+          <g font-size="16" fill="#55665D" font-weight="500" text-anchor="middle">
+            <text x="75" y="153">図書館</text>
+            <text x="408" y="153">スーパー</text>
+            <text x="75" y="248">郵便局</text>
+            <text x="408" y="248">小学校</text>
+            <text x="183" y="173" fill="#2F7A5E" font-weight="700" font-size="15">公園</text>
+            <text x="418" y="34" fill="#5E9AA6" font-size="15">こもれび川</text>
+            <text x="186" y="284" font-size="15" font-weight="700">北口</text>
+          </g>
+          <rect x="228" y="110" width="104" height="72" rx="10" fill="#1E5B46"/>
+          <text x="280" y="142" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFEFA">まなびの森</text>
+          <g transform="translate(280 204) scale(.8)">
+            <path d="M0 0c-13-15-20-24-20-34a20 20 0 0 1 40 0c0 10-7 19-20 34z" fill="#F6C544" stroke="#143F31" stroke-width="3.6"/>
+            <circle cx="0" cy="-34" r="7" fill="#143F31"/>
+          </g>
+        </svg>
+        <figcaption>※ 架空の町の案内図です（サンプルのため実在しません）</figcaption>
+      </figure>
+
+      <div class="info fade d1">
+        <dl>
+          <dt>住所</dt>
+          <dd>こもれび町 ○丁目 0-0　<span class="nw">森のビル2階</span><small>※ 架空の住所です</small></dd>
+          <dt>電話</dt>
+          <dd><span class="tel">000-0000-0000</span><small>（サンプル）受付：開校時間内</small></dd>
+          <dt>行き方</dt>
+          <dd>こもれび駅 北口から<span class="nw">歩いて約5分</span><small>自転車置き場あり／お車の送り迎えは建物前で</small></dd>
+        </dl>
+        <div class="week">
+          <p class="week__ttl">開校時間</p>
+          <table>
+            <thead><tr><th></th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><span>10:00〜</span><span>15:00</span></th><td class="off">−</td><td class="off">−</td><td class="off">−</td><td class="off">−</td><td class="off">−</td><td class="on">○</td><td class="off">−</td></tr>
+              <tr><th scope="row"><span>15:00〜</span><span>21:00</span></th><td class="on">○</td><td class="on">○</td><td class="on">○</td><td class="on">○</td><td class="on">○</td><td class="off">−</td><td class="off">−</td></tr>
+            </tbody>
+          </table>
+          <p class="week__note">※ 日曜・祝日はお休みです。テスト前は土曜も夕方まで開けることがあります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 無料体験フォーム ========== -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="sec-head__label">無料体験のお申し込み</span>
+      <h2>まずは一度、<br class="sp">教室をのぞいてみませんか</h2>
+      <p>体験授業は1回60分・無料です。2日以内に、教室からお返事します。</p>
+    </div>
+    <form class="form fade" id="trialForm" action="#" method="post" novalidate>
+      <p class="form__sample">このフォームは見本です。入力した内容はどこにも送信されません。</p>
+      <div class="field">
+        <label for="f-name">保護者のお名前<span class="req">必須</span></label>
+        <input id="f-name" name="name" type="text" autocomplete="off" placeholder="お名前をご入力ください">
+      </div>
+      <div class="field">
+        <label for="f-grade">お子さまの学年<span class="req">必須</span></label>
+        <select id="f-grade" name="grade">
+          <option value="">選んでください</option>
+          <option>小学1年生</option><option>小学2年生</option><option>小学3年生</option><option>小学4年生</option><option>小学5年生</option><option>小学6年生</option>
+          <option>中学1年生</option><option>中学2年生</option><option>中学3年生</option>
+        </select>
+      </div>
+      <div class="field">
+        <span class="lbl" id="l-way">ご希望の内容<span class="req">必須</span></span>
+        <div class="radios" role="radiogroup" aria-labelledby="l-way">
+          <label><input type="radio" name="way" checked>体験授業を受けたい</label>
+          <label><input type="radio" name="way">まずは見学・相談だけ</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-mail">メールアドレス<span class="req">必須</span></label>
+        <input id="f-mail" name="mail" type="email" autocomplete="off" inputmode="email" placeholder="sample@example.com">
+      </div>
+      <div class="field">
+        <label for="f-msg">ご希望の日時・ご質問など<span class="opt">任意</span></label>
+        <textarea id="f-msg" name="msg" placeholder="例）平日の夕方を希望。算数の文章題が苦手です。"></textarea>
+      </div>
+      <div class="form__btn">
+        <button type="submit" class="btn btn--yellow">この内容で申し込む
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="form__msg" id="formMsg" role="status" aria-live="polite">サンプルのため送信されません<small>（実際のサイトでは、ここに「送信しました」と表示されます）</small></p>
+    </form>
+    <p class="contact__tel fade">お電話でも受け付けています<br><b>000-0000-0000</b>（サンプル）</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <a href="#top" class="logo">
+        <svg class="logo__mark" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="22" fill="#2F7A5E"/>
+          <path d="M22 7l9 13h-5l7 10H11l7-10h-5z" fill="#F6C544"/>
+          <rect x="20" y="30" width="4" height="7" rx="1" fill="#FBF5E3"/>
+        </svg>
+        <span class="logo__text">
+          <span class="logo__main">まなびの森</span>
+          <span class="logo__sub">個別指導教室</span>
+        </span>
+      </a>
+      <p class="footer__addr">こもれび町 ○丁目 0-0　森のビル2階（架空の住所）<br>TEL 000-0000-0000（サンプル）<br>平日 15:00〜21:00／土曜 10:00〜15:00<span class="pc">／</span><br class="sp">日・祝 休み</p>
+    </div>
+    <nav class="footer__nav" aria-label="フッターメニュー">
+      <a href="#feature">教室の特長</a>
+      <a href="#course">コースと料金</a>
+      <a href="#flow">授業の流れ</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#access">場所と時間</a>
+      <a href="#contact">無料体験のお申し込み</a>
+    </nav>
+  </div>
+  <div class="footer__sample">
+    <b>サンプル作品</b>（架空の依頼を想定して作成）<span class="pc">｜</span><br class="sp">実在の教室・団体とは関係ありません
+    <span class="footer__copy">© まなびの森 個別指導教室（架空）</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var els=document.querySelectorAll('.fade');
+  if('IntersectionObserver' in window){
+    root.classList.add('js');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -6% 0px',threshold:0.06});
+    els.forEach(function(el){io.observe(el)});
+  }
+
+  var header=document.getElementById('header');
+  var btn=document.getElementById('menuToggle');
+  function setMenu(open){
+    header.classList.toggle('menu-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');
+  }
+  btn.addEventListener('click',function(){setMenu(!header.classList.contains('menu-open'))});
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){setMenu(false)});
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+
+  var form=document.getElementById('trialForm');
+  var msg=document.getElementById('formMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    msg.classList.add('is-show');
+    msg.scrollIntoView({block:'nearest',behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
