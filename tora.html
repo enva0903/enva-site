@@ -51,9 +51,9 @@ h1,h2,h3{margin:0;line-height:1.35}
 @keyframes hop{50%{transform:translateY(-12px)}}
 .fv .wrap{position:relative;z-index:4;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;min-height:min(86vh,720px);padding:56px 0 64px}
 .fv__lab{display:inline-block;font-weight:900;font-size:14px;background:var(--shu);color:#fff;border:3px solid var(--ink);padding:6px 16px;border-radius:999px;transform:rotate(-2deg)}
-.fv h1{margin-top:20px;font-family:var(--pop);font-weight:400;font-size:clamp(34px,4.6vw,66px);line-height:1.16;color:#fff;transform:skewY(-6deg) rotate(-2deg);transform-origin:left;
-  -webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:6px 6px 0 var(--ink)}
-.fv h1 em{font-style:normal;color:var(--shu)}
+.fv h1{margin:14px 0 0 -10px;line-height:0}
+.fv h1 img{display:block;width:min(620px,112%);height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45));animation:stampIn .7s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes stampIn{0%{opacity:0;transform:scale(1.35) rotate(-4deg)}100%{opacity:1;transform:none}}
 .fv__lead{margin:22px 0 0;color:#fff;font-weight:900;font-size:clamp(15px,1.6vw,18px);text-shadow:2px 2px 0 rgba(0,0,0,.35)}
 .fv__badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .fv__badges span{color:var(--ink);background:#fff;border:3px solid var(--ink);border-radius:10px;padding:6px 14px;font-weight:900;font-size:14px;box-shadow:3px 3px 0 var(--ink)}
@@ -192,14 +192,14 @@ section{padding:clamp(72px,10vw,120px) 0}
 @keyframes bob{50%{transform:translateY(-8px) rotate(-1.5deg)}}
 .burst svg{animation:spin 30s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.fv__squad,.tora--bob,.burst svg,.marq__in{animation:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.fv__squad,.fv h1 img,.fv__c,.tora--bob,.burst svg,.marq__in{animation:none}}
 /* スマホ */
 @media (max-width:900px){
   .hd nav{display:none} .hd .btn{margin-left:auto}
   .fv .wrap{grid-template-columns:1fr;min-height:0;padding:40px 0 56px}
   .fv{background-image:url(assets/tora-bg-sp.webp?v=1)} .fv::before{background:linear-gradient(180deg,rgba(13,10,30,0) 0,rgba(13,10,30,.2) 40%,rgba(13,10,30,.9) 62%)}
   .fv__chars{width:100%;top:0;bottom:auto;height:92vw} .fv__c--sumi{width:46%;left:27%} .fv__c--kin{width:34%;left:0} .fv__c--aka{width:32%;bottom:12%}
-  .fv__art{order:-1;min-height:90vw}
+  .fv__art{order:-1;min-height:90vw} .fv h1{margin-left:-6px} .fv h1 img{width:104%}
   .fv__art .bubble{left:auto;right:0;top:auto;bottom:-6px;font-size:13px}
   .fv .burst{width:132px;right:auto;left:6px;bottom:-10px} .fv .burst__in b{font-size:25px} .fv .burst__in small,.fv .burst__in em{font-size:10px}
   .issue{grid-template-columns:1fr;gap:10px}
@@ -239,7 +239,7 @@ section{padding:clamp(72px,10vw,120px) 0}
     <div class="wrap">
       <div>
         <span class="fv__lab">滋賀・関西のホームページ作り替え</span>
-        <h1>その見積もり、<br>ひと桁<em>多すぎ</em><br>ちゃうか！</h1>
+        <h1><picture><source media="(max-width:600px)" srcset="assets/tora-title-sm.webp?v=1"><img src="assets/tora-title.webp?v=1" alt="その見積もり、ひと桁多すぎちゃうか！" width="1991" height="1205" fetchpriority="high"></picture></h1>
         <p class="fv__lead">ENVAなら、作り替えも新規も55,000円から。<br>原稿づくりも公開作業も、ぜんぶ込みです。</p>
         <div class="fv__badges"><span>最短1〜2週間</span><span>追加料金0円</span><span>代表がひとりで担当</span></div>
         <div class="fv__cta">
