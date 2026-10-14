@@ -1,0 +1,19 @@
+/* Live type stays native; the decorative hero lettering is inline vector text. */
+.hero-copy{transform:none;text-shadow:none}
+.hero-copy h1{font-style:normal;-webkit-text-stroke:0}
+.hero-lettering{display:block;width:100%;height:auto;overflow:visible}
+.hero-lettering text{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-style:normal;fill:#fff;stroke:none;letter-spacing:0}
+.hero-lettering .hero-vector-title{font-size:88px}
+.hero-lettering .hero-vector-subtitle{font-size:35px}
+.intro-type{font-style:normal;-webkit-text-stroke:0}
+.pickup-card h3,.utility strong{font-style:normal;-webkit-text-stroke:0}
+.handwritten{font-style:normal}
+.js .reveal.visible,.js .about-copy.reveal.visible,.js .about-copy.reveal.visible>*{translate:none}
+.visible .title-letter{transform:none}
+.js .reason-card.reveal.visible,.js .about-photo.reveal.visible{scale:none;rotate:none}
+/* Separate letter paint from card hover enlargement. */
+.pickup-card{transition:opacity .25s,box-shadow .3s;scale:none}
+.pickup-card:hover{scale:none;box-shadow:0 4px 16px #0002}
+.footer-contact>button{transition:box-shadow .3s}
+.footer-contact>button:hover{scale:none;box-shadow:0 5px 18px #0002}
+@media(max-width:767px){.hero-copy{left:6%;right:6%;top:47%}.hero-copy h1{white-space:normal}.hero-lettering .hero-vector-title{font-size:102px}.hero-lettering .hero-vector-subtitle{font-size:40px}.pickup-card-copy{padding-bottom:10px}.pickup-card p{font-size:9px;line-height:1.25;white-space:normal;max-width:100%;margin-top:5px;padding:3px 5px}.bike-card p{padding:0 3px}.utility small{font-size:9px;line-height:1.3;text-align:center}}
